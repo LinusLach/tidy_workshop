@@ -18,48 +18,36 @@ format:
         }
         </style>
     logo: pictures/Logo_cc.svg
-    footer: 'Linus Lach (c) 2025'
+    footer: 'Linus Lach © 2025'
     execute:
       echo: true
 ---
 
 # Hallo!
 
-::::{.columns}
-:::{.column width="50%"}
-
-<img
-  style="width: 70%;
+::: columns
+::: {.column width="50%"}
+<img src="pictures/PP.jpg" style="width: 70%;
          height: 70%;
          border-radius: 50%;
          z-index: 1;
-         align: 'center';"
-  src="pictures/PP.jpg">
-</img>
-
+         align: &apos;center&apos;;"/> </img>
 :::
-:::{.column width="50%"}
 
+::: {.column width="50%"}
+<br> <br>
 
-<br>
-<br>
 <ul style="list-style:none;">
-  <li>  [Linus-Lach.de](https://linus-lach.de) </li>
-  <li> ![](pictures/github-mark.svg){style="width:32px;
-                                            height:32px;
-                                            position:relative;
-                                            top:15px;"}
-       [LinusLach](github.com/linuslach) </li>
-  <li> ![](pictures/LinkedIn_icon.svg){style="width:32px;
-                                            height:32px;
-                                            position:relative;
-                                            top:15px;"}
-       [linus-lach](https://www.linkedin.com/in/linus-lach) </li>
+
+<li>![](pictures/website.svg){style="width:32px;                                             height:32px;                                             position:relative;                                             top:15px;"}[Linus-Lach.de](https://linus-lach.de)</li>
+
+<li>![](pictures/github-mark.svg){style="width:32px;                                             height:32px;                                             position:relative;                                             top:15px;"} [LinusLach](github.com/linuslach)</li>
+
+<li>![](pictures/LinkedIn_icon.svg){style="width:32px;                                             height:32px;                                             position:relative;                                             top:15px;"} [linus-lach](https://www.linkedin.com/in/linus-lach)</li>
+
 </ul>
-
 :::
-
-::::
+:::
 
 ## R for Data Science and Machine Learning?
 
@@ -67,56 +55,99 @@ format:
 
 > Why don't we just use Python?
 
-::::{.columns}
-
-
-
-:::{.column width="50%"}
-
-::: {.fragment index=1}
+::: columns
+::: {.column width="50%"}
+::: {.fragment index="1"}
 ![](pictures/r_vs_python.jpg)
 :::
-
-
 :::
 
-:::{.column width="50%"}
-
-::: {.fragment index=1}
+::: {.column width="50%"}
+::: {.fragment index="1"}
 ![](pictures/r_vs_python2.jpg)
 :::
-
 :::
-
-::::
+:::
 
 ## Agenda
 
-1.    Introduction  
-2.    Tidyverse
-3.    Tidymodels
+1.  Preliminaries\
+2.  Tidyverse
+3.  Tidymodels
 
 ## Resources for this Tutorial
 
-::::{.columns}
-:::{.column widht="50%"}
-
+::: columns
+::: {.column widht="50%"}
 Workshop Notebooks can be accessed online at:
 
 <p style="text-align:center;">
-[https://linus-lach.de/workshops/tidy/](https://linus-lach.de/workshops/tidy/)
-</p>
 
+<https://linus-lach.de/workshops/tidy/>
+
+</p>
 :::
 
-:::{.column widht="50%"}
-
+::: {.column widht="50%"}
 Slides can be accessed online at
 
-[https://linus-lach.de/workshop/tidy/slides.html](google.com)
-
+[https://linus-lach.de/workshop/tidy/slides.html](https://google.com)
+:::
 :::
 
+<br>
+
+Or, clone the repo:
+
+```{r}
+#| eval: false
+https://github.com/LinusLach/tidy_workshop.git
+```
+
+## Quarto
+
+::: {style="font-size:20pt;"}
+**What** is Quarto?
+
+> An open-source scientific and technical publishing system for R, Python, Julia, and Observable
+
+**Why** should I use it?
+
+> Publish reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.
+
+**How** can I use it?
+
+> Quarto is bundled with newer versions of RStudio and Positron. VS Code also provides an extension.
+
+For further information, see [Official Quarto Website](https://quarto.org/)
 :::
 
+## Quickstart for Quarto
 
+![](pictures/quarto_document.gif) 
+
+## Working with Quarto
+
+We can then
+
+-   Write code snippets
+-   Insert content (images, videos, and even raw html code!)
+-   Export documents as different formats (PDF,HTML, and DOCX)
+
+## Modus Operandi for this Workshop
+
+You can either:
+
+-   Create your own Quarto document and copy the code of the slides
+-   Use the Quarto notebooks provided as a template
+
+
+# {background-image="pictures/tidyverse/tidyverse-bg.svg" background-size="cover" #slidetidyverse-id data-menu-title="{tidyverse}"}
+
+## {tidyverse}
+
+![](pictures/tidyverse/tidyverse_hex.svg)
+
+As a meta-package, the `{tidyverse}` contains many different packages.
+
+## The Immoscout Dataset
