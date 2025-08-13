@@ -1,0 +1,22 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "1 Workshop Notebooks",
+    "section": "",
+    "text": "1 Workshop Notebooks\nThese notebooks contain …",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Workshop Notebooks</span>"
+    ]
+  },
+  {
+    "objectID": "01_Tidyverse.html",
+    "href": "01_Tidyverse.html",
+    "title": "2  Tidyverse",
+    "section": "",
+    "text": "Lorem",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidyverse</span>"
+    ]
+  }
+]

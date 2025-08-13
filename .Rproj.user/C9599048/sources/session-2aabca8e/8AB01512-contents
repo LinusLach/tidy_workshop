@@ -1,0 +1,131 @@
+---
+title: "Tidy{verse|models}"
+subtitle: "A modern approach for Data Science and Machine Learning in R"
+format:
+  revealjs:
+    theme: [solarized, custom.scss]
+    fig-cap-location: top
+    include-in-header: 
+      text: |
+        <style>
+        .center-xy {
+          margin: 0;
+          position: absolute;
+          top: 0%;
+          left: 27%;
+          -ms-transform: translateY(-50%), translateX(-50%);
+          transform: translateY(-50%), translateX(-50%);
+        }
+        </style>
+    logo: pictures/Logo_cc.svg
+    footer: 'Linus Lach (c) 2025'
+    execute:
+      echo: true
+---
+
+# Hallo!
+
+::::{.columns}
+:::{.column width="50%"}
+
+<img
+  style="width: 70%;
+         height: 70%;
+         border-radius: 50%;
+         z-index: 1;
+         align: 'center';"
+  src="pictures/PP.jpg">
+</img>
+
+:::
+:::{.column width="50%"}
+
+
+<br>
+<br>
+<ul style="list-style:none;">
+  <li>  [Linus-Lach.de](https://linus-lach.de) </li>
+  <li> ![](pictures/github-mark.svg){style="width:32px;
+                                            height:32px;
+                                            position:relative;
+                                            top:15px;"}
+       [LinusLach](github.com/linuslach) </li>
+  <li> ![](pictures/LinkedIn_icon.svg){style="width:32px;
+                                            height:32px;
+                                            position:relative;
+                                            top:15px;"}
+       [linus-lach](https://www.linkedin.com/in/linus-lach) </li>
+</ul>
+
+:::
+
+::::
+
+## R for Data Science and Machine Learning?
+
+<br>
+
+> Why don't we just use Python?
+
+::::{.columns}
+
+
+
+:::{.column width="50%"}
+
+::: {.fragment index=1}
+![](pictures/r_vs_python.jpg)
+:::
+
+
+:::
+
+:::{.column width="50%"}
+
+::: {.fragment index=1}
+![](pictures/r_vs_python2.jpg)
+:::
+
+:::
+
+::::
+
+## Agenda
+
+1.    Introduction  
+2.    Tidyverse
+3.    Tidymodels
+
+## Resources for this Tutorial
+
+::::{.columns}
+:::{.column widht="50%"}
+
+Workshop Notebooks can be accessed online at:
+
+<p style="text-align:center;">
+[https://linus-lach.de/workshops/tidy/](https://linus-lach.de/workshops/tidy/)
+</p>
+
+:::
+
+:::{.column widht="50%"}
+
+Slides can be accessed online at
+
+[https://linus-lach.de/workshop/tidy/slides.html](google.com)
+
+:::
+
+Or, clone the whole project:
+
+```
+git clone 
+```
+
+
+
+
+:::
+
+
