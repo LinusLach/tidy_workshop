@@ -11,8 +11,8 @@ format:
         .center-xy {
           margin: 0;
           position: absolute;
-          top: 0%;
-          left: 27%;
+          top: 50%;
+          left: 50%;
           -ms-transform: translateY(-50%), translateX(-50%);
           transform: translateY(-50%), translateX(-50%);
         }
@@ -75,6 +75,8 @@ format:
 2.  Tidyverse
 3.  Tidymodels
 
+## Goals of this Workshop
+
 ## Resources for this Tutorial
 
 ::: columns
@@ -103,6 +105,14 @@ Or, clone the repo:
 #| eval: false
 https://github.com/LinusLach/tidy_workshop.git
 ```
+
+## Resources beyond this Tutorial
+
+- [R for Data Science (R4DS)](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund.
+
+- [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse]() by Chester Ismay and Albert Y. Kim.
+
+- [Data Science Box](https://datasciencebox.org/) by Mine Çetinkaya-Rundel
 
 ## Quarto
 
@@ -150,4 +160,1460 @@ You can either:
 
 As a meta-package, the `{tidyverse}` contains many different packages.
 
-## The Immoscout Dataset
+## Using the Tidyverse in R {style="font-size:32pt;"}
+
+
+:::{style="font-size:32pt;"}
+Most importantly:^[Under the assumption that you have installed the package. If not, run `install.packages("tidyverse")`]
+
+```{r}
+#| message: true
+library(tidyverse)
+```
+
+:::
+
+
+
+## The Penguins Dataset (Tabular Data)
+
+::::{.columns}
+:::{.column width="50%"}
+Size measurements for adult foraging penguins near Palmer Station, Antarctica
+
+> Includes measurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.
+
+
+:::
+
+:::{.column width="50%"}
+
+![Artist: Allison Horst](pictures/lter_penguins.png){fig-align="center"}
+
+
+:::
+
+::::
+
+```{r}
+data_penguin <- palmerpenguins::penguins
+```
+
+## The `{dplyr}`-Package - Cheatsheet
+
+<figure style="position:absolute; top:20vh; left:15vw; width:60%;">
+  <img src="pictures/tidyverse/dplyr_01.png" alt="dplyr cheatsheet" style="width:100%; height:auto;">
+  <figcaption style="font-size:0.9rem; margin-top:0.4rem;">
+    <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf" target="_blank" rel="noopener noreferrer">
+      Source: RStudio Github
+    </a>
+  </figcaption>
+</figure>
+
+![](pictures/tidyverse/dplyr_02.png){.absolute top=10vh left=10vw width=60%}
+
+
+<!--
+![](pictures/tidyverse/dplyr_02.png){.absolute top=20vh left=15vw width=60%}^[Source:RStudio Github](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+-->
+
+
+
+## Getting a *glimpse* of the Data
+
+
+
+<h3> Base R </h3> 
+
+```{r}
+#| eval: false
+head(data_penguin)
+```
+
+```{r}
+#| echo: false
+head(data_penguin, 4)
+```
+
+
+
+
+<h3> 🌟`{tidyverse}`🌟 </h3> 
+
+```{r}
+dplyr::glimpse(data_penguin)
+```
+
+
+## Easy Grouping and Summaries
+
+<!-- 
+`{dplyr}` is one of the libraries that is used everywhere and the possible combinations with functions from other packages are endless.
+It is the perfect toolkit for tabular data wrangling!
+-->
+
+:::{style="font-size:23pt;"}
+What is the average male and female body mass of each species on each island?
+
+:::
+
+::: columns
+::: {.column width="50%"}
+
+<h3> Base R </h3> 
+
+```{r}
+avg_mass <- aggregate(
+  body_mass_g ~ sex+species+island,
+  data = data_penguin,
+  FUN = function(x) mean(x, na.rm = TRUE)
+)
+
+names(avg_mass)[
+  names(avg_mass) == "body_mass_g"
+  ] <- "mean_weight"
+
+print(avg_mass)
+```
+
+:::
+::: {.column width="50%"}
+
+<h3> 🌟`{tidyverse}`🌟 </h3> 
+
+```{r}
+data_penguin |> 
+  na.omit() |>
+  dplyr::group_by(sex,species,island) |>
+  dplyr::summarise(
+    mean_weight = mean(body_mass_g)
+    )
+```
+
+:::
+:::
+
+## Exercise: Grouping, Filtering, and Summaries 
+
+:::{#exr-filter_n}
+
+Using the `dplyr::filter()`- and `dplyr::n()`- function to find out how many penguins on each island have a body mass higher than `3500`g.
+
+**Bonus:** Also include the relative number with respect to the total number of penguins on each island by using the `mutate`-functionds 
+
+:::
+
+:::{#sol-filter_n}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  filter(body_mass_g>3500) |>
+  group_by(island) |>
+  summarise(n=n())
+```
+
+:::
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  filter(body_mass_g>3500) |>
+  group_by(island) |>
+  summarise(n=n())|>
+  mutate(rel_n = n/sum(n))
+```
+
+:::
+:::
+:::
+
+## `{ggplot2}` 
+
+:::{.columns}
+:::{.column width="50%"}
+
+![](pictures/tidyverse/ggplot_meme.jpg)
+
+:::
+
+:::{.column width="50%"}
+
+![](pictures/tidyverse/ggplot_meme2.jpg)
+
+:::
+
+:::
+
+## The `{ggplot2}`-Package - Cheatsheet
+
+<figure style="position:absolute; top:20vh; left:15vw; width:60%;">
+  <img src="pictures/tidyverse/ggplot_02.png" alt="dplyr cheatsheet" style="width:100%; height:auto;">
+  <figcaption style="font-size:0.9rem; margin-top:0.4rem;">
+    <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf" target="_blank" rel="noopener noreferrer">
+      Source: RStudio Github
+    </a>
+  </figcaption>
+</figure>
+
+![](pictures/tidyverse/ggplot_01.png){.absolute top=10vh left=10vw width=60%}
+
+## `{ggplot2}`-Basics {auto-animate=true}
+
+
+::::{.columns}
+:::{.column width="35%"}
+```{r}
+#| eval: false
+data_penguin |>
+  ggplot()
+```
+
+:::
+:::{.column width="65%"}
+```{r}
+#| echo: false
+data_penguin |>
+  ggplot()
+```
+
+:::
+::::
+
+## `{ggplot2}`-Basics {auto-animate=true}
+ 
+::::{.columns}
+:::{.column width="35%"}
+```{r}
+#| eval: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm
+      )
+    )
+```
+
+:::
+:::{.column width="65%"}
+```{r}
+#| echo: false
+data_penguin |>
+  ggplot(aes(x=bill_depth_mm,y=bill_length_mm))
+
+```
+
+:::
+::::
+
+## `{ggplot2}`-Basics {auto-animate=true}
+ 
+::::{.columns}
+:::{.column width="35%"}
+```{r}
+#| eval: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm
+      )
+    )+
+  geom_point()
+```
+
+:::
+:::{.column width="65%"}
+```{r}
+#| echo: false
+data_penguin |>
+  ggplot(aes(x=bill_depth_mm,y=bill_length_mm))+
+  geom_point()
+```
+
+:::
+::::
+
+## `{ggplot2}`-Basics {auto-animate=true}
+ 
+::::{.columns}
+:::{.column width="35%"}
+```{r}
+#| eval: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm
+      )
+    )+
+  geom_point(
+    aes(
+      color=species
+      )
+    )
+```
+
+:::
+:::{.column width="65%"}
+```{r}
+#| echo: false
+data_penguin |>
+  ggplot(aes(x=bill_depth_mm,y=bill_length_mm))+
+    geom_point(
+    aes(
+      color=species
+      )
+    )
+```
+
+:::
+::::
+
+## `{ggplot2}`-Basics {auto-animate=true}
+
+::::{.columns}
+:::{.column width="35%"}
+```{r}
+#| eval: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm,
+      color=species
+      )
+    )+
+  geom_point()
+```
+
+:::
+:::{.column width="65%"}
+```{r}
+#| echo: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm,
+      color=species
+      )
+    )+
+  geom_point()
+```
+
+:::
+::::
+
+## `{ggplot2}`-Basics {auto-animate=true}
+
+::::{.columns}
+:::{.column width="35%"}
+```{r}
+#| eval: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm,
+      color=species
+      )
+    )+
+  geom_point()+
+  geom_smooth(method = "lm",
+              se = FALSE)
+```
+
+:::
+:::{.column width="65%"}
+```{r}
+#| echo: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm,
+      color=species
+      )
+    )+
+  geom_point()+
+  geom_smooth(method = "lm",
+              se = FALSE)
+```
+
+:::
+::::
+
+## `{ggplot2}`-Basics {auto-animate=true}
+
+::::{.columns}
+:::{.column width="35%"}
+```{r}
+#| eval: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm
+      )
+    )+
+  geom_point(
+    aes(
+      color=species
+      )
+    )+
+  geom_smooth(method = "lm",
+              se = FALSE)
+```
+
+:::
+:::{.column width="65%"}
+```{r}
+#| echo: false
+data_penguin |>
+  ggplot(
+    aes(
+      x=bill_depth_mm,
+      y=bill_length_mm
+      )
+    )+
+  geom_point(
+    aes(
+      color=species
+      )
+    )+
+  geom_smooth(method = "lm",
+              se = FALSE)
+```
+
+:::
+::::
+
+## Exercise: `{ggplot2}` 
+
+:::{#exr-filter_n}
+
+Using the `geom_histogram()`-function, create a histogram for the variable `flipper_length`.
+
+**Bonus:** Use the `after_stat()`- and `sum()`-functions in combination with the `count` argument to display the relative frequencies of the flipper lengths. Then, set the `y`-scale to percentages with the `scale_y_continuous()`- and `scales::percent()`-function and change the `y`-axis label to `"relative frequency"` with the help of the `labs()`-function.
+
+:::
+
+## Solution: `{ggplot2}`
+
+:::{#sol-filter_n}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  ggplot(
+    aes(
+      x=flipper_length_mm
+      )
+    )+
+  geom_histogram()
+```
+
+:::
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  ggplot(
+    aes(
+      x=flipper_length_mm
+      )
+    )+
+  geom_histogram(
+    aes(
+      y=after_stat(count / sum(count))
+      )
+    )+
+  scale_y_continuous(labels = scales::percent)+
+  labs(y="relative frequency")
+```
+
+:::
+:::
+:::
+
+## `{ggplot2}` Further Resources
+
+:::{.columns}
+
+:::{.column width="50%"}
+![[R Graphics Cookbook](https://r-graphics.org/index.html)](pictures/tidyverse/R_Graphics_Cookbook.jpg){width=60%}
+
+:::
+
+:::{.column width="50%"}
+
+![[ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)](pictures/tidyverse/ggplot_book.jpg){width=52%}
+
+:::
+:::
+
+
+
+## NYC Flight Data
+
+```{r}
+library(nycflights13)
+flight_data <- flights
+glimpse(flight_data)
+```
+<!-- 
+Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be used to join flights data to weather data
+-->
+<!-- 
+JFK: John F Kennedy
+LGA: La Guardia Airport
+EWR: Newark Liberty International Airport
+
+-->
+
+
+## NYC Flight Data - Quick EDA Example
+
+How much missing data are we dealing with?
+
+
+```{r}
+flight_data |>
+  summarise(across(everything(),
+                   ~sum(is.na(.)))) |>
+  pivot_longer(cols = everything(),
+               names_to = "column",
+               values_to = "na_count") |>
+  filter(na_count>0) |>
+  mutate(na_percent = (na_count / nrow(flight_data)) * 100)
+```
+
+
+This can be done easier, right?
+
+## NYC Flight Data - Quick EDA Example
+
+```{r}
+flight_data |>
+  is.na() |>
+  colSums()  
+```
+
+Problem: The return value is a vector and not a Tibble.
+
+**Question:** What is a possible and plausible cause for the `NA` values?
+
+
+## `{lubridate}`: Make Dealing with Dates a Little Easier
+
+<figure style="position:absolute; top:20vh; left:15vw; width:60%;">
+  <img src="pictures/tidyverse/lubridate_02.png" alt="dplyr cheatsheet" style="width:100%; height:auto;">
+  <figcaption style="font-size:0.9rem; margin-top:0.4rem;">
+    <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf" target="_blank" rel="noopener noreferrer">
+      Source: RStudio Github
+    </a>
+  </figcaption>
+</figure>
+
+![](pictures/tidyverse/lubridate_01.png){.absolute top=10vh left=10vw width=60%}
+
+
+## Lubridate: Creating Columns in the POSIX Dateformat
+
+::: {.columns}
+::: {.column width="40%"}
+```{r}
+flight_time <- flight_data |>
+  mutate(
+    dep_dt = make_datetime(
+      year,
+      month,
+      day,
+      dep_time %/% 100,
+      dep_time %% 100),
+    sched_dep_dt = make_datetime(
+      year,
+      month,
+      day,
+      sched_dep_time %/% 100,
+      sched_dep_time %% 100),
+    arr_time_dt = make_datetime(
+      year,
+      month,
+      day,
+      arr_time %/% 100,
+      arr_time %% 100)
+  )
+```
+<!--
+%/% → Integer Division (quotient without remainder)
+
+%% → Modulo (remainder after division)
+-->
+
+::: 
+
+<!--
+
+The basic POSIX measure of time, calendar time,
+is the number of seconds since the beginning of 1970,
+in the UTC timezone (GMT as described by the French).
+-->
+
+::: {.column width="60%"}
+```{r}
+flight_time |> select(
+  dep_dt,
+  sched_dep_dt,
+  arr_time_dt
+) |>
+  head(5)
+  
+```
+
+
+:::
+:::
+
+
+## Calculating the Net Air Time
+
+Let's calculate the airtime using the new `dep_dt` and `arr_time_dt` columns and compare it to the `air_time` column provided in the dataset:
+
+:::{.columns}
+
+:::{.column width="70%"}
+
+```{r}
+flight_time |>
+  mutate(
+    net_air_time = as.duration(arr_time_dt - sched_dep_dt),
+    air_time = minutes(air_time) |> as.duration()
+  ) |>
+  select(net_air_time,air_time) |>
+  head(5)
+```
+
+:::
+:::{.column width="30%"}
+
+![](pictures/tidyverse/the-simpsons-bush.gif)
+
+:::
+:::
+
+## Are Time Zones an Issue?!
+
+```{r}
+flights_tz <- flight_time |>
+  filter(!is.na(dep_time), !is.na(arr_time)) |>
+  left_join(airports |> select(faa, tz = tzone),
+            by = c("origin" = "faa")
+            ) |>
+  rename(origin_tz = tz) |>
+  left_join(airports |> select(faa, tz = tzone),
+            by = c("dest" = "faa")) |>
+  rename(dest_tz = tz) |>
+  filter(!is.na(origin_tz), !is.na(dest_tz)) |>
+  mutate(
+    dep_time_local = force_tz(sched_dep_dt, tzone = origin_tz),
+    arr_time_local = force_tz(arr_time_dt,  tzone = dest_tz)
+  ) |>
+  mutate(
+    net_air_time = as.duration(arr_time_local - dep_time_local),
+    air_time = minutes(air_time) |> as.duration()
+  ) |>
+  select(net_air_time, air_time)
+```
+
+## Are Time Zones an Issue?!
+::: columns
+::: {.column width="50%"}
+```{r}
+flights_tz |>
+  head(5)
+```
+:::
+::: {.column width="50%"}
+
+![](pictures/tidyverse/Oof_Size_Large.jpg)
+
+:::
+:::
+
+<h3>Possible Issues </h3>
+
+- No taxi times are included
+- No wheel data is included (i.e. timestamps for the exact takeoff and landing)
+
+
+## Exercise: Weekday Conversion
+
+:::{#exr-avoid_weekdays}
+1. Using the `flight_time` dataset, create a new feature `weekday` which contains the weekday of the flights. 
+To create this new feature, you can use the `lubridate::wday()`-function.
+2. The default parameters of the `lubridate::weekday()`-function return integer values instead of ordered factors. 
+   Use the `help` function to find out how to set the arguments that weekdays in the `"en_US.UTF-8"` format are returned.
+3. Find out which weekday has the highest average departure delay.
+:::
+
+## Solution: Weekday Conversion
+
+:::{#sol-avoid_weekdays}
+```{r}
+flight_time |>
+  na.omit()|>
+  mutate(
+    weekday = wday(
+      dep_dt,
+      label = TRUE,
+      abbr = FALSE,
+      locale = "en_US.UTF-8"
+      )
+    ) |>
+  group_by(weekday) |>
+  summarise(mean_delay=mean(dep_delay))
+```
+:::
+
+# {background-image="pictures/tidymodels/tidymodels_bg.svg" background-size="cover" #slidetidymodels-id data-menu-title="{tidymodels}"}
+
+## {tidymodels}
+![](pictures/tidymodels/tidymodels.svg){width=80%}
+
+As a meta-package, the `{tidymodels}`-library also contains many different packages.
+
+<!--
+ML/SL Framwork that works really well with tidyverse
+Packages are a lot more intertwined
+-->
+
+## The Hitters Dataset
+
+
+:::{.columns}
+:::{.column width="80%"}
+
+```{r}
+library(tidymodels)
+library(ISLR2)
+data_hitters <- Hitters
+data_hitters |> glimpse()
+```
+:::
+:::{.column width="20%"}
+![](pictures/tidymodels/baseball.png){fig-align="center" }
+:::
+:::
+
+## The Hitters Dataset
+
+::: {style="font-size:18pt;"}
+
+
+| Column      | Description                                                             |
+|-------------|-------------------------------------------------------------------------|
+| AtBat       | Number of times at bat in 1986                                         |
+| Hits        | Number of hits in 1986                                                 |
+| HmRun       | Number of home runs in 1986                                            |
+| Runs        | Number of runs in 1986                                                 |
+| RBI         | Number of runs batted in in 1986                                       |
+| League      | A factor with levels A and N indicating player's league at the end of 1986 |
+| Division    | A factor with levels E and W indicating player's division at the end of 1986 |
+| PutOuts     | Number of put outs in 1986                                             |
+| Errors      | Number of errors in 1986                                               |
+| Salary      | 1987 annual salary on opening day in thousands of dollars             |
+| NewLeague   | A factor with levels A and N indicating player's league at the beginning of 1987 |
+: Description of various features in the dataset
+
+:::
+
+
+## Quick EDA
+
+
+```{r}
+data_hitters |>
+  select_if(
+    is.numeric
+  )|>
+  corrr::correlate()|>
+  autoplot()
+```
+
+## Quick EDA
+
+```{r}
+data_hitters |>
+  summarise(across(everything(),
+                   ~sum(is.na(.)))) |>
+  pivot_longer(cols = everything(),
+               names_to = "column",
+               values_to = "na_count") |>
+  filter(na_count>0) |>
+  mutate(na_percent = (na_count / nrow(data_hitters)) * 100)
+```
+
+$\implies$ Simply dropping `NA` rows would remove ~$18\%$ of the dataset.
+
+
+
+## `{recipes}`, `{workflows}`, and `{parsnip}`
+
+![](pictures/tidymodels/rec_wf_diag.svg){fig-align="center" width=120%}
+
+:::{style="font-size:18pt;"}
+
+> With recipes, you can use dplyr-like pipeable sequences of feature engineering steps to get your data ready for modeling.
+
+> A workflow is an object that can bundle together your pre-processing, modeling, and post-processing requests.
+
+> The goal of parsnip is to provide a tidy, unified interface to models that can be used to try a range of models [...].
+
+:::
+
+## Modelling Worklfow with `{tidymodels}` 
+
+:::{style="font-size:22pt;"}
+
+::: columns
+
+::: {.column width="45%"}
+
+:::{.incremental}
+
+
+1.  Generating a data split with `{rsample}`:
+    
+    ``` {r}
+    set.seed(2025)
+    
+    split_hitters <- initial_split(
+      data_hitters,
+      prop = 0.8
+      )
+    
+    data_train <- training(split_hitters)
+    data_test <- testing(split_hitters)
+    ```
+
+2.  Defining a recipe with `{recipes}`:
+
+    ```{r}
+    rec_hitters<- recipe(
+      formula =  Hits~.,
+      data = data_train
+      ) |>
+      step_impute_knn(Salary) |>
+      step_dummy(all_factor())
+    ```
+
+:::
+:::
+
+::: {.column width="55%"}
+
+:::{.incremental}
+
+3.  Specifying a model with `{parsnip}`:
+    ```{r}
+    lm_spec <- linear_reg()
+    ```
+
+4.  Bundle together the preprocessing steps and model specification:
+
+    ```{r}
+    wf_hitters <- workflow() |>
+      add_model(lm_spec) |>
+      add_recipe(rec_hitters)
+    ```
+    
+:::
+
+:::
+
+:::
+
+:::
+
+## Fitting and Evaluating a Model
+
+:::{style="font-size:22pt;"}
+
+::: columns
+
+::: {.column width="50%"}
+
+Fitting a worklflow with `{workflows}`:
+
+```{r}
+lm_res <- wf_hitters |> fit(data=data_train)
+```
+
+Generating predictions with `{broom}`:
+
+```{r}
+lm_res_pred <- lm_res |>
+  augment(data_test)
+
+lm_res_pred |>
+  select(.pred,.resid,Hits) |>
+  head(5)
+```
+
+:::
+
+::: {.column width="50%"}
+Creating a `metric_set` with `{yardstick}`:
+
+```{r}
+hitter_metrics <- metric_set(rmse,mae,rsq)
+
+lm_metrics <- lm_res_pred |> hitter_metrics(.pred,Hits)
+
+lm_metrics
+```
+
+:::
+:::
+:::
+
+## Exercise: Using a Different Model
+
+
+:::{#exr-rf_base}
+
+1.  Use the `rand_forest()`-function with argument `mode="regression"` to define a random forest model.
+2.  Replace the current model specification in the workflow with the help of the `update_model()`-function.
+3.  Fit the newly specified workflow on the training data and evaluate it on the testing data.
+
+:::
+
+## Solution: Using a Different Model
+
+:::{#sol-rf_base}
+
+```{r}
+rf_spec <- rand_forest(mode = "regression")
+
+wf_hitters <- wf_hitters |> update_model(rf_spec)
+
+rf_res <- wf_hitters |> fit(data=data_train)
+
+rf_metrics <- rf_res |>
+  augment(data_test) |>
+  hitter_metrics(.pred,Hits)
+
+rf_metrics
+
+```
+
+:::
+
+## Problem
+
+```{r}
+rbind(
+  rf_metrics |> mutate(model="Random Forest"),
+  lm_metrics |> mutate(model="Linear Model")
+) |>
+  arrange(.metric)
+```
+
+The default hyper parameters of the random forest model yield worse metrics than than the linear model.
+We should, therefore, tune the parameters to achieve a better out of sample performance. 
+
+## `{tune}`
+
+![](pictures/tidymodels/tune_illustration.svg){fig-align="center" width=120%}
+
+## Creating a Cross-Validation Object and Tune Specification
+
+Using the `{rsample}`-library, we can create a 5-fold CV object:
+
+```{r}
+set.seed(2025)
+folds_hitters <- vfold_cv(data_train,v=5)
+```
+
+By setting the hyperparameters to `tune()`, we prepare the model for tuning. 
+
+```{r}
+elnet_spec <- linear_reg(
+  penalty = tune(),
+  mixture = tune()
+) |>
+  set_engine("glmnet")
+
+```
+
+We manually define a tune grid as follows:
+
+```{r}
+tune_spec <- tibble(
+  penalty = seq(0,1.5,length.out=30),
+  mixture = seq(0,1,length.out=30)
+)
+```
+
+
+## Tuning a Model
+
+::: columns
+::: {.column width="43%"}
+
+```{r}
+wf_hitters <- wf_hitters |>
+  update_model(elnet_spec)
+
+elnet_res_tune <- wf_hitters |>
+  tune_grid(
+    grid = tune_spec,
+    resamples = folds_hitters
+  )
+
+```
+
+:::
+:::{.column width="57%"}
+
+```{r}
+elnet_res_tune |>
+  autoplot()
+```
+
+
+:::
+:::
+
+## Training a Final Model
+
+```{r}
+parms_opt <- elnet_res_tune |>
+  select_best(metric = "rmse")
+
+elnet_res <- finalize_workflow(
+  wf_hitters,
+  parms_opt
+  ) |>
+  last_fit(
+    split = split_hitters,
+    metrics = hitter_metrics
+    )
+```
+
+We can then assess the performance of the tuned model:
+
+```{r}
+elnet_res |> 
+  collect_metrics()
+```
+
+## Going Beyond Regular Grids
+
+::::{style="font-size:22pt;"}
+
+Instead of using a regular grid, we can also use space filling curves or Bayesian Optimizaiton
+
+:::{columns}
+:::{.column width="35%" .add-space}
+```{r}
+rf_spec <- rand_forest(
+  mode = "regression",
+  trees = tune(),
+  mtry = tune(),
+  min_n = tune()
+)
+```
+:::
+:::{.column width="63%"}
+
+Note, that we have to consider the `mtry()` parameter first since it depends on the underlying data.
+
+:::
+:::
+
+
+:::{columns}
+:::{.column width="49%" .add-space}
+
+Before dialing in the parameter:
+
+```{r}
+extract_parameter_set_dials(rf_spec)
+```
+
+:::
+
+:::{.column width="49%"}
+
+After dialing in the parameter:
+
+```{r}
+param_set <- extract_parameter_set_dials(
+  rf_spec
+  ) |>
+  finalize(data_train |>
+             select(-Hits)
+           )
+
+param_set
+```
+
+:::
+:::
+
+::::
+
+
+## Using Space Filling Curves
+
+::::{style="font-size:22pt;"}
+
+:::{columns}
+:::{.column width="49%" .add-space}
+
+```{r}
+tune_spec <- grid_space_filling(
+  param_set,
+  size = 15
+  )
+
+wf_hitters <- wf_hitters |>
+  update_model(rf_spec)
+
+rf_res_gsf_tune <- wf_hitters |>
+  tune_grid(
+    resamples = folds_hitters,
+    grid = tune_spec,
+    metrics = hitter_metrics
+  )
+
+```
+
+:::
+
+:::{.column width="49%"}
+
+```{r}
+
+parms_opt <- rf_res_gsf_tune |>
+  select_best(metric = "rmse")
+
+rf_res_gsf <- finalize_workflow(
+  wf_hitters,
+  parms_opt
+  ) |>
+  last_fit(
+    split = split_hitters,
+    metrics = hitter_metrics
+    )
+
+rf_tune_metrics <- rf_res_gsf |>
+  collect_metrics()
+
+```  
+
+:::
+:::
+
+Comparing the tuned results to the untuned results:
+
+:::{columns}
+:::{.column width="49%" .add-space}
+
+```{r}
+#| eval: false
+rbind(
+  rf_metrics |>
+    mutate(tuned=FALSE),
+  rf_tune_metrics |>
+    mutate(tuned=TRUE) |>
+    select(-.config)
+) |>
+  arrange(desc(.metric))
+```
+:::
+
+:::{.column width="49%"}
+
+```{r}
+#| echo: false
+rbind(
+  rf_metrics |>
+    mutate(tuned=FALSE),
+  rf_tune_metrics |>
+    mutate(tuned=TRUE) |>
+    select(-.config)
+) |>
+  arrange(desc(.metric))
+```
+
+:::
+:::
+
+::::
+
+## Exercise: XGBoost
+
+:::{#exr-xgb}
+Instead of tuning a random forest or linear model, tune an XGBoost model.
+The `{parsnip}` interface is given by the `boost_tree()`-function.
+Parameters that can be tuned are:
+
+-   `mtry`
+-   `trees`,
+-   `min_n`,
+-   `tree_depth`,
+-   `learn_rate`
+
+To tune the model, generate a grid using the `grid_space_filling()`-function
+
+:::
+
+
+## Solution: XGBoost
+
+::::{style="font-size:22pt;"}
+:::{#sol-xgb}
+:::{columns}
+:::{.column width="49%" .add-space}
+
+```{r}
+xgb_spec <- boost_tree(
+  mode = "regression",
+  mtry = tune(),
+  trees = tune(),
+  min_n = tune(),
+  tree_depth = tune(),
+  learn_rate = tune()
+  )
+
+param_set <- extract_parameter_set_dials(
+  xgb_spec
+  ) |>
+  finalize(data_train |>
+             select(-Hits)
+           )
+
+tune_spec <- grid_space_filling(
+  param_set,
+  size = 15
+  )
+```
+
+:::
+:::{.column width="49%"}
+
+```{r}
+
+wf_hitters <- wf_hitters |>
+  update_model(xgb_spec)
+
+xgb_res_tune <- wf_hitters |>
+  tune_grid(
+    resamples = folds_hitters,
+    grid = tune_spec,
+    metrics = hitter_metrics
+  )
+
+parms_opt <- xgb_res_tune |>
+  select_best(metric = "rmse")
+
+xgb_res <- finalize_workflow(
+  wf_hitters,
+  parms_opt
+  ) |>
+  last_fit(
+    split = split_hitters,
+    metrics = hitter_metrics
+    )
+
+xgb_tune_metrics <- xgb_res |>
+  collect_metrics() |>
+  select(-.config)
+
+xgb_tune_metrics
+
+```
+
+:::
+
+:::
+
+:::
+::::
+
+## Classification Tasks with `{tidymodels}`
+
+```{r}
+set.seed(2025)
+flight_data_classification <- flight_data |>
+  inner_join(weather,
+            by = c("year", "month",
+                   "day", "hour",
+                   "origin")
+            ) |>
+  mutate(
+    is_delayed = if_else(
+      abs(dep_delay) >= 30,
+      1,
+      0) |>
+      as_factor(),
+    weekday = wday(
+      time_hour.x,
+      locale = "en_US.UTF-8"
+      ),
+    wind_gust = if_else(
+      is.na(wind_gust),
+      0,
+      wind_gust
+    )
+    )|>
+  slice_sample(prop = 0.01) |>
+  na.omit() |>
+  select(-c(dep_time, dep_delay,
+            arr_time, arr_delay,
+            time_hour.x, time_hour.y,
+            tailnum, hour, day)
+         )
+         
+```
+
+##
+
+```{r}
+set.seed(2025)
+split_flights <- initial_split(flight_data_classification,
+                               strata = is_delayed)
+
+data_train <- training(split_flights)
+data_test <- testing(split_flights)
+
+folds_flights <- vfold_cv(data_train,3)
+```
+
+```{r}
+data_train |> glimpse()
+
+data_train |>
+  group_by(is_delayed) |>
+  summarise(
+    n=n(),
+    rel_n = n()/nrow(data_train)
+    )
+```
+
+```{r}
+rec_flights <- recipe(
+  formula = is_delayed ~.,
+  data = data_train
+) |>
+  step_novel(all_nominal_predictors()) |>
+  step_dummy(all_nominal_predictors()) |>
+  step_zv(all_predictors()) |>
+  step_corr(all_predictors()) |>
+  step_smote(is_delayed,
+             over_ratio = 1)
+
+
+```
+
+```{r}
+rec_flights |>
+  prep() |>
+  bake(new_data=NULL) |>
+  group_by(is_delayed) |>
+  summarise(n=n())
+```
+
+```{r}
+rf_spec <- rand_forest(
+  mode = "classification",
+  trees = tune(),
+  mtry = tune(),
+  min_n = tune()
+)
+
+param_set <- extract_parameter_set_dials(
+  rf_spec
+  ) |>
+  finalize(data_train |>
+             select(-is_delayed)
+           )
+
+wf_flights <- workflow() |>
+  add_model(rf_spec) |>
+  add_recipe(rec_flights)
+
+flights_metrics <- metric_set(
+  accuracy, roc_auc,
+  sensitivity, specificity
+  )
+
+```
+
+```{r}
+tune_spec <- grid_space_filling(
+  param_set,
+  size = 10
+  )
+
+rf_res_tune <- wf_flights |>
+  tune_grid(
+    resamples = folds_flights,
+    grid = tune_spec,
+    metrics = flights_metrics
+  )
+
+parms_opt <- rf_res_tune |>
+  select_best(metric = "accuracy")
+
+rf_res_gsf <- finalize_workflow(
+  wf_flights,
+  parms_opt
+  ) |>
+  last_fit(
+    split = split_flights,
+    metrics = flights_metrics
+    )
+
+rf_tune_metrics <- rf_res_gsf |>
+  collect_metrics()
+
+rf_tune_metrics
+
+```  
+
+
+
+# {background-image="pictures/tidymodels/tidymodels_bg.svg" background-size="cover" #slidetidyverts-id data-menu-title="{tidyverts}"}
+
+## {tidyverts}
+![](pictures/tidymodels/tidymodels.svg){width=80%}
+
+##
+
+```{r}
+install.packages(
+  c("tsibble","fable",
+    "feasts", "tsibbledata",
+    "fable.prophet")
+)
+```
+
+```{r}
+library(tsibble)
+library(fable)
+library(feasts)
+library(tsibbledata)
+library(fable.prophet)
+```
