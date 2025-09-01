@@ -71,31 +71,32 @@ format:
 
 ## Agenda
 
-1.  Preliminaries\
+:::{.incremental}
+
+1.  Preliminaries
 2.  Tidyverse
+    i)    `{dplyr}`
+    ii)   `{ggplot2}`
+    iii)  `{lubridate}`
 3.  Tidymodels
+    i)    Modelling Workflow
+    ii)   Tuning Models (Regression)
+    iii)  Tuning Models (Classification)
+    
+:::
 
 ## Goals of this Workshop
+:::{.incremental}
+
+1.    Familiarize yourself with the `{tidy}` ecosystem
+2.    Pique your curiosity about what else the `{tidy}` ecosystem has to offer
+3.    Equip you with tools that can be used in your day-to-day work
+
+:::
 
 ## Resources for this Tutorial
 
-::: columns
-::: {.column widht="50%"}
-Workshop Notebooks can be accessed online at:
 
-<p style="text-align:center;">
-
-<https://linus-lach.de/workshops/tidy/>
-
-</p>
-:::
-
-::: {.column widht="50%"}
-Slides can be accessed online at
-
-[https://linus-lach.de/workshop/tidy/slides.html](https://google.com)
-:::
-:::
 
 <br>
 
@@ -108,28 +109,44 @@ https://github.com/LinusLach/tidy_workshop.git
 
 ## Resources beyond this Tutorial
 
+:::{.incremental}
+
+- [Tidy Modelling with R](https://www.tmwr.org/) by Max Kuhn and Julia Silge
+
 - [R for Data Science (R4DS)](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund.
 
-- [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse]() by Chester Ismay and Albert Y. Kim.
+- [Statistical Inference via Data Science: A Modern Dive into R and the Tidyverse](https://moderndive.com/) by Chester Ismay and Albert Y. Kim.
 
 - [Data Science Box](https://datasciencebox.org/) by Mine Çetinkaya-Rundel
+
+:::
+
 
 ## Quarto
 
 ::: {style="font-size:20pt;"}
+
 **What** is Quarto?
 
+:::{.fragment index=1}
 > An open-source scientific and technical publishing system for R, Python, Julia, and Observable
+:::
 
 **Why** should I use it?
 
+:::{.fragment index=1}
 > Publish reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.
+:::
 
 **How** can I use it?
 
+:::{.fragment index=1}
 > Quarto is bundled with newer versions of RStudio and Positron. VS Code also provides an extension.
 
 For further information, see [Official Quarto Website](https://quarto.org/)
+:::
+
+
 :::
 
 ## Quickstart for Quarto
@@ -140,17 +157,41 @@ For further information, see [Official Quarto Website](https://quarto.org/)
 
 We can then
 
+:::{.incremental}
 -   Write code snippets
 -   Insert content (images, videos, and even raw html code!)
 -   Export documents as different formats (PDF,HTML, and DOCX)
+:::
 
-## Modus Operandi for this Workshop
 
-You can either:
+## Required Packages
 
--   Create your own Quarto document and copy the code of the slides
--   Use the Quarto notebooks provided as a template
+```{r}
+#| eval: false
 
+# Core meta-packages (these will install many dependencies)
+core_packages <- c("tidyverse", "tidymodels")
+
+# Additional packages not included in tidyverse/tidymodels
+extra_packages <- c(
+  "glue", "patchwork", "ggtext", "themis", "xgboost",
+  "ranger", "glmnet", "ISLR2", "nycflights13"
+)
+
+# Combine all required packages
+required_packages <- c(core_packages, extra_packages)
+
+# Install missing packages
+for (pkg in required_packages) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    message(paste("Installing", pkg, "..."))
+    install.packages(pkg)
+  } else {
+    message(paste(pkg, "is already installed."))
+  }
+}
+
+```
 
 # {background-image="pictures/tidyverse/tidyverse-bg.svg" background-size="cover" #slidetidyverse-id data-menu-title="{tidyverse}"}
 
@@ -164,7 +205,7 @@ As a meta-package, the `{tidyverse}` contains many different packages.
 
 
 :::{style="font-size:32pt;"}
-Most importantly:^[Under the assumption that you have installed the package. If not, run `install.packages("tidyverse")`]
+Most importantly:
 
 ```{r}
 #| message: true
@@ -179,17 +220,13 @@ library(tidyverse)
 
 ::::{.columns}
 :::{.column width="50%"}
-Size measurements for adult foraging penguins near Palmer Station, Antarctica
-
 > Includes measurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.
-
 
 :::
 
 :::{.column width="50%"}
 
 ![Artist: Allison Horst](pictures/lter_penguins.png){fig-align="center"}
-
 
 :::
 
@@ -202,7 +239,7 @@ data_penguin <- palmerpenguins::penguins
 ## The `{dplyr}`-Package - Cheatsheet
 
 <figure style="position:absolute; top:20vh; left:15vw; width:60%;">
-  <img src="pictures/tidyverse/dplyr_01.png" alt="dplyr cheatsheet" style="width:100%; height:auto;">
+  <img src="pictures/tidyverse/dplyr_02.png" alt="dplyr cheatsheet" style="width:100%; height:auto;">
   <figcaption style="font-size:0.9rem; margin-top:0.4rem;">
     <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf" target="_blank" rel="noopener noreferrer">
       Source: RStudio Github
@@ -210,7 +247,7 @@ data_penguin <- palmerpenguins::penguins
   </figcaption>
 </figure>
 
-![](pictures/tidyverse/dplyr_02.png){.absolute top=10vh left=10vw width=60%}
+![](pictures/tidyverse/dplyr_01.png){.absolute top=10vh left=10vw width=60%}
 
 
 <!--
@@ -221,10 +258,9 @@ data_penguin <- palmerpenguins::penguins
 
 ## Getting a *glimpse* of the Data
 
-
-
 <h3> Base R </h3> 
 
+:::{.fragment index=1}
 ```{r}
 #| eval: false
 head(data_penguin)
@@ -235,15 +271,19 @@ head(data_penguin)
 head(data_penguin, 4)
 ```
 
+:::
 
 
 
 <h3> 🌟`{tidyverse}`🌟 </h3> 
 
+
+:::{.fragment index=2}
 ```{r}
 dplyr::glimpse(data_penguin)
 ```
 
+:::
 
 ## Easy Grouping and Summaries
 
@@ -253,6 +293,7 @@ It is the perfect toolkit for tabular data wrangling!
 -->
 
 :::{style="font-size:23pt;"}
+
 What is the average male and female body mass of each species on each island?
 
 :::
@@ -262,7 +303,11 @@ What is the average male and female body mass of each species on each island?
 
 <h3> Base R </h3> 
 
+:::{.fragment index=1}
+
 ```{r}
+#| code-line-numbers: "1-5|7-11|"
+
 avg_mass <- aggregate(
   body_mass_g ~ sex+species+island,
   data = data_penguin,
@@ -275,12 +320,13 @@ names(avg_mass)[
 
 print(avg_mass)
 ```
+:::
 
 :::
 ::: {.column width="50%"}
 
 <h3> 🌟`{tidyverse}`🌟 </h3> 
-
+:::{.fragment index=2}
 ```{r}
 data_penguin |> 
   na.omit() |>
@@ -289,69 +335,92 @@ data_penguin |>
     mean_weight = mean(body_mass_g)
     )
 ```
+:::
 
 :::
+:::
+
+## `|>` or `%>%`? 
+
+Both pass **LHS as the first argument** to RHS
+
+:::{.fragment index=1}
+### **Base R Pipe `|>`**
+- Introduced in **R >= 4.1**
+- **Does not support placeholders** (always first argument)
+:::
+
+:::{.fragment index=2}
+### **`{magrittr}` Pipe `%>%`**
+- Comes from the `{magrittr}`-library (included in `{tidyverse}`)
+- Allows placeholder `.` for flexible positioning
+- Supports custom operators (`%<>%`, `%$%`)
 :::
 
 ## Exercise: Grouping, Filtering, and Summaries 
 
 :::{#exr-filter_n}
 
-Using the `dplyr::filter()`- and `dplyr::n()`- function to find out how many penguins on each island have a body mass higher than `3500`g.
+:::{.fragment index=1}
+Use the `dplyr::filter()`- and `dplyr::n()`-functions to find out how many penguins on each island have a body mass higher than `3500`g.
+:::
 
-**Bonus:** Also include the relative number with respect to the total number of penguins on each island by using the `mutate`-functionds 
+:::{.fragment index=2}
+
+**Bonus:** Also include the relative number with respect to the total number of penguins by using the `mutate`-function. 
 
 :::
 
-:::{#sol-filter_n}
+:::
+
+```{r}
+#| echo: false
+library(countdown)
+countdown::countdown(minutes = 5, id = "countdown_dplyr")
+```
+
+:::{.fragment index=3}
+
+@sol-filter_n
+
+:::
+
+## `{ggplot2}`
 
 :::{.columns}
+:::{.column width="50%"}
+
+![](pictures/tidyverse/ggplot_meme.jpg){.fragment index=1}
+
+:::
 
 :::{.column width="50%"}
 
-```{r}
-data_penguin |>
-  filter(body_mass_g>3500) |>
-  group_by(island) |>
-  summarise(n=n())
-```
+![](pictures/tidyverse/ggplot_meme2.jpg){.fragment index=2}
 
 :::
-:::{.column width="50%"}
-
-```{r}
-data_penguin |>
-  filter(body_mass_g>3500) |>
-  group_by(island) |>
-  summarise(n=n())|>
-  mutate(rel_n = n/sum(n))
-```
 
 :::
-:::
-:::
+
 
 ## `{ggplot2}` 
 
-:::{.columns}
-:::{.column width="50%"}
+::: {.r-stack}
 
-![](pictures/tidyverse/ggplot_meme.jpg)
+![](pictures/tidyverse/20210828_woc033.png){.fragment caption="Benjamin Nowak" fig-align="center"}
 
-:::
+![](pictures/tidyverse/17-network-who-speaks-office.png){.fragment width="50%"  fig-align="center" caption="Benjamin Nowak"}
 
-:::{.column width="50%"}
-
-![](pictures/tidyverse/ggplot_meme2.jpg)
+![](pictures/tidyverse/web-map-choropleth-quantile.png){.fragment width="40%"  fig-align="center" caption="Benjamin Nowak"}
 
 :::
 
-:::
+
 
 ## The `{ggplot2}`-Package - Cheatsheet
 
 <figure style="position:absolute; top:20vh; left:15vw; width:60%;">
-  <img src="pictures/tidyverse/ggplot_02.png" alt="dplyr cheatsheet" style="width:100%; height:auto;">
+  <img src="pictures/tidyverse/ggplot_02.png" alt="ggplot cheatsheet" style="width:100%; height:auto;">
   <figcaption style="font-size:0.9rem; margin-top:0.4rem;">
     <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf" target="_blank" rel="noopener noreferrer">
       Source: RStudio Github
@@ -359,10 +428,11 @@ data_penguin |>
   </figcaption>
 </figure>
 
+
 ![](pictures/tidyverse/ggplot_01.png){.absolute top=10vh left=10vw width=60%}
 
-## `{ggplot2}`-Basics {auto-animate=true}
 
+## `{ggplot2}`-Basics {auto-animate=true}
 
 ::::{.columns}
 :::{.column width="35%"}
@@ -389,6 +459,7 @@ data_penguin |>
 :::{.column width="35%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "|3-6|" 
 data_penguin |>
   ggplot(
     aes(
@@ -444,6 +515,7 @@ data_penguin |>
 :::{.column width="35%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "|9-11|"
 data_penguin |>
   ggplot(
     aes(
@@ -480,6 +552,7 @@ data_penguin |>
 :::{.column width="35%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "|3-6|" 
 data_penguin |>
   ggplot(
     aes(
@@ -515,6 +588,8 @@ data_penguin |>
 :::{.column width="35%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "|10-11|" 
+
 data_penguin |>
   ggplot(
     aes(
@@ -554,6 +629,7 @@ data_penguin |>
 :::{.column width="35%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "|9-11|" 
 data_penguin |>
   ggplot(
     aes(
@@ -595,67 +671,54 @@ data_penguin |>
 
 ## Exercise: `{ggplot2}` 
 
-:::{#exr-filter_n}
+:::{#exr-ggplot}
 
+:::{.fragment index=1}
 Using the `geom_histogram()`-function, create a histogram for the variable `flipper_length`.
+:::
 
+:::{.fragment index=2}
 **Bonus:** Use the `after_stat()`- and `sum()`-functions in combination with the `count` argument to display the relative frequencies of the flipper lengths. Then, set the `y`-scale to percentages with the `scale_y_continuous()`- and `scales::percent()`-function and change the `y`-axis label to `"relative frequency"` with the help of the `labs()`-function.
 
 :::
 
-## Solution: `{ggplot2}`
+:::
 
-:::{#sol-filter_n}
+:::{.fragment index=3}
+@sol-ggplot
+:::
+
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, id = "countdown_ggplot")
+```
+
+
+## `{ggplot2}`: Extensions 
+
+::: {.incremental}
+-   `{ggtext}`: Markdown and HTML rendering for ggplot2 
+-   `{patchwork}`: Makes it ridiculously simple to combine separate ggplots into the same graphic.
+-   `{ggmap}`: Makes it easy to retrieve raster map tiles from popular online mapping services like Google Maps, Stadia Maps, and OpenStreetMap 
+:::
+
+## `{ggplot2}`: Further Resources 
 
 :::{.columns}
 
-:::{.column width="50%"}
-
-```{r}
-data_penguin |>
-  ggplot(
-    aes(
-      x=flipper_length_mm
-      )
-    )+
-  geom_histogram()
-```
-
-:::
-:::{.column width="50%"}
-
-```{r}
-data_penguin |>
-  ggplot(
-    aes(
-      x=flipper_length_mm
-      )
-    )+
-  geom_histogram(
-    aes(
-      y=after_stat(count / sum(count))
-      )
-    )+
-  scale_y_continuous(labels = scales::percent)+
-  labs(y="relative frequency")
-```
-
-:::
-:::
-:::
-
-## `{ggplot2}` Further Resources
-
-:::{.columns}
 
 :::{.column width="50%"}
+:::{.fragment index=1}
 ![[R Graphics Cookbook](https://r-graphics.org/index.html)](pictures/tidyverse/R_Graphics_Cookbook.jpg){width=60%}
+:::
 
 :::
 
 :::{.column width="50%"}
-
+:::{.fragment index=2}
 ![[ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)](pictures/tidyverse/ggplot_book.jpg){width=52%}
+:::
 
 :::
 :::
@@ -684,11 +747,17 @@ EWR: Newark Liberty International Airport
 
 How much missing data are we dealing with?
 
+:::{.fragment index=1}
 
 ```{r}
+#| code-line-numbers: "|2-6|7-9|10|11|"
+
 flight_data |>
-  summarise(across(everything(),
-                   ~sum(is.na(.)))) |>
+  summarise(
+    across(
+      .cols = everything(),
+      .fns = ~sum(is.na(.)))
+    ) |>
   pivot_longer(cols = everything(),
                names_to = "column",
                values_to = "na_count") |>
@@ -696,8 +765,11 @@ flight_data |>
   mutate(na_percent = (na_count / nrow(flight_data)) * 100)
 ```
 
+:::
 
+:::{.fragment index=2}
 This can be done easier, right?
+:::
 
 ## NYC Flight Data - Quick EDA Example
 
@@ -707,9 +779,13 @@ flight_data |>
   colSums()  
 ```
 
+:::{.fragment index=1}
 Problem: The return value is a vector and not a Tibble.
+:::
 
+:::{.fragment index=2}
 **Question:** What is a possible and plausible cause for the `NA` values?
+:::
 
 
 ## `{lubridate}`: Make Dealing with Dates a Little Easier
@@ -728,9 +804,13 @@ Problem: The return value is a vector and not a Tibble.
 
 ## Lubridate: Creating Columns in the POSIX Dateformat
 
+::::{.style="font-size:22pt;"}
 ::: {.columns}
 ::: {.column width="40%"}
+
+:::{.fragment index=1}
 ```{r}
+#| code-line-numbers: "|3-8|9-21|"
 flight_time <- flight_data |>
   mutate(
     dep_dt = make_datetime(
@@ -753,6 +833,7 @@ flight_time <- flight_data |>
       arr_time %% 100)
   )
 ```
+:::
 <!--
 %/% → Integer Division (quotient without remainder)
 
@@ -769,6 +850,7 @@ in the UTC timezone (GMT as described by the French).
 -->
 
 ::: {.column width="60%"}
+:::{.fragment index=2}
 ```{r}
 flight_time |> select(
   dep_dt,
@@ -778,10 +860,12 @@ flight_time |> select(
   head(5)
   
 ```
+:::
 
 
 :::
 :::
+::::
 
 
 ## Calculating the Net Air Time
@@ -792,6 +876,7 @@ Let's calculate the airtime using the new `dep_dt` and `arr_time_dt` columns and
 
 :::{.column width="70%"}
 
+:::{.fragment index=1}
 ```{r}
 flight_time |>
   mutate(
@@ -801,11 +886,15 @@ flight_time |>
   select(net_air_time,air_time) |>
   head(5)
 ```
+:::
 
 :::
 :::{.column width="30%"}
 
+:::{.fragment index=2}
+
 ![](pictures/tidyverse/the-simpsons-bush.gif)
+:::
 
 :::
 :::
@@ -813,6 +902,7 @@ flight_time |>
 ## Are Time Zones an Issue?!
 
 ```{r}
+#| code-line-numbers: "|2|3-6|7-9|10|11-14|15-18|" 
 flights_tz <- flight_time |>
   filter(!is.na(dep_time), !is.na(arr_time)) |>
   left_join(airports |> select(faa, tz = tzone),
@@ -837,52 +927,52 @@ flights_tz <- flight_time |>
 ## Are Time Zones an Issue?!
 ::: columns
 ::: {.column width="50%"}
+:::{.fragment index=1}
 ```{r}
 flights_tz |>
   head(5)
 ```
 :::
+:::
 ::: {.column width="50%"}
 
+:::{.fragment index=2}
 ![](pictures/tidyverse/Oof_Size_Large.jpg)
-
 :::
 :::
+:::
 
+:::{.fragment index=3}
 <h3>Possible Issues </h3>
-
+:::{.incremental}
 - No taxi times are included
 - No wheel data is included (i.e. timestamps for the exact takeoff and landing)
+:::
+:::
 
 
 ## Exercise: Weekday Conversion
 
 :::{#exr-avoid_weekdays}
+:::{.incremental}
 1. Using the `flight_time` dataset, create a new feature `weekday` which contains the weekday of the flights. 
 To create this new feature, you can use the `lubridate::wday()`-function.
 2. The default parameters of the `lubridate::weekday()`-function return integer values instead of ordered factors. 
    Use the `help` function to find out how to set the arguments that weekdays in the `"en_US.UTF-8"` format are returned.
 3. Find out which weekday has the highest average departure delay.
 :::
-
-## Solution: Weekday Conversion
-
-:::{#sol-avoid_weekdays}
-```{r}
-flight_time |>
-  na.omit()|>
-  mutate(
-    weekday = wday(
-      dep_dt,
-      label = TRUE,
-      abbr = FALSE,
-      locale = "en_US.UTF-8"
-      )
-    ) |>
-  group_by(weekday) |>
-  summarise(mean_delay=mean(dep_delay))
-```
 :::
+
+:::{.fragment index=4}
+@sol-avoid_weekdays
+:::
+
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, id = "countdown_lubridate")
+```
+
 
 # {background-image="pictures/tidymodels/tidymodels_bg.svg" background-size="cover" #slidetidymodels-id data-menu-title="{tidymodels}"}
 
@@ -897,7 +987,6 @@ Packages are a lot more intertwined
 -->
 
 ## The Hitters Dataset
-
 
 :::{.columns}
 :::{.column width="80%"}
@@ -949,9 +1038,18 @@ data_hitters |>
   autoplot()
 ```
 
-## Quick EDA
+## Quick EDA: Exercise
 
+:::{#exr-CountRelNA}
+
+:::{.fragment index=1}
+Write a script that returns the absolute and relative number of missing entries of each feature.
+Only return those where there is at least one missing entry.
+:::
+
+:::{.fragment index=2}
 ```{r}
+#| echo: false
 data_hitters |>
   summarise(across(everything(),
                    ~sum(is.na(.)))) |>
@@ -961,8 +1059,21 @@ data_hitters |>
   filter(na_count>0) |>
   mutate(na_percent = (na_count / nrow(data_hitters)) * 100)
 ```
+:::
+:::
 
+:::{.fragment index=3}
+@sol-CountRelNA
+:::
+
+:::{.fragment index=4}
 $\implies$ Simply dropping `NA` rows would remove ~$18\%$ of the dataset.
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, id = "countdown_rf")
+```
 
 
 
@@ -972,77 +1083,92 @@ $\implies$ Simply dropping `NA` rows would remove ~$18\%$ of the dataset.
 
 :::{style="font-size:18pt;"}
 
-> With recipes, you can use dplyr-like pipeable sequences of feature engineering steps to get your data ready for modeling.
+:::{.fragment index=1}
 
-> A workflow is an object that can bundle together your pre-processing, modeling, and post-processing requests.
 
 > The goal of parsnip is to provide a tidy, unified interface to models that can be used to try a range of models [...].
+:::
+
+:::{.fragment index=2}
+> A workflow is an object that can bundle together your pre-processing, modeling, and post-processing requests.
+:::
+
+:::{.fragment index=3}
+> With recipes, you can use dplyr-like pipeable sequences of feature engineering steps to get your data ready for modeling.
+:::
 
 :::
 
-## Modelling Worklfow with `{tidymodels}` 
+## Modelling Workflow with `{tidymodels}` 
 
-:::{style="font-size:22pt;"}
+:::::{style="font-size:21pt;"}
 
-::: columns
+:::: columns
 
-::: {.column width="45%"}
-
-:::{.incremental}
+::: {.column width="45%" .add-space}
 
 
-1.  Generating a data split with `{rsample}`:
+:::{.fragment index=1}
+Generating a data split with `{rsample}`:
+
+```{r}
+#| code-line-numbers: "|1|3-6|8-9|" 
+set.seed(2025)
+
+split_hitters <- initial_split(
+  data_hitters,
+  prop = 0.8
+  )
+
+data_train_hitters <- training(split_hitters)
+data_test_hitters <- testing(split_hitters)
+```
+:::
+
+:::{.fragment index=2}
+Defining a recipe with `{recipes}`:
+
+```{r}
+#| code-line-numbers: "|1-4|5|6|" 
+rec_hitters<- recipe(
+  formula =  Hits~.,
+  data = data_train_hitters
+  ) |>
+  step_impute_knn(Salary) |>
+  step_dummy(all_factor())
+```
+:::
+
+:::{.fragment index=3}
+Specifying a model with `{parsnip}`:
+
+```{r}
+lm_spec <- linear_reg()
+```
+:::
+
+:::
+
+::: {.column width="53%"}
+
+:::{.fragment index=4}
+Bundle together the preprocessing steps and model specification:
+
+```{r}
+#| code-line-numbers: "|1|1-2|"
+wf_hitters <- workflow() |>
+  add_model(lm_spec) |>
+  add_recipe(rec_hitters)
+wf_hitters
+```
+:::
     
-    ``` {r}
-    set.seed(2025)
-    
-    split_hitters <- initial_split(
-      data_hitters,
-      prop = 0.8
-      )
-    
-    data_train <- training(split_hitters)
-    data_test <- testing(split_hitters)
-    ```
-
-2.  Defining a recipe with `{recipes}`:
-
-    ```{r}
-    rec_hitters<- recipe(
-      formula =  Hits~.,
-      data = data_train
-      ) |>
-      step_impute_knn(Salary) |>
-      step_dummy(all_factor())
-    ```
-
-:::
 :::
 
-::: {.column width="55%"}
+::::
 
-:::{.incremental}
+:::::
 
-3.  Specifying a model with `{parsnip}`:
-    ```{r}
-    lm_spec <- linear_reg()
-    ```
-
-4.  Bundle together the preprocessing steps and model specification:
-
-    ```{r}
-    wf_hitters <- workflow() |>
-      add_model(lm_spec) |>
-      add_recipe(rec_hitters)
-    ```
-    
-:::
-
-:::
-
-:::
-
-:::
 
 ## Fitting and Evaluating a Model
 
@@ -1052,17 +1178,25 @@ $\implies$ Simply dropping `NA` rows would remove ~$18\%$ of the dataset.
 
 ::: {.column width="50%"}
 
+:::{.fragment index=1}
 Fitting a worklflow with `{workflows}`:
 
 ```{r}
-lm_res <- wf_hitters |> fit(data=data_train)
+lm_res <- wf_hitters |>
+  fit(data=data_train_hitters)
 ```
+
+:::
+
+:::{.fragment index=2}
 
 Generating predictions with `{broom}`:
 
 ```{r}
+#| code-line-numbers: "|1-2|4-6|" 
+
 lm_res_pred <- lm_res |>
-  augment(data_test)
+  augment(data_test_hitters)
 
 lm_res_pred |>
   select(.pred,.resid,Hits) |>
@@ -1071,16 +1205,25 @@ lm_res_pred |>
 
 :::
 
+:::
+
 ::: {.column width="50%"}
+
+:::{.fragment index=3}
+
 Creating a `metric_set` with `{yardstick}`:
 
 ```{r}
+#| code-line-numbers: "|1|3-6|"
 hitter_metrics <- metric_set(rmse,mae,rsq)
 
-lm_metrics <- lm_res_pred |> hitter_metrics(.pred,Hits)
+lm_metrics <- lm_res_pred |>
+  hitter_metrics(.pred,Hits)
 
 lm_metrics
 ```
+
+:::
 
 :::
 :::
@@ -1091,34 +1234,44 @@ lm_metrics
 
 :::{#exr-rf_base}
 
+:::{.incremental}
+
 1.  Use the `rand_forest()`-function with argument `mode="regression"` to define a random forest model.
 2.  Replace the current model specification in the workflow with the help of the `update_model()`-function.
 3.  Fit the newly specified workflow on the training data and evaluate it on the testing data.
 
 :::
 
-## Solution: Using a Different Model
+:::
 
-:::{#sol-rf_base}
+:::{.fragment index=4}
+@sol-rf_base
+:::
 
 ```{r}
+#| echo: false
+countdown::countdown(minutes = 5, id = "countdown_rf")
+```
+
+## Problem
+
+```{r}
+#| echo: false
+
 rf_spec <- rand_forest(mode = "regression")
 
-wf_hitters <- wf_hitters |> update_model(rf_spec)
+wf_hitters <- wf_hitters |>
+  update_model(rf_spec)
 
-rf_res <- wf_hitters |> fit(data=data_train)
+rf_res <- wf_hitters |>
+  fit(data=data_train_hitters)
 
 rf_metrics <- rf_res |>
-  augment(data_test) |>
+  augment(data_test_hitters) |>
   hitter_metrics(.pred,Hits)
-
-rf_metrics
 
 ```
 
-:::
-
-## Problem
 
 ```{r}
 rbind(
@@ -1137,13 +1290,18 @@ We should, therefore, tune the parameters to achieve a better out of sample perf
 
 ## Creating a Cross-Validation Object and Tune Specification
 
+:::{.fragment index=1}
+
 Using the `{rsample}`-library, we can create a 5-fold CV object:
 
 ```{r}
 set.seed(2025)
-folds_hitters <- vfold_cv(data_train,v=5)
+folds_hitters <- vfold_cv(data_train_hitters,v=5)
 ```
 
+:::
+
+:::{.fragment index=2}
 By setting the hyperparameters to `tune()`, we prepare the model for tuning. 
 
 ```{r}
@@ -1154,8 +1312,11 @@ elnet_spec <- linear_reg(
   set_engine("glmnet")
 
 ```
+:::
 
-We manually define a tune grid as follows:
+:::{.fragment index=3}
+
+We manually define a tune-grid as follows:
 
 ```{r}
 tune_spec <- tibble(
@@ -1163,12 +1324,15 @@ tune_spec <- tibble(
   mixture = seq(0,1,length.out=30)
 )
 ```
+:::
 
 
 ## Tuning a Model
 
 ::: columns
 ::: {.column width="43%"}
+
+:::{.fragment index=1}
 
 ```{r}
 wf_hitters <- wf_hitters |>
@@ -1181,14 +1345,17 @@ elnet_res_tune <- wf_hitters |>
   )
 
 ```
+:::
 
 :::
 :::{.column width="57%"}
 
+:::{.fragment index=2}
 ```{r}
 elnet_res_tune |>
   autoplot()
 ```
+:::
 
 
 :::
@@ -1197,6 +1364,7 @@ elnet_res_tune |>
 ## Training a Final Model
 
 ```{r}
+#| code-line-numbers: "|1-2|4-7|8-11|"
 parms_opt <- elnet_res_tune |>
   select_best(metric = "rmse")
 
@@ -1221,7 +1389,9 @@ elnet_res |>
 
 ::::{style="font-size:22pt;"}
 
-Instead of using a regular grid, we can also use space filling curves or Bayesian Optimizaiton
+:::{.fragment index=1}
+
+Instead of using a regular grid, we can also use space filling curves
 
 :::{columns}
 :::{.column width="35%" .add-space}
@@ -1241,32 +1411,58 @@ Note, that we have to consider the `mtry()` parameter first since it depends on 
 :::
 :::
 
+:::
 
 :::{columns}
 :::{.column width="49%" .add-space}
-
-Before dialing in the parameter:
+:::{.fragment index=2}
+Before preparing the parameters:
 
 ```{r}
-extract_parameter_set_dials(rf_spec)
+extract_parameter_set_dials(rf_spec) 
 ```
 
+```
+Collection of 3 parameters for tuning
+
+ identifier  type    object
+       mtry  mtry nparam[?]
+      trees trees nparam[+]
+      min_n min_n nparam[+]
+
+Model parameters needing finalization:
+# Randomly Selected Predictors ('mtry')
+
+See dials::finalize or dials::update.parameters for more
+information.
+```
+:::
 :::
 
 :::{.column width="49%"}
-
-After dialing in the parameter:
+:::{.fragment index=3}
+After preparing the parameters:
 
 ```{r}
 param_set <- extract_parameter_set_dials(
   rf_spec
   ) |>
-  finalize(data_train |>
+  finalize(data_train_hitters |>
              select(-Hits)
            )
 
-param_set
+param_set 
 ```
+
+```
+Collection of 3 parameters for tuning
+
+ identifier  type    object
+       mtry  mtry nparam[+]
+      trees trees nparam[+]
+      min_n min_n nparam[+]
+```
+:::
 
 :::
 :::
@@ -1281,6 +1477,7 @@ param_set
 :::{columns}
 :::{.column width="49%" .add-space}
 
+:::{.fragment index=1}
 ```{r}
 tune_spec <- grid_space_filling(
   param_set,
@@ -1301,7 +1498,12 @@ rf_res_gsf_tune <- wf_hitters |>
 
 :::
 
+
+:::
+
 :::{.column width="49%"}
+
+:::{.fragment index=2}
 
 ```{r}
 
@@ -1323,13 +1525,18 @@ rf_tune_metrics <- rf_res_gsf |>
 ```  
 
 :::
+
+:::
 :::
 
+:::{.fragment index=3}
 Comparing the tuned results to the untuned results:
+:::
 
 :::{columns}
 :::{.column width="49%" .add-space}
 
+:::{.fragment index=3}
 ```{r}
 #| eval: false
 rbind(
@@ -1342,8 +1549,10 @@ rbind(
   arrange(desc(.metric))
 ```
 :::
+:::
 
 :::{.column width="49%"}
+:::{.fragment index=4}
 
 ```{r}
 #| echo: false
@@ -1356,6 +1565,7 @@ rbind(
 ) |>
   arrange(desc(.metric))
 ```
+:::
 
 :::
 :::
@@ -1365,6 +1575,7 @@ rbind(
 ## Exercise: XGBoost
 
 :::{#exr-xgb}
+
 Instead of tuning a random forest or linear model, tune an XGBoost model.
 The `{parsnip}` interface is given by the `boost_tree()`-function.
 Parameters that can be tuned are:
@@ -1379,84 +1590,34 @@ To tune the model, generate a grid using the `grid_space_filling()`-function
 
 :::
 
-
-## Solution: XGBoost
-
-::::{style="font-size:22pt;"}
-:::{#sol-xgb}
-:::{columns}
-:::{.column width="49%" .add-space}
+:::{.fragment index=1}
+@sol-xgb
+:::
 
 ```{r}
-xgb_spec <- boost_tree(
-  mode = "regression",
-  mtry = tune(),
-  trees = tune(),
-  min_n = tune(),
-  tree_depth = tune(),
-  learn_rate = tune()
-  )
-
-param_set <- extract_parameter_set_dials(
-  xgb_spec
-  ) |>
-  finalize(data_train |>
-             select(-Hits)
-           )
-
-tune_spec <- grid_space_filling(
-  param_set,
-  size = 15
-  )
+#| echo: false
+countdown::countdown(minutes = 10, id = "countdown_xgb")
 ```
-
-:::
-:::{.column width="49%"}
-
-```{r}
-
-wf_hitters <- wf_hitters |>
-  update_model(xgb_spec)
-
-xgb_res_tune <- wf_hitters |>
-  tune_grid(
-    resamples = folds_hitters,
-    grid = tune_spec,
-    metrics = hitter_metrics
-  )
-
-parms_opt <- xgb_res_tune |>
-  select_best(metric = "rmse")
-
-xgb_res <- finalize_workflow(
-  wf_hitters,
-  parms_opt
-  ) |>
-  last_fit(
-    split = split_hitters,
-    metrics = hitter_metrics
-    )
-
-xgb_tune_metrics <- xgb_res |>
-  collect_metrics() |>
-  select(-.config)
-
-xgb_tune_metrics
-
-```
-
-:::
-
-:::
-
-:::
-::::
 
 ## Classification Tasks with `{tidymodels}`
 
+:::{columns}
+:::{.column width="62%" .add-space}
+
+::: {style="font-size:20pt;"}
 ```{r}
-set.seed(2025)
-flight_data_classification <- flight_data |>
+weather |> 
+  glimpse()
+```
+:::
+
+:::
+:::{.column width="36%"}
+
+::: {style="font-size:20pt;"}
+```{r}
+#| code-line-numbers: "|2-6|7-12|13-16|17-21|"
+flight_data_cl <- flight_data |>
   inner_join(weather,
             by = c("year", "month",
                    "day", "hour",
@@ -1477,7 +1638,23 @@ flight_data_classification <- flight_data |>
       0,
       wind_gust
     )
-    )|>
+  )
+```
+
+:::
+:::
+
+:::
+
+
+## Data Split and Sample Size Reduction
+
+There are currently `336,776` samples in the data set
+
+```{r}
+#| code-line-numbers: "|3|4|5-9|"
+set.seed(2025)
+flight_data_cl <- flight_data_cl |>
   slice_sample(prop = 0.01) |>
   na.omit() |>
   select(-c(dep_time, dep_delay,
@@ -1485,37 +1662,48 @@ flight_data_classification <- flight_data |>
             time_hour.x, time_hour.y,
             tailnum, hour, day)
          )
-         
+      
 ```
 
-##
+:::{.fragment index=1}
+
+We can then create a data split:
 
 ```{r}
+#| code-line-numbers: "|1-3|5-6|8|"
 set.seed(2025)
-split_flights <- initial_split(flight_data_classification,
+split_flights <- initial_split(flight_data_cl,
                                strata = is_delayed)
 
-data_train <- training(split_flights)
-data_test <- testing(split_flights)
+data_train_flights <- training(split_flights)
+data_test_flights <- testing(split_flights)
 
-folds_flights <- vfold_cv(data_train,3)
+folds_flights <- vfold_cv(data_train_flights,3)
 ```
 
-```{r}
-data_train |> glimpse()
+:::
 
-data_train |>
+## Imbalance Check and Recipe 
+
+There are probably not too many flights with `30+` minutes delay?!
+
+```{r}
+data_train_flights |>
   group_by(is_delayed) |>
   summarise(
     n=n(),
-    rel_n = n()/nrow(data_train)
+    rel_n = n()/nrow(data_train_flights)
     )
 ```
 
+
+
 ```{r}
+library(themis)
+
 rec_flights <- recipe(
   formula = is_delayed ~.,
-  data = data_train
+  data = data_train_flights
 ) |>
   step_novel(all_nominal_predictors()) |>
   step_dummy(all_nominal_predictors()) |>
@@ -1524,8 +1712,13 @@ rec_flights <- recipe(
   step_smote(is_delayed,
              over_ratio = 1)
 
-
 ```
+
+## Sanity Check
+
+:::{columns}
+
+:::{.column width="29%" .add-space}
 
 ```{r}
 rec_flights |>
@@ -1534,6 +1727,8 @@ rec_flights |>
   group_by(is_delayed) |>
   summarise(n=n())
 ```
+:::
+:::{.column with="69%"}
 
 ```{r}
 rf_spec <- rand_forest(
@@ -1546,7 +1741,7 @@ rf_spec <- rand_forest(
 param_set <- extract_parameter_set_dials(
   rf_spec
   ) |>
-  finalize(data_train |>
+  finalize(data_train_flights |>
              select(-is_delayed)
            )
 
@@ -1560,6 +1755,14 @@ flights_metrics <- metric_set(
   )
 
 ```
+
+:::
+:::
+
+## Tuning the Model
+
+:::{columns}
+:::{.column width="49%" .add-space}
 
 ```{r}
 tune_spec <- grid_space_filling(
@@ -1585,35 +1788,557 @@ rf_res_gsf <- finalize_workflow(
     split = split_flights,
     metrics = flights_metrics
     )
+```
+
+:::
+:::{.column width="49%"}
+
+
+```{r}
 
 rf_tune_metrics <- rf_res_gsf |>
   collect_metrics()
 
-rf_tune_metrics
+rf_tune_metrics |>
+  select(-.config)
 
 ```  
 
+:::
+:::
 
-
-# {background-image="pictures/tidymodels/tidymodels_bg.svg" background-size="cover" #slidetidyverts-id data-menu-title="{tidyverts}"}
-
-## {tidyverts}
-![](pictures/tidymodels/tidymodels.svg){width=80%}
-
-##
+## Confusion Matrices with `{ggplot2}`
 
 ```{r}
-install.packages(
-  c("tsibble","fable",
-    "feasts", "tsibbledata",
-    "fable.prophet")
+#| echo: false
+library(ggtext)
+library(patchwork)
+
+cols <- c("#506432")
+names(cols) <- c("rf")
+
+acc<- rf_tune_metrics |>
+  filter(.metric=='accuracy') |>
+  pluck(3)
+
+sensi <- rf_tune_metrics |>
+  filter(.metric=='sensitivity') |>
+  pluck(3)
+
+speci <- rf_tune_metrics |>
+  filter(.metric=='specificity') |>
+  pluck(3)
+
+title_tib <- tibble(
+  x=0,
+  y=1,
+  label = glue::glue(
+  "<p><b>Confusion matrix for a
+      <span style='color:{cols['rf']};'>random forest</span>
+      <br/>
+   </p>
+   <p> - Accuracy =    {scales::percent(round(acc,3))} </p>
+   <p> - Sensitivity = {scales::percent(round(sensi,3))} </p> 
+   <p> - Specificity = {scales::percent(round(speci,3))} </p> 
+  ")
 )
+
+cm_plot <- function(last_fit_model,high){ 
+  cm <- last_fit_model |>
+    collect_predictions() |>
+    conf_mat(is_delayed, .pred_class)
+  
+  cm_tib <- as_tibble(cm$table)|> mutate(
+    Prediction = factor(Prediction, labels = c("Negative", "Postive")),
+    Truth = factor(Truth, labels = c("Negative", "Postive")),
+    Prediction = factor(Prediction, 
+                        levels = rev(levels(Prediction)))
+  )
+  
+  cm_tib |> ggplot(aes(x = Prediction, y = Truth,fill = n)) +
+    geom_tile( colour = "gray50")+
+    geom_text(aes(label = n))+
+    scale_fill_gradient(low = "white", high = high)+
+    theme_minimal()+
+    theme(legend.position = "none")
+}
+
+# Random Forest
+cm1<- cm_plot(rf_res_gsf,"#506432")
+
+title_pane <- ggplot()+
+  geom_richtext(
+    data = title_tib,
+    aes(x, y, label = label),
+    hjust = 0, vjust = 1, 
+    label.color = NA
+  ) +
+  xlim(0, 1) + ylim(0, 1)+
+  theme_void()
+
+cm1+
+  title_pane+
+  plot_layout(ncol = 2, widths = c(1,1.04))
 ```
 
+## Generating a Confusion Matrix Tibble
+:::: {style="font-size:21pt;"}
+:::{columns}
+:::{.column width="49%" .add-space}
+
 ```{r}
-library(tsibble)
-library(fable)
-library(feasts)
-library(tsibbledata)
-library(fable.prophet)
+get_cm <- function(final_model){
+  cm <- rf_res_gsf |>
+    collect_predictions() |>
+    conf_mat(is_delayed, .pred_class)
+  
+  return(cm)
+}
+
+cm_rf <- get_cm(rf_res_gsf)
+
+cm_rf
 ```
+:::
+
+:::{.column width="49%"}
+```{r}
+transform_cm <- function(cm){
+ cm_tib <- as_tibble(cm$table)|>
+   mutate(
+     Prediction = factor(
+       Prediction,
+       labels = c("Negative", "Postive")
+       ),
+     Truth = factor(
+       Truth,
+       labels = c("Negative", "Postive")
+       ),
+     Prediction = factor(
+       Prediction, 
+       levels = rev(levels(Prediction)))
+  )
+ 
+ return(cm_tib)
+ 
+}
+
+cm_rf_tib <- transform_cm(cm_rf)
+cm_rf_tib
+
+```
+
+:::
+:::
+::::
+
+## Plotting the Matrix and Defining a Wrapper-Function
+
+:::: {style="font-size:21pt;"}
+:::{columns}
+:::{.column width="39%" .add-space}
+
+```{r}
+plot_cm_tibble <- function(cm_tib, high){
+  p1 <- ggplot(
+    data = cm_tib,
+    aes(
+      x = Prediction,
+      y = Truth,
+      fill = n
+      )
+    ) +
+    geom_tile( colour = "gray50")+
+    geom_text(aes(label = n))+
+    scale_fill_gradient(
+      low = "#FFFFFF",
+      high = high
+      )+
+    theme_minimal()+
+    theme(legend.position = "none")
+  
+  return(p1)
+}
+
+```
+:::
+:::{.column width="59%"}
+
+```{r}
+cm_plot <- function(last_fit_model,high){ 
+  p <- last_fit_model %>%
+    get_cm() %>%
+    transform_cm() %>%
+    plot_cm_tibble(.,high = high)
+  
+  return(p)
+}
+
+cm_plot(last_fit_model = rf_res_gsf,
+        high = "#506432")
+```
+
+:::
+:::
+::::
+
+## Generating Metrics and Text
+
+:::: {style="font-size:21pt;"}
+:::{columns}
+:::{.column width="38%" .add-space}
+
+```{r}
+
+acc<- rf_tune_metrics |>
+  filter(.metric=='accuracy') |>
+  pluck(3)
+
+sensi <- rf_tune_metrics |>
+  filter(.metric=='sensitivity') |>
+  pluck(3)
+
+speci <- rf_tune_metrics |>
+  filter(.metric=='specificity') |>
+  pluck(3)
+```
+
+
+:::
+:::{.column width="60%"}
+
+```{r}
+library(ggtext)
+library(patchwork)
+library(glue)
+
+cols <- c("#506432")
+names(cols) <- c("rf")
+
+title_tib <- tibble(
+  x=0,
+  y=1,
+  label = glue(
+    "
+    <p><b>Confusion matrix for a
+      <span style='color:{cols['rf']};'>random forest</span>
+      <br/>
+    </p>
+    <p> - Accuracy =    {scales::percent(round(acc,3))} </p>
+    <p> - Sensitivity = {scales::percent(round(sensi,3))} </p> 
+    <p> - Specificity = {scales::percent(round(speci,3))} </p> 
+    "
+    )
+)
+
+```
+
+:::
+:::
+::::
+
+## Stichting it all Together
+
+:::{columns}
+:::{.column width="49%" .add-space}
+
+```{r}
+#| output: false
+
+title_pane <- ggplot()+
+  geom_richtext(
+    data = title_tib,
+    aes(x, y, label = label),
+    hjust = 0, vjust = 1, 
+    label.color = NA
+  ) +
+  xlim(0, 1) + ylim(0, 1)+
+  theme_void()
+
+cm_plot(
+  last_fit_model = rf_res_gsf,
+  high = "#506432") +
+  title_pane+
+  plot_layout(
+    ncol = 2,
+    widths = c(1,1.04)
+    )
+
+```
+
+:::
+:::{.column width="49%"}
+
+```{r}
+#| echo: false
+
+title_pane <- ggplot()+
+  geom_richtext(
+    data = title_tib,
+    aes(x, y, label = label),
+    hjust = 0, vjust = 1, 
+    label.color = NA
+  ) +
+  xlim(0, 1) + ylim(0, 1)+
+  theme_void()
+
+cm_plot(
+  last_fit_model = rf_res_gsf,
+  high = "#506432") +
+  title_pane+
+  plot_layout(
+    ncol = 2,
+    widths = c(1,1.04)
+    )
+
+```
+
+:::
+:::
+
+## Next Steps
+
+1. Screening Many Models: [Tidy Modelling With R](https://www.tmwr.org/workflow-sets)
+2. Deploying Models with `{vetiver}`
+3. Time Series Analysis/Forecasting with `{tidyverts}`
+
+# Solutions to the Exercises
+
+## Solution: `{dplyr}`
+
+:::{#sol-filter_n}
+
+## @exr-filter_n
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  filter(body_mass_g>3500) |>
+  group_by(island) |>
+  summarise(n=n())
+```
+
+:::
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  filter(body_mass_g>3500) |>
+  group_by(island) |>
+  summarise(n=n())|>
+  mutate(rel_n = n/sum(n))
+```
+
+:::
+:::
+:::
+
+## Solution: `{ggplot2}`
+
+
+:::{#sol-ggplot}
+
+## @exr-ggplot
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  ggplot(
+    aes(
+      x=flipper_length_mm
+      )
+    )+
+  geom_histogram()
+```
+
+:::
+:::{.column width="50%"}
+
+```{r}
+data_penguin |>
+  ggplot(
+    aes(
+      x=flipper_length_mm
+      )
+    )+
+  geom_histogram(
+    aes(
+      y=after_stat(count / sum(count))
+      )
+    )+
+  scale_y_continuous(
+    labels = scales::percent
+    )+
+  labs(y="relative frequency")
+```
+
+:::
+:::
+:::
+
+## Solution: Lubridate
+
+:::{#sol-avoid_weekdays}
+
+## @exr-avoid_weekdays
+
+
+:::{columns}
+:::{.column width="49%" .add-space}
+
+```{r}
+#| eval: false
+flight_time |>
+  na.omit()|>
+  mutate(
+    weekday = wday(
+      dep_dt,
+      label = TRUE,
+      abbr = FALSE,
+      locale = "en_US.UTF-8"
+      )
+    ) |>
+  group_by(weekday) |>
+  summarise(mean_delay=mean(dep_delay))
+```
+:::
+:::{.column width="49%"}
+```{r}
+#| echo: false
+
+flight_time |>
+  na.omit()|>
+  mutate(
+    weekday = wday(
+      dep_dt,
+      label = TRUE,
+      abbr = FALSE,
+      locale = "en_US.UTF-8"
+      )
+    ) |>
+  group_by(weekday) |>
+  summarise(mean_delay=mean(dep_delay))
+```
+:::
+:::
+
+:::
+
+## Solution: EDA Hitters
+
+:::{#sol-CountRelNA}
+
+## @exr-CountRelNA
+
+```{r}
+#| echo: false
+data_hitters |>
+  summarise(across(everything(),
+                   ~sum(is.na(.)))) |>
+  pivot_longer(cols = everything(),
+               names_to = "column",
+               values_to = "na_count") |>
+  filter(na_count>0) |>
+  mutate(na_percent = (na_count / nrow(data_hitters)) * 100)
+```
+
+:::
+
+## Solution: Random Forest
+
+:::{#sol-rf_base}
+
+## @exr-rf_base
+
+```{r}
+rf_spec <- rand_forest(mode = "regression")
+
+wf_hitters <- wf_hitters |>
+  update_model(rf_spec)
+
+rf_res <- wf_hitters |>
+  fit(data=data_train_hitters)
+
+rf_metrics <- rf_res |>
+  augment(data_test_hitters) |>
+  hitter_metrics(.pred,Hits)
+
+rf_metrics
+
+```
+
+:::
+
+## Solution: XGBoost
+
+::::{style="font-size:22pt;"}
+:::{#sol-xgb}
+## @exr-xgb
+:::{columns}
+:::{.column width="49%" .add-space}
+
+```{r}
+xgb_spec <- boost_tree(
+  mode = "regression",
+  mtry = tune(),
+  trees = tune(),
+  min_n = tune(),
+  tree_depth = tune(),
+  learn_rate = tune()
+  )
+
+param_set <- extract_parameter_set_dials(
+  xgb_spec
+  ) |>
+  finalize(data_train_hitters |>
+             select(-Hits)
+           )
+
+tune_spec <- grid_space_filling(
+  param_set,
+  size = 15
+  )
+
+wf_hitters <- wf_hitters |>
+  update_model(xgb_spec)
+```
+
+:::
+:::{.column width="49%"}
+
+```{r}
+xgb_res_tune <- wf_hitters |>
+  tune_grid(
+    resamples = folds_hitters,
+    grid = tune_spec,
+    metrics = hitter_metrics
+  )
+
+parms_opt <- xgb_res_tune |>
+  select_best(metric = "rmse")
+
+xgb_res <- finalize_workflow(
+  wf_hitters,
+  parms_opt
+  ) |>
+  last_fit(
+    split = split_hitters,
+    metrics = hitter_metrics)
+
+(xgb_tune_metrics <- xgb_res |>
+  collect_metrics() |>
+  select(-.config))
+```
+
+:::
+
+:::
+
+:::
+::::
