@@ -1378,12 +1378,15 @@ elnet_res <- finalize_workflow(
     )
 ```
 
+:::{.fragment index=1}
 We can then assess the performance of the tuned model:
 
 ```{r}
 elnet_res |> 
-  collect_metrics()
+  collect_metrics() |>
+  select(-.config)
 ```
+:::
 
 ## Going Beyond Regular Grids
 
@@ -1696,9 +1699,10 @@ data_train_flights |>
     )
 ```
 
-
+:::{.fragment index=1}
 
 ```{r}
+#| code-line-numbers: "|3-6|7-8|9|10|11-12|"
 library(themis)
 
 rec_flights <- recipe(
@@ -1714,11 +1718,15 @@ rec_flights <- recipe(
 
 ```
 
+:::
+
 ## Sanity Check
 
 :::{columns}
 
 :::{.column width="29%" .add-space}
+
+:::{.fragment index=1}
 
 ```{r}
 rec_flights |>
@@ -1727,10 +1735,15 @@ rec_flights |>
   group_by(is_delayed) |>
   summarise(n=n())
 ```
+
+:::
+
 :::
 :::{.column with="69%"}
 
+:::{.fragment index=2}
 ```{r}
+#| code-line-numbers: "|1-6|8-13|15-17|19-22|"
 rf_spec <- rand_forest(
   mode = "classification",
   trees = tune(),
@@ -1755,6 +1768,7 @@ flights_metrics <- metric_set(
   )
 
 ```
+:::
 
 :::
 :::
@@ -1763,8 +1777,10 @@ flights_metrics <- metric_set(
 
 :::{columns}
 :::{.column width="49%" .add-space}
+:::{.fragment index=1}
 
 ```{r}
+#| code-line-numbers: "|1-4|6-11|13-14|16-19|20-23|"
 tune_spec <- grid_space_filling(
   param_set,
   size = 10
@@ -1789,11 +1805,12 @@ rf_res_gsf <- finalize_workflow(
     metrics = flights_metrics
     )
 ```
+:::
 
 :::
 :::{.column width="49%"}
 
-
+:::{.fragment index=2}
 ```{r}
 
 rf_tune_metrics <- rf_res_gsf |>
@@ -1803,6 +1820,7 @@ rf_tune_metrics |>
   select(-.config)
 
 ```  
+:::
 
 :::
 :::
@@ -1886,7 +1904,10 @@ cm1+
 :::{columns}
 :::{.column width="49%" .add-space}
 
+:::{.fragment index=1}
+
 ```{r}
+#| code-line-numbers: "|2-4|1-7|"
 get_cm <- function(final_model){
   cm <- rf_res_gsf |>
     collect_predictions() |>
@@ -1900,9 +1921,12 @@ cm_rf <- get_cm(rf_res_gsf)
 cm_rf
 ```
 :::
+:::
 
 :::{.column width="49%"}
+:::{.fragment index=2}
 ```{r}
+#| code-line-numbers: "|2|4-7|8-11|12-14|"
 transform_cm <- function(cm){
  cm_tib <- as_tibble(cm$table)|>
    mutate(
@@ -1927,6 +1951,7 @@ cm_rf_tib <- transform_cm(cm_rf)
 cm_rf_tib
 
 ```
+:::
 
 :::
 :::
@@ -1937,8 +1962,10 @@ cm_rf_tib
 :::: {style="font-size:21pt;"}
 :::{columns}
 :::{.column width="39%" .add-space}
+:::{.fragment index=1}
 
 ```{r}
+#| code-line-numbers: "|2-9|10|11|12-15|16-17|"
 plot_cm_tibble <- function(cm_tib, high){
   p1 <- ggplot(
     data = cm_tib,
@@ -1962,9 +1989,12 @@ plot_cm_tibble <- function(cm_tib, high){
 
 ```
 :::
+:::
 :::{.column width="59%"}
+:::{.fragment index=2}
 
 ```{r}
+#| code-line-numbers: "|2-5|10-11|"
 cm_plot <- function(last_fit_model,high){ 
   p <- last_fit_model %>%
     get_cm() %>%
@@ -1977,6 +2007,7 @@ cm_plot <- function(last_fit_model,high){
 cm_plot(last_fit_model = rf_res_gsf,
         high = "#506432")
 ```
+:::
 
 :::
 :::
@@ -1987,9 +2018,10 @@ cm_plot(last_fit_model = rf_res_gsf,
 :::: {style="font-size:21pt;"}
 :::{columns}
 :::{.column width="38%" .add-space}
+:::{.fragment index=1}
 
 ```{r}
-
+#| code-line-numbers: "|1-3|5-7|9-11|"
 acc<- rf_tune_metrics |>
   filter(.metric=='accuracy') |>
   pluck(3)
@@ -2003,11 +2035,14 @@ speci <- rf_tune_metrics |>
   pluck(3)
 ```
 
+:::
+
 
 :::
 :::{.column width="60%"}
-
+:::{.fragment index=2}
 ```{r}
+#| code-line-numbers: "|1-3|5-6|8-10|11-21|13-16|17|18|19|"
 library(ggtext)
 library(patchwork)
 library(glue)
@@ -2023,7 +2058,7 @@ title_tib <- tibble(
     <p><b>Confusion matrix for a
       <span style='color:{cols['rf']};'>random forest</span>
       <br/>
-    </p>
+    </b></p>
     <p> - Accuracy =    {scales::percent(round(acc,3))} </p>
     <p> - Sensitivity = {scales::percent(round(sensi,3))} </p> 
     <p> - Specificity = {scales::percent(round(speci,3))} </p> 
@@ -2032,6 +2067,7 @@ title_tib <- tibble(
 )
 
 ```
+:::
 
 :::
 :::
@@ -2040,9 +2076,12 @@ title_tib <- tibble(
 ## Stichting it all Together
 
 :::{columns}
-:::{.column width="49%" .add-space}
+:::{.column width="39%" .add-space}
+
+:::{.fragment index=1}
 
 ```{r}
+#| code-line-numbers: "|2-7,14|8,14|9,14|11-13|15-18|"
 #| output: false
 
 title_pane <- ggplot()+
@@ -2065,10 +2104,11 @@ cm_plot(
     )
 
 ```
+:::
 
 :::
-:::{.column width="49%"}
-
+:::{.column width="59%"}
+:::{.fragment index=2}
 ```{r}
 #| echo: false
 
@@ -2092,6 +2132,7 @@ cm_plot(
     )
 
 ```
+:::
 
 :::
 :::
@@ -2237,7 +2278,6 @@ flight_time |>
 ## @exr-CountRelNA
 
 ```{r}
-#| echo: false
 data_hitters |>
   summarise(across(everything(),
                    ~sum(is.na(.)))) |>
