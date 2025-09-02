@@ -1,6 +1,6 @@
 ---
 title: "Tidy{verse|models}"
-subtitle: "A modern approach for Data Science and Machine Learning in R"
+subtitle: "A Modern Approach for Data Science and Machine Learning in R"
 format:
   revealjs:
     theme: [solarized, custom.scss]
@@ -96,6 +96,12 @@ format:
 
 ## Resources for this Tutorial
 
+Access the slides at
+
+```{r}
+#| eval: false
+https://linus-lach.de/workshops/tidy/presentation
+```
 
 
 <br>
@@ -159,7 +165,7 @@ We can then
 
 :::{.incremental}
 -   Write code snippets
--   Insert content (images, videos, and even raw html code!)
+-   Insert content (images, videos, and even raw HTML!)
 -   Export documents as different formats (PDF,HTML, and DOCX)
 :::
 
@@ -306,7 +312,7 @@ What is the average male and female body mass of each species on each island?
 :::{.fragment index=1}
 
 ```{r}
-#| code-line-numbers: "1-5|7-11|"
+#| code-line-numbers: "|1-5|7-11|"
 
 avg_mass <- aggregate(
   body_mass_g ~ sex+species+island,
@@ -970,7 +976,7 @@ To create this new feature, you can use the `lubridate::wday()`-function.
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 5, id = "countdown_lubridate")
+countdown::countdown(minutes = 7, id = "countdown_lubridate")
 ```
 
 
@@ -1250,7 +1256,7 @@ lm_metrics
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 5, id = "countdown_rf")
+countdown::countdown(minutes = 7, id = "countdown_rf")
 ```
 
 ## Problem

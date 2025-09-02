@@ -405,7 +405,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Tidy{verse|models}</h1>
-  <p class="subtitle">A modern approach for Data Science and Machine Learning in R</p>
+  <p class="subtitle">A Modern Approach for Data Science and Machine Learning in R</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -485,10 +485,14 @@
 </section>
 <section id="resources-for-this-tutorial" class="slide level2">
 <h2>Resources for this Tutorial</h2>
+<p>Access the slides at</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>https<span class="sc">:</span><span class="er">//</span>linus<span class="sc">-</span>lach.de<span class="sc">/</span>workshops<span class="sc">/</span>tidy<span class="sc">/</span>presentation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><br></p>
 <p>Or, clone the repo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>LinusLach<span class="sc">/</span>tidy_workshop.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>LinusLach<span class="sc">/</span>tidy_workshop.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="resources-beyond-this-tutorial" class="slide level2">
@@ -536,7 +540,7 @@
 <div>
 <ul>
 <li class="fragment">Write code snippets</li>
-<li class="fragment">Insert content (images, videos, and even raw html code!)</li>
+<li class="fragment">Insert content (images, videos, and even raw HTML!)</li>
 <li class="fragment">Export documents as different formats (PDF,HTML, and DOCX)</li>
 </ul>
 </div>
@@ -544,27 +548,27 @@
 <section id="required-packages" class="slide level2">
 <h2>Required Packages</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Core meta-packages (these will install many dependencies)</span></span>
-<span id="cb2-2"><a href=""></a>core_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidymodels"</span>)</span>
-<span id="cb2-3"><a href=""></a></span>
-<span id="cb2-4"><a href=""></a><span class="co"># Additional packages not included in tidyverse/tidymodels</span></span>
-<span id="cb2-5"><a href=""></a>extra_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb2-6"><a href=""></a>  <span class="st">"glue"</span>, <span class="st">"patchwork"</span>, <span class="st">"ggtext"</span>, <span class="st">"themis"</span>, <span class="st">"xgboost"</span>,</span>
-<span id="cb2-7"><a href=""></a>  <span class="st">"ranger"</span>, <span class="st">"glmnet"</span>, <span class="st">"ISLR2"</span>, <span class="st">"nycflights13"</span></span>
-<span id="cb2-8"><a href=""></a>)</span>
-<span id="cb2-9"><a href=""></a></span>
-<span id="cb2-10"><a href=""></a><span class="co"># Combine all required packages</span></span>
-<span id="cb2-11"><a href=""></a>required_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(core_packages, extra_packages)</span>
-<span id="cb2-12"><a href=""></a></span>
-<span id="cb2-13"><a href=""></a><span class="co"># Install missing packages</span></span>
-<span id="cb2-14"><a href=""></a><span class="cf">for</span> (pkg <span class="cf">in</span> required_packages) {</span>
-<span id="cb2-15"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb2-16"><a href=""></a>    <span class="fu">message</span>(<span class="fu">paste</span>(<span class="st">"Installing"</span>, pkg, <span class="st">"..."</span>))</span>
-<span id="cb2-17"><a href=""></a>    <span class="fu">install.packages</span>(pkg)</span>
-<span id="cb2-18"><a href=""></a>  } <span class="cf">else</span> {</span>
-<span id="cb2-19"><a href=""></a>    <span class="fu">message</span>(<span class="fu">paste</span>(pkg, <span class="st">"is already installed."</span>))</span>
-<span id="cb2-20"><a href=""></a>  }</span>
-<span id="cb2-21"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Core meta-packages (these will install many dependencies)</span></span>
+<span id="cb3-2"><a href=""></a>core_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidymodels"</span>)</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="co"># Additional packages not included in tidyverse/tidymodels</span></span>
+<span id="cb3-5"><a href=""></a>extra_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb3-6"><a href=""></a>  <span class="st">"glue"</span>, <span class="st">"patchwork"</span>, <span class="st">"ggtext"</span>, <span class="st">"themis"</span>, <span class="st">"xgboost"</span>,</span>
+<span id="cb3-7"><a href=""></a>  <span class="st">"ranger"</span>, <span class="st">"glmnet"</span>, <span class="st">"ISLR2"</span>, <span class="st">"nycflights13"</span></span>
+<span id="cb3-8"><a href=""></a>)</span>
+<span id="cb3-9"><a href=""></a></span>
+<span id="cb3-10"><a href=""></a><span class="co"># Combine all required packages</span></span>
+<span id="cb3-11"><a href=""></a>required_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(core_packages, extra_packages)</span>
+<span id="cb3-12"><a href=""></a></span>
+<span id="cb3-13"><a href=""></a><span class="co"># Install missing packages</span></span>
+<span id="cb3-14"><a href=""></a><span class="cf">for</span> (pkg <span class="cf">in</span> required_packages) {</span>
+<span id="cb3-15"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb3-16"><a href=""></a>    <span class="fu">message</span>(<span class="fu">paste</span>(<span class="st">"Installing"</span>, pkg, <span class="st">"..."</span>))</span>
+<span id="cb3-17"><a href=""></a>    <span class="fu">install.packages</span>(pkg)</span>
+<span id="cb3-18"><a href=""></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-19"><a href=""></a>    <span class="fu">message</span>(<span class="fu">paste</span>(pkg, <span class="st">"is already installed."</span>))</span>
+<span id="cb3-20"><a href=""></a>  }</span>
+<span id="cb3-21"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -582,7 +586,7 @@
 <div style="font-size:32pt;">
 <p>Most importantly:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -614,7 +618,7 @@
 </div>
 </div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>data_penguin <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>data_penguin <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-dplyr-package---cheatsheet" class="slide level2">
@@ -637,7 +641,7 @@ Base R
 </h3>
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">head</span>(data_penguin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">head</span>(data_penguin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -657,7 +661,7 @@ Base R
 </h3>
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(data_penguin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(data_penguin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
@@ -689,17 +693,17 @@ Base R
 </h3>
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="1-5|7-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>avg_mass <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb10-2"><a href=""></a>  body_mass_g <span class="sc">~</span> sex<span class="sc">+</span>species<span class="sc">+</span>island,</span>
-<span id="cb10-3"><a href=""></a>  <span class="at">data =</span> data_penguin,</span>
-<span id="cb10-4"><a href=""></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-5"><a href=""></a>)</span>
-<span id="cb10-6"><a href=""></a></span>
-<span id="cb10-7"><a href=""></a><span class="fu">names</span>(avg_mass)[</span>
-<span id="cb10-8"><a href=""></a>  <span class="fu">names</span>(avg_mass) <span class="sc">==</span> <span class="st">"body_mass_g"</span></span>
-<span id="cb10-9"><a href=""></a>  ] <span class="ot">&lt;-</span> <span class="st">"mean_weight"</span></span>
-<span id="cb10-10"><a href=""></a></span>
-<span id="cb10-11"><a href=""></a><span class="fu">print</span>(avg_mass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="|1-5|7-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>avg_mass <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb11-2"><a href=""></a>  body_mass_g <span class="sc">~</span> sex<span class="sc">+</span>species<span class="sc">+</span>island,</span>
+<span id="cb11-3"><a href=""></a>  <span class="at">data =</span> data_penguin,</span>
+<span id="cb11-4"><a href=""></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-5"><a href=""></a>)</span>
+<span id="cb11-6"><a href=""></a></span>
+<span id="cb11-7"><a href=""></a><span class="fu">names</span>(avg_mass)[</span>
+<span id="cb11-8"><a href=""></a>  <span class="fu">names</span>(avg_mass) <span class="sc">==</span> <span class="st">"body_mass_g"</span></span>
+<span id="cb11-9"><a href=""></a>  ] <span class="ot">&lt;-</span> <span class="st">"mean_weight"</span></span>
+<span id="cb11-10"><a href=""></a></span>
+<span id="cb11-11"><a href=""></a><span class="fu">print</span>(avg_mass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      sex   species    island mean_weight
 1  female    Adelie    Biscoe    3369.318
@@ -721,12 +725,12 @@ Base R
 </h3>
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href=""></a>  <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(sex,species,island) <span class="sc">|&gt;</span></span>
-<span id="cb12-4"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb12-5"><a href=""></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(body_mass_g)</span>
-<span id="cb12-6"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href=""></a>  <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(sex,species,island) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb13-5"><a href=""></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(body_mass_g)</span>
+<span id="cb13-6"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
 # Groups:   sex, species [6]
@@ -835,15 +839,15 @@ Base R
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb14-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb14-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb15-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb15-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -855,20 +859,20 @@ Base R
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="|3-6|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb15-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb15-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb15-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb15-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
-<span id="cb15-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
-<span id="cb15-6" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb15-7" class="hljs-ln-code"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="|3-6|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb16-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb16-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb16-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb16-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
+<span id="cb16-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
+<span id="cb16-6" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb16-7" class="hljs-ln-code"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -880,21 +884,21 @@ Base R
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb16-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb16-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb16-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb16-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
-<span id="cb16-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
-<span id="cb16-6" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb16-7" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb16-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb17-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb17-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb17-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb17-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
+<span id="cb17-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
+<span id="cb17-6" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb17-7" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb17-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -906,25 +910,25 @@ Base R
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="|9-11|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb17-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb17-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb17-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb17-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
-<span id="cb17-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
-<span id="cb17-6" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb17-7" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb17-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb17-9" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb17-10" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
-<span id="cb17-11" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb17-12" class="hljs-ln-code"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|9-11|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb18-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb18-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb18-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb18-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
+<span id="cb18-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
+<span id="cb18-6" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb18-7" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb18-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb18-9" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb18-10" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
+<span id="cb18-11" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb18-12" class="hljs-ln-code"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -936,22 +940,22 @@ Base R
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|3-6|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb18-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb18-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb18-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb18-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
-<span id="cb18-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm,</span>
-<span id="cb18-6" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
-<span id="cb18-7" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb18-8" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb18-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|3-6|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb19-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb19-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb19-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb19-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
+<span id="cb19-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm,</span>
+<span id="cb19-6" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
+<span id="cb19-7" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb19-8" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb19-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -963,24 +967,24 @@ Base R
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|10-11|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb19-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb19-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb19-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb19-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
-<span id="cb19-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm,</span>
-<span id="cb19-6" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
-<span id="cb19-7" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb19-8" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb19-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb19-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb19-11" class="hljs-ln-code"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|10-11|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb20-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb20-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb20-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
+<span id="cb20-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm,</span>
+<span id="cb20-6" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
+<span id="cb20-7" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb20-8" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb20-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb20-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb20-11" class="hljs-ln-code"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -992,27 +996,27 @@ Base R
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|9-11|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb20-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb20-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb20-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
-<span id="cb20-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
-<span id="cb20-6" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb20-7" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb20-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb20-9" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb20-10" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
-<span id="cb20-11" class="hljs-ln-code"><a href=""></a>      )</span>
-<span id="cb20-12" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb20-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb20-14" class="hljs-ln-code"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="|9-11|"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb21-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb21-3" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb21-4" class="hljs-ln-code"><a href=""></a>      <span class="at">x=</span>bill_depth_mm,</span>
+<span id="cb21-5" class="hljs-ln-code"><a href=""></a>      <span class="at">y=</span>bill_length_mm</span>
+<span id="cb21-6" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb21-7" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb21-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb21-9" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb21-10" class="hljs-ln-code"><a href=""></a>      <span class="at">color=</span>species</span>
+<span id="cb21-11" class="hljs-ln-code"><a href=""></a>      )</span>
+<span id="cb21-12" class="hljs-ln-code"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb21-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb21-14" class="hljs-ln-code"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1078,9 +1082,9 @@ Base R
 <section id="nyc-flight-data" class="slide level2">
 <h2>NYC Flight Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb21-2"><a href=""></a>flight_data <span class="ot">&lt;-</span> flights</span>
-<span id="cb21-3"><a href=""></a><span class="fu">glimpse</span>(flight_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb22-2"><a href=""></a>flight_data <span class="ot">&lt;-</span> flights</span>
+<span id="cb22-3"><a href=""></a><span class="fu">glimpse</span>(flight_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 336,776
 Columns: 19
@@ -1120,17 +1124,17 @@ EWR: Newark Liberty International Airport
 <p>How much missing data are we dealing with?</p>
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="|2-6|7-9|10|11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>flight_data <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href=""></a>  <span class="fu">summarise</span>(</span>
-<span id="cb23-3"><a href=""></a>    <span class="fu">across</span>(</span>
-<span id="cb23-4"><a href=""></a>      <span class="at">.cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb23-5"><a href=""></a>      <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)))</span>
-<span id="cb23-6"><a href=""></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb23-7"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb23-8"><a href=""></a>               <span class="at">names_to =</span> <span class="st">"column"</span>,</span>
-<span id="cb23-9"><a href=""></a>               <span class="at">values_to =</span> <span class="st">"na_count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb23-10"><a href=""></a>  <span class="fu">filter</span>(na_count<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb23-11"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">na_percent =</span> (na_count <span class="sc">/</span> <span class="fu">nrow</span>(flight_data)) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="|2-6|7-9|10|11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>flight_data <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb24-3"><a href=""></a>    <span class="fu">across</span>(</span>
+<span id="cb24-4"><a href=""></a>      <span class="at">.cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb24-5"><a href=""></a>      <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)))</span>
+<span id="cb24-6"><a href=""></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb24-7"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb24-8"><a href=""></a>               <span class="at">names_to =</span> <span class="st">"column"</span>,</span>
+<span id="cb24-9"><a href=""></a>               <span class="at">values_to =</span> <span class="st">"na_count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-10"><a href=""></a>  <span class="fu">filter</span>(na_count<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-11"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">na_percent =</span> (na_count <span class="sc">/</span> <span class="fu">nrow</span>(flight_data)) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   column    na_count na_percent
@@ -1151,9 +1155,9 @@ EWR: Newark Liberty International Airport
 <section id="nyc-flight-data---quick-eda-example-1" class="slide level2">
 <h2>NYC Flight Data - Quick EDA Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>flight_data <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href=""></a>  <span class="fu">is.na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a href=""></a>  <span class="fu">colSums</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>flight_data <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href=""></a>  <span class="fu">is.na</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href=""></a>  <span class="fu">colSums</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          year          month            day       dep_time sched_dep_time 
              0              0              0           8255              0 
@@ -1189,27 +1193,27 @@ EWR: Newark Liberty International Airport
 <div class="column" style="width:40%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="|3-8|9-21|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>flight_time <span class="ot">&lt;-</span> flight_data <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb27-3"><a href=""></a>    <span class="at">dep_dt =</span> <span class="fu">make_datetime</span>(</span>
-<span id="cb27-4"><a href=""></a>      year,</span>
-<span id="cb27-5"><a href=""></a>      month,</span>
-<span id="cb27-6"><a href=""></a>      day,</span>
-<span id="cb27-7"><a href=""></a>      dep_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
-<span id="cb27-8"><a href=""></a>      dep_time <span class="sc">%%</span> <span class="dv">100</span>),</span>
-<span id="cb27-9"><a href=""></a>    <span class="at">sched_dep_dt =</span> <span class="fu">make_datetime</span>(</span>
-<span id="cb27-10"><a href=""></a>      year,</span>
-<span id="cb27-11"><a href=""></a>      month,</span>
-<span id="cb27-12"><a href=""></a>      day,</span>
-<span id="cb27-13"><a href=""></a>      sched_dep_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
-<span id="cb27-14"><a href=""></a>      sched_dep_time <span class="sc">%%</span> <span class="dv">100</span>),</span>
-<span id="cb27-15"><a href=""></a>    <span class="at">arr_time_dt =</span> <span class="fu">make_datetime</span>(</span>
-<span id="cb27-16"><a href=""></a>      year,</span>
-<span id="cb27-17"><a href=""></a>      month,</span>
-<span id="cb27-18"><a href=""></a>      day,</span>
-<span id="cb27-19"><a href=""></a>      arr_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
-<span id="cb27-20"><a href=""></a>      arr_time <span class="sc">%%</span> <span class="dv">100</span>)</span>
-<span id="cb27-21"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28" data-code-line-numbers="|3-8|9-21|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>flight_time <span class="ot">&lt;-</span> flight_data <span class="sc">|&gt;</span></span>
+<span id="cb28-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb28-3"><a href=""></a>    <span class="at">dep_dt =</span> <span class="fu">make_datetime</span>(</span>
+<span id="cb28-4"><a href=""></a>      year,</span>
+<span id="cb28-5"><a href=""></a>      month,</span>
+<span id="cb28-6"><a href=""></a>      day,</span>
+<span id="cb28-7"><a href=""></a>      dep_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
+<span id="cb28-8"><a href=""></a>      dep_time <span class="sc">%%</span> <span class="dv">100</span>),</span>
+<span id="cb28-9"><a href=""></a>    <span class="at">sched_dep_dt =</span> <span class="fu">make_datetime</span>(</span>
+<span id="cb28-10"><a href=""></a>      year,</span>
+<span id="cb28-11"><a href=""></a>      month,</span>
+<span id="cb28-12"><a href=""></a>      day,</span>
+<span id="cb28-13"><a href=""></a>      sched_dep_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
+<span id="cb28-14"><a href=""></a>      sched_dep_time <span class="sc">%%</span> <span class="dv">100</span>),</span>
+<span id="cb28-15"><a href=""></a>    <span class="at">arr_time_dt =</span> <span class="fu">make_datetime</span>(</span>
+<span id="cb28-16"><a href=""></a>      year,</span>
+<span id="cb28-17"><a href=""></a>      month,</span>
+<span id="cb28-18"><a href=""></a>      day,</span>
+<span id="cb28-19"><a href=""></a>      arr_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
+<span id="cb28-20"><a href=""></a>      arr_time <span class="sc">%%</span> <span class="dv">100</span>)</span>
+<span id="cb28-21"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <!--
@@ -1225,12 +1229,12 @@ in the UTC timezone (GMT as described by the French).
 --><div class="column" style="width:60%;">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>flight_time <span class="sc">|&gt;</span> <span class="fu">select</span>(</span>
-<span id="cb28-2"><a href=""></a>  dep_dt,</span>
-<span id="cb28-3"><a href=""></a>  sched_dep_dt,</span>
-<span id="cb28-4"><a href=""></a>  arr_time_dt</span>
-<span id="cb28-5"><a href=""></a>) <span class="sc">|&gt;</span></span>
-<span id="cb28-6"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>flight_time <span class="sc">|&gt;</span> <span class="fu">select</span>(</span>
+<span id="cb29-2"><a href=""></a>  dep_dt,</span>
+<span id="cb29-3"><a href=""></a>  sched_dep_dt,</span>
+<span id="cb29-4"><a href=""></a>  arr_time_dt</span>
+<span id="cb29-5"><a href=""></a>) <span class="sc">|&gt;</span></span>
+<span id="cb29-6"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   dep_dt              sched_dep_dt        arr_time_dt        
@@ -1253,13 +1257,13 @@ in the UTC timezone (GMT as described by the French).
 <div class="column" style="width:70%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>flight_time <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb30-3"><a href=""></a>    <span class="at">net_air_time =</span> <span class="fu">as.duration</span>(arr_time_dt <span class="sc">-</span> sched_dep_dt),</span>
-<span id="cb30-4"><a href=""></a>    <span class="at">air_time =</span> <span class="fu">minutes</span>(air_time) <span class="sc">|&gt;</span> <span class="fu">as.duration</span>()</span>
-<span id="cb30-5"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb30-6"><a href=""></a>  <span class="fu">select</span>(net_air_time,air_time) <span class="sc">|&gt;</span></span>
-<span id="cb30-7"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>flight_time <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb31-3"><a href=""></a>    <span class="at">net_air_time =</span> <span class="fu">as.duration</span>(arr_time_dt <span class="sc">-</span> sched_dep_dt),</span>
+<span id="cb31-4"><a href=""></a>    <span class="at">air_time =</span> <span class="fu">minutes</span>(air_time) <span class="sc">|&gt;</span> <span class="fu">as.duration</span>()</span>
+<span id="cb31-5"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb31-6"><a href=""></a>  <span class="fu">select</span>(net_air_time,air_time) <span class="sc">|&gt;</span></span>
+<span id="cb31-7"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   net_air_time         air_time            
@@ -1281,25 +1285,25 @@ in the UTC timezone (GMT as described by the French).
 <section id="are-time-zones-an-issue" class="slide level2">
 <h2>Are Time Zones an Issue?!</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32" data-code-line-numbers="|2|3-6|7-9|10|11-14|15-18|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>flights_tz <span class="ot">&lt;-</span> flight_time <span class="sc">|&gt;</span></span>
-<span id="cb32-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_time), <span class="sc">!</span><span class="fu">is.na</span>(arr_time)) <span class="sc">|&gt;</span></span>
-<span id="cb32-3"><a href=""></a>  <span class="fu">left_join</span>(airports <span class="sc">|&gt;</span> <span class="fu">select</span>(faa, <span class="at">tz =</span> tzone),</span>
-<span id="cb32-4"><a href=""></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span> <span class="ot">=</span> <span class="st">"faa"</span>)</span>
-<span id="cb32-5"><a href=""></a>            ) <span class="sc">|&gt;</span></span>
-<span id="cb32-6"><a href=""></a>  <span class="fu">rename</span>(<span class="at">origin_tz =</span> tz) <span class="sc">|&gt;</span></span>
-<span id="cb32-7"><a href=""></a>  <span class="fu">left_join</span>(airports <span class="sc">|&gt;</span> <span class="fu">select</span>(faa, <span class="at">tz =</span> tzone),</span>
-<span id="cb32-8"><a href=""></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb32-9"><a href=""></a>  <span class="fu">rename</span>(<span class="at">dest_tz =</span> tz) <span class="sc">|&gt;</span></span>
-<span id="cb32-10"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(origin_tz), <span class="sc">!</span><span class="fu">is.na</span>(dest_tz)) <span class="sc">|&gt;</span></span>
-<span id="cb32-11"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb32-12"><a href=""></a>    <span class="at">dep_time_local =</span> <span class="fu">force_tz</span>(sched_dep_dt, <span class="at">tzone =</span> origin_tz),</span>
-<span id="cb32-13"><a href=""></a>    <span class="at">arr_time_local =</span> <span class="fu">force_tz</span>(arr_time_dt,  <span class="at">tzone =</span> dest_tz)</span>
-<span id="cb32-14"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb32-15"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb32-16"><a href=""></a>    <span class="at">net_air_time =</span> <span class="fu">as.duration</span>(arr_time_local <span class="sc">-</span> dep_time_local),</span>
-<span id="cb32-17"><a href=""></a>    <span class="at">air_time =</span> <span class="fu">minutes</span>(air_time) <span class="sc">|&gt;</span> <span class="fu">as.duration</span>()</span>
-<span id="cb32-18"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb32-19"><a href=""></a>  <span class="fu">select</span>(net_air_time, air_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33" data-code-line-numbers="|2|3-6|7-9|10|11-14|15-18|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>flights_tz <span class="ot">&lt;-</span> flight_time <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_time), <span class="sc">!</span><span class="fu">is.na</span>(arr_time)) <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href=""></a>  <span class="fu">left_join</span>(airports <span class="sc">|&gt;</span> <span class="fu">select</span>(faa, <span class="at">tz =</span> tzone),</span>
+<span id="cb33-4"><a href=""></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span> <span class="ot">=</span> <span class="st">"faa"</span>)</span>
+<span id="cb33-5"><a href=""></a>            ) <span class="sc">|&gt;</span></span>
+<span id="cb33-6"><a href=""></a>  <span class="fu">rename</span>(<span class="at">origin_tz =</span> tz) <span class="sc">|&gt;</span></span>
+<span id="cb33-7"><a href=""></a>  <span class="fu">left_join</span>(airports <span class="sc">|&gt;</span> <span class="fu">select</span>(faa, <span class="at">tz =</span> tzone),</span>
+<span id="cb33-8"><a href=""></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb33-9"><a href=""></a>  <span class="fu">rename</span>(<span class="at">dest_tz =</span> tz) <span class="sc">|&gt;</span></span>
+<span id="cb33-10"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(origin_tz), <span class="sc">!</span><span class="fu">is.na</span>(dest_tz)) <span class="sc">|&gt;</span></span>
+<span id="cb33-11"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb33-12"><a href=""></a>    <span class="at">dep_time_local =</span> <span class="fu">force_tz</span>(sched_dep_dt, <span class="at">tzone =</span> origin_tz),</span>
+<span id="cb33-13"><a href=""></a>    <span class="at">arr_time_local =</span> <span class="fu">force_tz</span>(arr_time_dt,  <span class="at">tzone =</span> dest_tz)</span>
+<span id="cb33-14"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb33-15"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb33-16"><a href=""></a>    <span class="at">net_air_time =</span> <span class="fu">as.duration</span>(arr_time_local <span class="sc">-</span> dep_time_local),</span>
+<span id="cb33-17"><a href=""></a>    <span class="at">air_time =</span> <span class="fu">minutes</span>(air_time) <span class="sc">|&gt;</span> <span class="fu">as.duration</span>()</span>
+<span id="cb33-18"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb33-19"><a href=""></a>  <span class="fu">select</span>(net_air_time, air_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="are-time-zones-an-issue-1" class="slide level2">
@@ -1308,8 +1312,8 @@ in the UTC timezone (GMT as described by the French).
 <div class="column" style="width:50%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>flights_tz <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a>flights_tz <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   net_air_time         air_time            
@@ -1358,7 +1362,7 @@ Possible Issues
 <div class="cell-output-display">
 <div class="countdown" id="countdown_lubridate" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -1382,10 +1386,10 @@ Packages are a lot more intertwined
 <div class="columns">
 <div class="column" style="width:80%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb35-2"><a href=""></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb35-3"><a href=""></a>data_hitters <span class="ot">&lt;-</span> Hitters</span>
-<span id="cb35-4"><a href=""></a>data_hitters <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb36-2"><a href=""></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb36-3"><a href=""></a>data_hitters <span class="ot">&lt;-</span> Hitters</span>
+<span id="cb36-4"><a href=""></a>data_hitters <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 322
 Columns: 20
@@ -1486,15 +1490,15 @@ $ NewLeague &lt;fct&gt; A, N, A, N, N, A, A, A, N, A, A, N, N, A, N, A, N, A, A,
 <section id="quick-eda" class="slide level2">
 <h2>Quick EDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>data_hitters <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a href=""></a>  <span class="fu">select_if</span>(</span>
-<span id="cb37-3"><a href=""></a>    is.numeric</span>
-<span id="cb37-4"><a href=""></a>  )<span class="sc">|&gt;</span></span>
-<span id="cb37-5"><a href=""></a>  corrr<span class="sc">::</span><span class="fu">correlate</span>()<span class="sc">|&gt;</span></span>
-<span id="cb37-6"><a href=""></a>  <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>data_hitters <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href=""></a>  <span class="fu">select_if</span>(</span>
+<span id="cb38-3"><a href=""></a>    is.numeric</span>
+<span id="cb38-4"><a href=""></a>  )<span class="sc">|&gt;</span></span>
+<span id="cb38-5"><a href=""></a>  corrr<span class="sc">::</span><span class="fu">correlate</span>()<span class="sc">|&gt;</span></span>
+<span id="cb38-6"><a href=""></a>  <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"></section>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"></section>
 <section id="quick-eda-exercise" class="slide level2">
 <h2>Quick EDA: Exercise</h2>
 <div id="exr-CountRelNA" class="theorem exercise">
@@ -1557,42 +1561,42 @@ $ NewLeague &lt;fct&gt; A, N, A, N, N, A, A, A, N, A, A, N, N, A, N, A, N, A, A,
 <div class="fragment" data-index="1">
 <p>Generating a data split with <code>{rsample}</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39" data-code-line-numbers="|1|3-6|8-9|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
-<span id="cb39-2"><a href=""></a></span>
-<span id="cb39-3"><a href=""></a>split_hitters <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(</span>
-<span id="cb39-4"><a href=""></a>  data_hitters,</span>
-<span id="cb39-5"><a href=""></a>  <span class="at">prop =</span> <span class="fl">0.8</span></span>
-<span id="cb39-6"><a href=""></a>  )</span>
-<span id="cb39-7"><a href=""></a></span>
-<span id="cb39-8"><a href=""></a>data_train_hitters <span class="ot">&lt;-</span> <span class="fu">training</span>(split_hitters)</span>
-<span id="cb39-9"><a href=""></a>data_test_hitters <span class="ot">&lt;-</span> <span class="fu">testing</span>(split_hitters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="|1|3-6|8-9|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
+<span id="cb40-2"><a href=""></a></span>
+<span id="cb40-3"><a href=""></a>split_hitters <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(</span>
+<span id="cb40-4"><a href=""></a>  data_hitters,</span>
+<span id="cb40-5"><a href=""></a>  <span class="at">prop =</span> <span class="fl">0.8</span></span>
+<span id="cb40-6"><a href=""></a>  )</span>
+<span id="cb40-7"><a href=""></a></span>
+<span id="cb40-8"><a href=""></a>data_train_hitters <span class="ot">&lt;-</span> <span class="fu">training</span>(split_hitters)</span>
+<span id="cb40-9"><a href=""></a>data_test_hitters <span class="ot">&lt;-</span> <span class="fu">testing</span>(split_hitters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment" data-index="2">
 <p>Defining a recipe with <code>{recipes}</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="|1-4|5|6|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>rec_hitters<span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
-<span id="cb40-2"><a href=""></a>  <span class="at">formula =</span>  Hits<span class="sc">~</span>.,</span>
-<span id="cb40-3"><a href=""></a>  <span class="at">data =</span> data_train_hitters</span>
-<span id="cb40-4"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb40-5"><a href=""></a>  <span class="fu">step_impute_knn</span>(Salary) <span class="sc">|&gt;</span></span>
-<span id="cb40-6"><a href=""></a>  <span class="fu">step_dummy</span>(<span class="fu">all_factor</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41" data-code-line-numbers="|1-4|5|6|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>rec_hitters<span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb41-2"><a href=""></a>  <span class="at">formula =</span>  Hits<span class="sc">~</span>.,</span>
+<span id="cb41-3"><a href=""></a>  <span class="at">data =</span> data_train_hitters</span>
+<span id="cb41-4"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb41-5"><a href=""></a>  <span class="fu">step_impute_knn</span>(Salary) <span class="sc">|&gt;</span></span>
+<span id="cb41-6"><a href=""></a>  <span class="fu">step_dummy</span>(<span class="fu">all_factor</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment" data-index="3">
 <p>Specifying a model with <code>{parsnip}</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>lm_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a>lm_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:53%;">
 <div class="fragment" data-index="4">
 <p>Bundle together the preprocessing steps and model specification:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42" data-code-line-numbers="|1|1-2|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
-<span id="cb42-2"><a href=""></a>  <span class="fu">add_model</span>(lm_spec) <span class="sc">|&gt;</span></span>
-<span id="cb42-3"><a href=""></a>  <span class="fu">add_recipe</span>(rec_hitters)</span>
-<span id="cb42-4"><a href=""></a>wf_hitters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43" data-code-line-numbers="|1|1-2|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href=""></a>  <span class="fu">add_model</span>(lm_spec) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href=""></a>  <span class="fu">add_recipe</span>(rec_hitters)</span>
+<span id="cb43-4"><a href=""></a>wf_hitters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>══ Workflow ════════════════════════════════════════════════════════════════════
 Preprocessor: Recipe
@@ -1622,19 +1626,19 @@ Computational engine: lm </code></pre>
 <div class="fragment" data-index="1">
 <p>Fitting a worklflow with <code>{workflows}</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>lm_res <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb44-2"><a href=""></a>  <span class="fu">fit</span>(<span class="at">data=</span>data_train_hitters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a>lm_res <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href=""></a>  <span class="fu">fit</span>(<span class="at">data=</span>data_train_hitters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment" data-index="2">
 <p>Generating predictions with <code>{broom}</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45" data-code-line-numbers="|1-2|4-6|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a>lm_res_pred <span class="ot">&lt;-</span> lm_res <span class="sc">|&gt;</span></span>
-<span id="cb45-2"><a href=""></a>  <span class="fu">augment</span>(data_test_hitters)</span>
-<span id="cb45-3"><a href=""></a></span>
-<span id="cb45-4"><a href=""></a>lm_res_pred <span class="sc">|&gt;</span></span>
-<span id="cb45-5"><a href=""></a>  <span class="fu">select</span>(.pred,.resid,Hits) <span class="sc">|&gt;</span></span>
-<span id="cb45-6"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46" data-code-line-numbers="|1-2|4-6|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>lm_res_pred <span class="ot">&lt;-</span> lm_res <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href=""></a>  <span class="fu">augment</span>(data_test_hitters)</span>
+<span id="cb46-3"><a href=""></a></span>
+<span id="cb46-4"><a href=""></a>lm_res_pred <span class="sc">|&gt;</span></span>
+<span id="cb46-5"><a href=""></a>  <span class="fu">select</span>(.pred,.resid,Hits) <span class="sc">|&gt;</span></span>
+<span id="cb46-6"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   .pred .resid  Hits
@@ -1651,12 +1655,12 @@ Computational engine: lm </code></pre>
 <div class="fragment" data-index="3">
 <p>Creating a <code>metric_set</code> with <code>{yardstick}</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47" data-code-line-numbers="|1|3-6|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a>hitter_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(rmse,mae,rsq)</span>
-<span id="cb47-2"><a href=""></a></span>
-<span id="cb47-3"><a href=""></a>lm_metrics <span class="ot">&lt;-</span> lm_res_pred <span class="sc">|&gt;</span></span>
-<span id="cb47-4"><a href=""></a>  <span class="fu">hitter_metrics</span>(.pred,Hits)</span>
-<span id="cb47-5"><a href=""></a></span>
-<span id="cb47-6"><a href=""></a>lm_metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48" data-code-line-numbers="|1|3-6|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a>hitter_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(rmse,mae,rsq)</span>
+<span id="cb48-2"><a href=""></a></span>
+<span id="cb48-3"><a href=""></a>lm_metrics <span class="ot">&lt;-</span> lm_res_pred <span class="sc">|&gt;</span></span>
+<span id="cb48-4"><a href=""></a>  <span class="fu">hitter_metrics</span>(.pred,Hits)</span>
+<span id="cb48-5"><a href=""></a></span>
+<span id="cb48-6"><a href=""></a>lm_metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   .metric .estimator .estimate
@@ -1689,7 +1693,7 @@ Computational engine: lm </code></pre>
 <div class="cell-output-display">
 <div class="countdown" id="countdown_rf" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -1697,11 +1701,11 @@ Computational engine: lm </code></pre>
 <section id="problem" class="slide level2">
 <h2>Problem</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="fu">rbind</span>(</span>
-<span id="cb49-2"><a href=""></a>  rf_metrics <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">model=</span><span class="st">"Random Forest"</span>),</span>
-<span id="cb49-3"><a href=""></a>  lm_metrics <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">model=</span><span class="st">"Linear Model"</span>)</span>
-<span id="cb49-4"><a href=""></a>) <span class="sc">|&gt;</span></span>
-<span id="cb49-5"><a href=""></a>  <span class="fu">arrange</span>(.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="fu">rbind</span>(</span>
+<span id="cb50-2"><a href=""></a>  rf_metrics <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">model=</span><span class="st">"Random Forest"</span>),</span>
+<span id="cb50-3"><a href=""></a>  lm_metrics <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">model=</span><span class="st">"Linear Model"</span>)</span>
+<span id="cb50-4"><a href=""></a>) <span class="sc">|&gt;</span></span>
+<span id="cb50-5"><a href=""></a>  <span class="fu">arrange</span>(.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   .metric .estimator .estimate model        
@@ -1725,27 +1729,27 @@ Computational engine: lm </code></pre>
 <div class="fragment" data-index="1">
 <p>Using the <code>{rsample}</code>-library, we can create a 5-fold CV object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
-<span id="cb51-2"><a href=""></a>folds_hitters <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train_hitters,<span class="at">v=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
+<span id="cb52-2"><a href=""></a>folds_hitters <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train_hitters,<span class="at">v=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment" data-index="2">
 <p>By setting the hyperparameters to <code>tune()</code>, we prepare the model for tuning.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a>elnet_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(</span>
-<span id="cb52-2"><a href=""></a>  <span class="at">penalty =</span> <span class="fu">tune</span>(),</span>
-<span id="cb52-3"><a href=""></a>  <span class="at">mixture =</span> <span class="fu">tune</span>()</span>
-<span id="cb52-4"><a href=""></a>) <span class="sc">|&gt;</span></span>
-<span id="cb52-5"><a href=""></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a>elnet_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(</span>
+<span id="cb53-2"><a href=""></a>  <span class="at">penalty =</span> <span class="fu">tune</span>(),</span>
+<span id="cb53-3"><a href=""></a>  <span class="at">mixture =</span> <span class="fu">tune</span>()</span>
+<span id="cb53-4"><a href=""></a>) <span class="sc">|&gt;</span></span>
+<span id="cb53-5"><a href=""></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment" data-index="3">
 <p>We manually define a tune-grid as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb53-2"><a href=""></a>  <span class="at">penalty =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">1.5</span>,<span class="at">length.out=</span><span class="dv">30</span>),</span>
-<span id="cb53-3"><a href=""></a>  <span class="at">mixture =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">30</span>)</span>
-<span id="cb53-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb54-2"><a href=""></a>  <span class="at">penalty =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">1.5</span>,<span class="at">length.out=</span><span class="dv">30</span>),</span>
+<span id="cb54-3"><a href=""></a>  <span class="at">mixture =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">30</span>)</span>
+<span id="cb54-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1755,25 +1759,25 @@ Computational engine: lm </code></pre>
 <div class="column" style="width:43%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb54-2"><a href=""></a>  <span class="fu">update_model</span>(elnet_spec)</span>
-<span id="cb54-3"><a href=""></a></span>
-<span id="cb54-4"><a href=""></a>elnet_res_tune <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb54-5"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
-<span id="cb54-6"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
-<span id="cb54-7"><a href=""></a>    <span class="at">resamples =</span> folds_hitters</span>
-<span id="cb54-8"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb55-2"><a href=""></a>  <span class="fu">update_model</span>(elnet_spec)</span>
+<span id="cb55-3"><a href=""></a></span>
+<span id="cb55-4"><a href=""></a>elnet_res_tune <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb55-5"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
+<span id="cb55-6"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
+<span id="cb55-7"><a href=""></a>    <span class="at">resamples =</span> folds_hitters</span>
+<span id="cb55-8"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:57%;">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a>elnet_res_tune <span class="sc">|&gt;</span></span>
-<span id="cb55-2"><a href=""></a>  <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a>elnet_res_tune <span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a href=""></a>  <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-53-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-54-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1784,24 +1788,24 @@ Computational engine: lm </code></pre>
 <section id="training-a-final-model" class="slide level2">
 <h2>Training a Final Model</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56" data-code-line-numbers="|1-2|4-7|8-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a>parms_opt <span class="ot">&lt;-</span> elnet_res_tune <span class="sc">|&gt;</span></span>
-<span id="cb56-2"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
-<span id="cb56-3"><a href=""></a></span>
-<span id="cb56-4"><a href=""></a>elnet_res <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
-<span id="cb56-5"><a href=""></a>  wf_hitters,</span>
-<span id="cb56-6"><a href=""></a>  parms_opt</span>
-<span id="cb56-7"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb56-8"><a href=""></a>  <span class="fu">last_fit</span>(</span>
-<span id="cb56-9"><a href=""></a>    <span class="at">split =</span> split_hitters,</span>
-<span id="cb56-10"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
-<span id="cb56-11"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57" data-code-line-numbers="|1-2|4-7|8-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a>parms_opt <span class="ot">&lt;-</span> elnet_res_tune <span class="sc">|&gt;</span></span>
+<span id="cb57-2"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
+<span id="cb57-3"><a href=""></a></span>
+<span id="cb57-4"><a href=""></a>elnet_res <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
+<span id="cb57-5"><a href=""></a>  wf_hitters,</span>
+<span id="cb57-6"><a href=""></a>  parms_opt</span>
+<span id="cb57-7"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb57-8"><a href=""></a>  <span class="fu">last_fit</span>(</span>
+<span id="cb57-9"><a href=""></a>    <span class="at">split =</span> split_hitters,</span>
+<span id="cb57-10"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
+<span id="cb57-11"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment" data-index="1">
 <p>We can then assess the performance of the tuned model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a>elnet_res <span class="sc">|&gt;</span> </span>
-<span id="cb57-2"><a href=""></a>  <span class="fu">collect_metrics</span>() <span class="sc">|&gt;</span></span>
-<span id="cb57-3"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>.config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a>elnet_res <span class="sc">|&gt;</span> </span>
+<span id="cb58-2"><a href=""></a>  <span class="fu">collect_metrics</span>() <span class="sc">|&gt;</span></span>
+<span id="cb58-3"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>.config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   .metric .estimator .estimate
@@ -1821,12 +1825,12 @@ Computational engine: lm </code></pre>
 <div class="{columns}">
 <div class="column add-space" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
-<span id="cb59-2"><a href=""></a>  <span class="at">mode =</span> <span class="st">"regression"</span>,</span>
-<span id="cb59-3"><a href=""></a>  <span class="at">trees =</span> <span class="fu">tune</span>(),</span>
-<span id="cb59-4"><a href=""></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(),</span>
-<span id="cb59-5"><a href=""></a>  <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
-<span id="cb59-6"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
+<span id="cb60-2"><a href=""></a>  <span class="at">mode =</span> <span class="st">"regression"</span>,</span>
+<span id="cb60-3"><a href=""></a>  <span class="at">trees =</span> <span class="fu">tune</span>(),</span>
+<span id="cb60-4"><a href=""></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(),</span>
+<span id="cb60-5"><a href=""></a>  <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
+<span id="cb60-6"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:63%;">
 <p>Note, that we have to consider the <code>mtry()</code> parameter first since it depends on the underlying data.</p>
@@ -1837,7 +1841,7 @@ Computational engine: lm </code></pre>
 <div class="fragment" data-index="2">
 <p>Before preparing the parameters:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="fu">extract_parameter_set_dials</span>(rf_spec) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">extract_parameter_set_dials</span>(rf_spec) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>Collection of 3 parameters for tuning
 
@@ -1856,14 +1860,14 @@ information.</code></pre>
 <div class="fragment" data-index="3">
 <p>After preparing the parameters:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a>param_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(</span>
-<span id="cb62-2"><a href=""></a>  rf_spec</span>
-<span id="cb62-3"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb62-4"><a href=""></a>  <span class="fu">finalize</span>(data_train_hitters <span class="sc">|&gt;</span></span>
-<span id="cb62-5"><a href=""></a>             <span class="fu">select</span>(<span class="sc">-</span>Hits)</span>
-<span id="cb62-6"><a href=""></a>           )</span>
-<span id="cb62-7"><a href=""></a></span>
-<span id="cb62-8"><a href=""></a>param_set </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a>param_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(</span>
+<span id="cb63-2"><a href=""></a>  rf_spec</span>
+<span id="cb63-3"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb63-4"><a href=""></a>  <span class="fu">finalize</span>(data_train_hitters <span class="sc">|&gt;</span></span>
+<span id="cb63-5"><a href=""></a>             <span class="fu">select</span>(<span class="sc">-</span>Hits)</span>
+<span id="cb63-6"><a href=""></a>           )</span>
+<span id="cb63-7"><a href=""></a></span>
+<span id="cb63-8"><a href=""></a>param_set </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>Collection of 3 parameters for tuning
 
@@ -1882,39 +1886,39 @@ information.</code></pre>
 <div class="column add-space" style="width:49%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">grid_space_filling</span>(</span>
-<span id="cb64-2"><a href=""></a>  param_set,</span>
-<span id="cb64-3"><a href=""></a>  <span class="at">size =</span> <span class="dv">15</span></span>
-<span id="cb64-4"><a href=""></a>  )</span>
-<span id="cb64-5"><a href=""></a></span>
-<span id="cb64-6"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb64-7"><a href=""></a>  <span class="fu">update_model</span>(rf_spec)</span>
-<span id="cb64-8"><a href=""></a></span>
-<span id="cb64-9"><a href=""></a>rf_res_gsf_tune <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb64-10"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
-<span id="cb64-11"><a href=""></a>    <span class="at">resamples =</span> folds_hitters,</span>
-<span id="cb64-12"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
-<span id="cb64-13"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
-<span id="cb64-14"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">grid_space_filling</span>(</span>
+<span id="cb65-2"><a href=""></a>  param_set,</span>
+<span id="cb65-3"><a href=""></a>  <span class="at">size =</span> <span class="dv">15</span></span>
+<span id="cb65-4"><a href=""></a>  )</span>
+<span id="cb65-5"><a href=""></a></span>
+<span id="cb65-6"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb65-7"><a href=""></a>  <span class="fu">update_model</span>(rf_spec)</span>
+<span id="cb65-8"><a href=""></a></span>
+<span id="cb65-9"><a href=""></a>rf_res_gsf_tune <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb65-10"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
+<span id="cb65-11"><a href=""></a>    <span class="at">resamples =</span> folds_hitters,</span>
+<span id="cb65-12"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
+<span id="cb65-13"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
+<span id="cb65-14"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:49%;">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a>parms_opt <span class="ot">&lt;-</span> rf_res_gsf_tune <span class="sc">|&gt;</span></span>
-<span id="cb65-2"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
-<span id="cb65-3"><a href=""></a></span>
-<span id="cb65-4"><a href=""></a>rf_res_gsf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
-<span id="cb65-5"><a href=""></a>  wf_hitters,</span>
-<span id="cb65-6"><a href=""></a>  parms_opt</span>
-<span id="cb65-7"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb65-8"><a href=""></a>  <span class="fu">last_fit</span>(</span>
-<span id="cb65-9"><a href=""></a>    <span class="at">split =</span> split_hitters,</span>
-<span id="cb65-10"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
-<span id="cb65-11"><a href=""></a>    )</span>
-<span id="cb65-12"><a href=""></a></span>
-<span id="cb65-13"><a href=""></a>rf_tune_metrics <span class="ot">&lt;-</span> rf_res_gsf <span class="sc">|&gt;</span></span>
-<span id="cb65-14"><a href=""></a>  <span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a>parms_opt <span class="ot">&lt;-</span> rf_res_gsf_tune <span class="sc">|&gt;</span></span>
+<span id="cb66-2"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
+<span id="cb66-3"><a href=""></a></span>
+<span id="cb66-4"><a href=""></a>rf_res_gsf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
+<span id="cb66-5"><a href=""></a>  wf_hitters,</span>
+<span id="cb66-6"><a href=""></a>  parms_opt</span>
+<span id="cb66-7"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb66-8"><a href=""></a>  <span class="fu">last_fit</span>(</span>
+<span id="cb66-9"><a href=""></a>    <span class="at">split =</span> split_hitters,</span>
+<span id="cb66-10"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
+<span id="cb66-11"><a href=""></a>    )</span>
+<span id="cb66-12"><a href=""></a></span>
+<span id="cb66-13"><a href=""></a>rf_tune_metrics <span class="ot">&lt;-</span> rf_res_gsf <span class="sc">|&gt;</span></span>
+<span id="cb66-14"><a href=""></a>  <span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -1925,14 +1929,14 @@ information.</code></pre>
 <div class="column add-space" style="width:49%;">
 <div class="fragment" data-index="3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="fu">rbind</span>(</span>
-<span id="cb66-2"><a href=""></a>  rf_metrics <span class="sc">|&gt;</span></span>
-<span id="cb66-3"><a href=""></a>    <span class="fu">mutate</span>(<span class="at">tuned=</span><span class="cn">FALSE</span>),</span>
-<span id="cb66-4"><a href=""></a>  rf_tune_metrics <span class="sc">|&gt;</span></span>
-<span id="cb66-5"><a href=""></a>    <span class="fu">mutate</span>(<span class="at">tuned=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb66-6"><a href=""></a>    <span class="fu">select</span>(<span class="sc">-</span>.config)</span>
-<span id="cb66-7"><a href=""></a>) <span class="sc">|&gt;</span></span>
-<span id="cb66-8"><a href=""></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.metric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href=""></a><span class="fu">rbind</span>(</span>
+<span id="cb67-2"><a href=""></a>  rf_metrics <span class="sc">|&gt;</span></span>
+<span id="cb67-3"><a href=""></a>    <span class="fu">mutate</span>(<span class="at">tuned=</span><span class="cn">FALSE</span>),</span>
+<span id="cb67-4"><a href=""></a>  rf_tune_metrics <span class="sc">|&gt;</span></span>
+<span id="cb67-5"><a href=""></a>    <span class="fu">mutate</span>(<span class="at">tuned=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb67-6"><a href=""></a>    <span class="fu">select</span>(<span class="sc">-</span>.config)</span>
+<span id="cb67-7"><a href=""></a>) <span class="sc">|&gt;</span></span>
+<span id="cb67-8"><a href=""></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.metric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:49%;">
@@ -1985,8 +1989,8 @@ information.</code></pre>
 <div class="column add-space" style="width:62%;">
 <div style="font-size:20pt;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a>weather <span class="sc">|&gt;</span> </span>
-<span id="cb68-2"><a href=""></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href=""></a>weather <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href=""></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 26,115
 Columns: 15
@@ -2011,28 +2015,28 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 </div><div class="column" style="width:36%;">
 <div style="font-size:20pt;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70" data-code-line-numbers="|2-6|7-12|13-16|17-21|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href=""></a>flight_data_cl <span class="ot">&lt;-</span> flight_data <span class="sc">|&gt;</span></span>
-<span id="cb70-2"><a href=""></a>  <span class="fu">inner_join</span>(weather,</span>
-<span id="cb70-3"><a href=""></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>,</span>
-<span id="cb70-4"><a href=""></a>                   <span class="st">"day"</span>, <span class="st">"hour"</span>,</span>
-<span id="cb70-5"><a href=""></a>                   <span class="st">"origin"</span>)</span>
-<span id="cb70-6"><a href=""></a>            ) <span class="sc">|&gt;</span></span>
-<span id="cb70-7"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb70-8"><a href=""></a>    <span class="at">is_delayed =</span> <span class="fu">if_else</span>(</span>
-<span id="cb70-9"><a href=""></a>      <span class="fu">abs</span>(dep_delay) <span class="sc">&gt;=</span> <span class="dv">30</span>,</span>
-<span id="cb70-10"><a href=""></a>      <span class="dv">1</span>,</span>
-<span id="cb70-11"><a href=""></a>      <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb70-12"><a href=""></a>      <span class="fu">as_factor</span>(),</span>
-<span id="cb70-13"><a href=""></a>    <span class="at">weekday =</span> <span class="fu">wday</span>(</span>
-<span id="cb70-14"><a href=""></a>      time_hour.x,</span>
-<span id="cb70-15"><a href=""></a>      <span class="at">locale =</span> <span class="st">"en_US.UTF-8"</span></span>
-<span id="cb70-16"><a href=""></a>      ),</span>
-<span id="cb70-17"><a href=""></a>    <span class="at">wind_gust =</span> <span class="fu">if_else</span>(</span>
-<span id="cb70-18"><a href=""></a>      <span class="fu">is.na</span>(wind_gust),</span>
-<span id="cb70-19"><a href=""></a>      <span class="dv">0</span>,</span>
-<span id="cb70-20"><a href=""></a>      wind_gust</span>
-<span id="cb70-21"><a href=""></a>    )</span>
-<span id="cb70-22"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71" data-code-line-numbers="|2-6|7-12|13-16|17-21|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href=""></a>flight_data_cl <span class="ot">&lt;-</span> flight_data <span class="sc">|&gt;</span></span>
+<span id="cb71-2"><a href=""></a>  <span class="fu">inner_join</span>(weather,</span>
+<span id="cb71-3"><a href=""></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>,</span>
+<span id="cb71-4"><a href=""></a>                   <span class="st">"day"</span>, <span class="st">"hour"</span>,</span>
+<span id="cb71-5"><a href=""></a>                   <span class="st">"origin"</span>)</span>
+<span id="cb71-6"><a href=""></a>            ) <span class="sc">|&gt;</span></span>
+<span id="cb71-7"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb71-8"><a href=""></a>    <span class="at">is_delayed =</span> <span class="fu">if_else</span>(</span>
+<span id="cb71-9"><a href=""></a>      <span class="fu">abs</span>(dep_delay) <span class="sc">&gt;=</span> <span class="dv">30</span>,</span>
+<span id="cb71-10"><a href=""></a>      <span class="dv">1</span>,</span>
+<span id="cb71-11"><a href=""></a>      <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb71-12"><a href=""></a>      <span class="fu">as_factor</span>(),</span>
+<span id="cb71-13"><a href=""></a>    <span class="at">weekday =</span> <span class="fu">wday</span>(</span>
+<span id="cb71-14"><a href=""></a>      time_hour.x,</span>
+<span id="cb71-15"><a href=""></a>      <span class="at">locale =</span> <span class="st">"en_US.UTF-8"</span></span>
+<span id="cb71-16"><a href=""></a>      ),</span>
+<span id="cb71-17"><a href=""></a>    <span class="at">wind_gust =</span> <span class="fu">if_else</span>(</span>
+<span id="cb71-18"><a href=""></a>      <span class="fu">is.na</span>(wind_gust),</span>
+<span id="cb71-19"><a href=""></a>      <span class="dv">0</span>,</span>
+<span id="cb71-20"><a href=""></a>      wind_gust</span>
+<span id="cb71-21"><a href=""></a>    )</span>
+<span id="cb71-22"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -2041,27 +2045,27 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 <h2>Data Split and Sample Size Reduction</h2>
 <p>There are currently <code>336,776</code> samples in the data set</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71" data-code-line-numbers="|3|4|5-9|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
-<span id="cb71-2"><a href=""></a>flight_data_cl <span class="ot">&lt;-</span> flight_data_cl <span class="sc">|&gt;</span></span>
-<span id="cb71-3"><a href=""></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.01</span>) <span class="sc">|&gt;</span></span>
-<span id="cb71-4"><a href=""></a>  <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
-<span id="cb71-5"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(dep_time, dep_delay,</span>
-<span id="cb71-6"><a href=""></a>            arr_time, arr_delay,</span>
-<span id="cb71-7"><a href=""></a>            time_hour.x, time_hour.y,</span>
-<span id="cb71-8"><a href=""></a>            tailnum, hour, day)</span>
-<span id="cb71-9"><a href=""></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72" data-code-line-numbers="|3|4|5-9|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
+<span id="cb72-2"><a href=""></a>flight_data_cl <span class="ot">&lt;-</span> flight_data_cl <span class="sc">|&gt;</span></span>
+<span id="cb72-3"><a href=""></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.01</span>) <span class="sc">|&gt;</span></span>
+<span id="cb72-4"><a href=""></a>  <span class="fu">na.omit</span>() <span class="sc">|&gt;</span></span>
+<span id="cb72-5"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(dep_time, dep_delay,</span>
+<span id="cb72-6"><a href=""></a>            arr_time, arr_delay,</span>
+<span id="cb72-7"><a href=""></a>            time_hour.x, time_hour.y,</span>
+<span id="cb72-8"><a href=""></a>            tailnum, hour, day)</span>
+<span id="cb72-9"><a href=""></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment" data-index="1">
 <p>We can then create a data split:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72" data-code-line-numbers="|1-3|5-6|8|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
-<span id="cb72-2"><a href=""></a>split_flights <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(flight_data_cl,</span>
-<span id="cb72-3"><a href=""></a>                               <span class="at">strata =</span> is_delayed)</span>
-<span id="cb72-4"><a href=""></a></span>
-<span id="cb72-5"><a href=""></a>data_train_flights <span class="ot">&lt;-</span> <span class="fu">training</span>(split_flights)</span>
-<span id="cb72-6"><a href=""></a>data_test_flights <span class="ot">&lt;-</span> <span class="fu">testing</span>(split_flights)</span>
-<span id="cb72-7"><a href=""></a></span>
-<span id="cb72-8"><a href=""></a>folds_flights <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train_flights,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73" data-code-line-numbers="|1-3|5-6|8|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
+<span id="cb73-2"><a href=""></a>split_flights <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(flight_data_cl,</span>
+<span id="cb73-3"><a href=""></a>                               <span class="at">strata =</span> is_delayed)</span>
+<span id="cb73-4"><a href=""></a></span>
+<span id="cb73-5"><a href=""></a>data_train_flights <span class="ot">&lt;-</span> <span class="fu">training</span>(split_flights)</span>
+<span id="cb73-6"><a href=""></a>data_test_flights <span class="ot">&lt;-</span> <span class="fu">testing</span>(split_flights)</span>
+<span id="cb73-7"><a href=""></a></span>
+<span id="cb73-8"><a href=""></a>folds_flights <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train_flights,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -2069,12 +2073,12 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 <h2>Imbalance Check and Recipe</h2>
 <p>There are probably not too many flights with <code>30+</code> minutes delay?!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a>data_train_flights <span class="sc">|&gt;</span></span>
-<span id="cb73-2"><a href=""></a>  <span class="fu">group_by</span>(is_delayed) <span class="sc">|&gt;</span></span>
-<span id="cb73-3"><a href=""></a>  <span class="fu">summarise</span>(</span>
-<span id="cb73-4"><a href=""></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
-<span id="cb73-5"><a href=""></a>    <span class="at">rel_n =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(data_train_flights)</span>
-<span id="cb73-6"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href=""></a>data_train_flights <span class="sc">|&gt;</span></span>
+<span id="cb74-2"><a href=""></a>  <span class="fu">group_by</span>(is_delayed) <span class="sc">|&gt;</span></span>
+<span id="cb74-3"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb74-4"><a href=""></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb74-5"><a href=""></a>    <span class="at">rel_n =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(data_train_flights)</span>
+<span id="cb74-6"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   is_delayed     n rel_n
@@ -2085,18 +2089,18 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 </div>
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75" data-code-line-numbers="|3-6|7-8|9|10|11-12|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href=""></a><span class="fu">library</span>(themis)</span>
-<span id="cb75-2"><a href=""></a></span>
-<span id="cb75-3"><a href=""></a>rec_flights <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
-<span id="cb75-4"><a href=""></a>  <span class="at">formula =</span> is_delayed <span class="sc">~</span>.,</span>
-<span id="cb75-5"><a href=""></a>  <span class="at">data =</span> data_train_flights</span>
-<span id="cb75-6"><a href=""></a>) <span class="sc">|&gt;</span></span>
-<span id="cb75-7"><a href=""></a>  <span class="fu">step_novel</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb75-8"><a href=""></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb75-9"><a href=""></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb75-10"><a href=""></a>  <span class="fu">step_corr</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb75-11"><a href=""></a>  <span class="fu">step_smote</span>(is_delayed,</span>
-<span id="cb75-12"><a href=""></a>             <span class="at">over_ratio =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76" data-code-line-numbers="|3-6|7-8|9|10|11-12|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a><span class="fu">library</span>(themis)</span>
+<span id="cb76-2"><a href=""></a></span>
+<span id="cb76-3"><a href=""></a>rec_flights <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb76-4"><a href=""></a>  <span class="at">formula =</span> is_delayed <span class="sc">~</span>.,</span>
+<span id="cb76-5"><a href=""></a>  <span class="at">data =</span> data_train_flights</span>
+<span id="cb76-6"><a href=""></a>) <span class="sc">|&gt;</span></span>
+<span id="cb76-7"><a href=""></a>  <span class="fu">step_novel</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb76-8"><a href=""></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb76-9"><a href=""></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb76-10"><a href=""></a>  <span class="fu">step_corr</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb76-11"><a href=""></a>  <span class="fu">step_smote</span>(is_delayed,</span>
+<span id="cb76-12"><a href=""></a>             <span class="at">over_ratio =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -2106,11 +2110,11 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 <div class="column add-space" style="width:29%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a>rec_flights <span class="sc">|&gt;</span></span>
-<span id="cb76-2"><a href=""></a>  <span class="fu">prep</span>() <span class="sc">|&gt;</span></span>
-<span id="cb76-3"><a href=""></a>  <span class="fu">bake</span>(<span class="at">new_data=</span><span class="cn">NULL</span>) <span class="sc">|&gt;</span></span>
-<span id="cb76-4"><a href=""></a>  <span class="fu">group_by</span>(is_delayed) <span class="sc">|&gt;</span></span>
-<span id="cb76-5"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href=""></a>rec_flights <span class="sc">|&gt;</span></span>
+<span id="cb77-2"><a href=""></a>  <span class="fu">prep</span>() <span class="sc">|&gt;</span></span>
+<span id="cb77-3"><a href=""></a>  <span class="fu">bake</span>(<span class="at">new_data=</span><span class="cn">NULL</span>) <span class="sc">|&gt;</span></span>
+<span id="cb77-4"><a href=""></a>  <span class="fu">group_by</span>(is_delayed) <span class="sc">|&gt;</span></span>
+<span id="cb77-5"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   is_delayed     n
@@ -2123,28 +2127,28 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 </div><div class="column" data-with="69%">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78" data-code-line-numbers="|1-6|8-13|15-17|19-22|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
-<span id="cb78-2"><a href=""></a>  <span class="at">mode =</span> <span class="st">"classification"</span>,</span>
-<span id="cb78-3"><a href=""></a>  <span class="at">trees =</span> <span class="fu">tune</span>(),</span>
-<span id="cb78-4"><a href=""></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(),</span>
-<span id="cb78-5"><a href=""></a>  <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
-<span id="cb78-6"><a href=""></a>)</span>
-<span id="cb78-7"><a href=""></a></span>
-<span id="cb78-8"><a href=""></a>param_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(</span>
-<span id="cb78-9"><a href=""></a>  rf_spec</span>
-<span id="cb78-10"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb78-11"><a href=""></a>  <span class="fu">finalize</span>(data_train_flights <span class="sc">|&gt;</span></span>
-<span id="cb78-12"><a href=""></a>             <span class="fu">select</span>(<span class="sc">-</span>is_delayed)</span>
-<span id="cb78-13"><a href=""></a>           )</span>
-<span id="cb78-14"><a href=""></a></span>
-<span id="cb78-15"><a href=""></a>wf_flights <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
-<span id="cb78-16"><a href=""></a>  <span class="fu">add_model</span>(rf_spec) <span class="sc">|&gt;</span></span>
-<span id="cb78-17"><a href=""></a>  <span class="fu">add_recipe</span>(rec_flights)</span>
-<span id="cb78-18"><a href=""></a></span>
-<span id="cb78-19"><a href=""></a>flights_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(</span>
-<span id="cb78-20"><a href=""></a>  accuracy, roc_auc,</span>
-<span id="cb78-21"><a href=""></a>  sensitivity, specificity</span>
-<span id="cb78-22"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79" data-code-line-numbers="|1-6|8-13|15-17|19-22|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href=""></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
+<span id="cb79-2"><a href=""></a>  <span class="at">mode =</span> <span class="st">"classification"</span>,</span>
+<span id="cb79-3"><a href=""></a>  <span class="at">trees =</span> <span class="fu">tune</span>(),</span>
+<span id="cb79-4"><a href=""></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(),</span>
+<span id="cb79-5"><a href=""></a>  <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
+<span id="cb79-6"><a href=""></a>)</span>
+<span id="cb79-7"><a href=""></a></span>
+<span id="cb79-8"><a href=""></a>param_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(</span>
+<span id="cb79-9"><a href=""></a>  rf_spec</span>
+<span id="cb79-10"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb79-11"><a href=""></a>  <span class="fu">finalize</span>(data_train_flights <span class="sc">|&gt;</span></span>
+<span id="cb79-12"><a href=""></a>             <span class="fu">select</span>(<span class="sc">-</span>is_delayed)</span>
+<span id="cb79-13"><a href=""></a>           )</span>
+<span id="cb79-14"><a href=""></a></span>
+<span id="cb79-15"><a href=""></a>wf_flights <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb79-16"><a href=""></a>  <span class="fu">add_model</span>(rf_spec) <span class="sc">|&gt;</span></span>
+<span id="cb79-17"><a href=""></a>  <span class="fu">add_recipe</span>(rec_flights)</span>
+<span id="cb79-18"><a href=""></a></span>
+<span id="cb79-19"><a href=""></a>flights_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(</span>
+<span id="cb79-20"><a href=""></a>  accuracy, roc_auc,</span>
+<span id="cb79-21"><a href=""></a>  sensitivity, specificity</span>
+<span id="cb79-22"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -2155,39 +2159,39 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 <div class="column add-space" style="width:49%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79" data-code-line-numbers="|1-4|6-11|13-14|16-19|20-23|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">grid_space_filling</span>(</span>
-<span id="cb79-2"><a href=""></a>  param_set,</span>
-<span id="cb79-3"><a href=""></a>  <span class="at">size =</span> <span class="dv">10</span></span>
-<span id="cb79-4"><a href=""></a>  )</span>
-<span id="cb79-5"><a href=""></a></span>
-<span id="cb79-6"><a href=""></a>rf_res_tune <span class="ot">&lt;-</span> wf_flights <span class="sc">|&gt;</span></span>
-<span id="cb79-7"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
-<span id="cb79-8"><a href=""></a>    <span class="at">resamples =</span> folds_flights,</span>
-<span id="cb79-9"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
-<span id="cb79-10"><a href=""></a>    <span class="at">metrics =</span> flights_metrics</span>
-<span id="cb79-11"><a href=""></a>  )</span>
-<span id="cb79-12"><a href=""></a></span>
-<span id="cb79-13"><a href=""></a>parms_opt <span class="ot">&lt;-</span> rf_res_tune <span class="sc">|&gt;</span></span>
-<span id="cb79-14"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"accuracy"</span>)</span>
-<span id="cb79-15"><a href=""></a></span>
-<span id="cb79-16"><a href=""></a>rf_res_gsf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
-<span id="cb79-17"><a href=""></a>  wf_flights,</span>
-<span id="cb79-18"><a href=""></a>  parms_opt</span>
-<span id="cb79-19"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb79-20"><a href=""></a>  <span class="fu">last_fit</span>(</span>
-<span id="cb79-21"><a href=""></a>    <span class="at">split =</span> split_flights,</span>
-<span id="cb79-22"><a href=""></a>    <span class="at">metrics =</span> flights_metrics</span>
-<span id="cb79-23"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80" data-code-line-numbers="|1-4|6-11|13-14|16-19|20-23|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">grid_space_filling</span>(</span>
+<span id="cb80-2"><a href=""></a>  param_set,</span>
+<span id="cb80-3"><a href=""></a>  <span class="at">size =</span> <span class="dv">10</span></span>
+<span id="cb80-4"><a href=""></a>  )</span>
+<span id="cb80-5"><a href=""></a></span>
+<span id="cb80-6"><a href=""></a>rf_res_tune <span class="ot">&lt;-</span> wf_flights <span class="sc">|&gt;</span></span>
+<span id="cb80-7"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
+<span id="cb80-8"><a href=""></a>    <span class="at">resamples =</span> folds_flights,</span>
+<span id="cb80-9"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
+<span id="cb80-10"><a href=""></a>    <span class="at">metrics =</span> flights_metrics</span>
+<span id="cb80-11"><a href=""></a>  )</span>
+<span id="cb80-12"><a href=""></a></span>
+<span id="cb80-13"><a href=""></a>parms_opt <span class="ot">&lt;-</span> rf_res_tune <span class="sc">|&gt;</span></span>
+<span id="cb80-14"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"accuracy"</span>)</span>
+<span id="cb80-15"><a href=""></a></span>
+<span id="cb80-16"><a href=""></a>rf_res_gsf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
+<span id="cb80-17"><a href=""></a>  wf_flights,</span>
+<span id="cb80-18"><a href=""></a>  parms_opt</span>
+<span id="cb80-19"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb80-20"><a href=""></a>  <span class="fu">last_fit</span>(</span>
+<span id="cb80-21"><a href=""></a>    <span class="at">split =</span> split_flights,</span>
+<span id="cb80-22"><a href=""></a>    <span class="at">metrics =</span> flights_metrics</span>
+<span id="cb80-23"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:49%;">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a>rf_tune_metrics <span class="ot">&lt;-</span> rf_res_gsf <span class="sc">|&gt;</span></span>
-<span id="cb80-2"><a href=""></a>  <span class="fu">collect_metrics</span>()</span>
-<span id="cb80-3"><a href=""></a></span>
-<span id="cb80-4"><a href=""></a>rf_tune_metrics <span class="sc">|&gt;</span></span>
-<span id="cb80-5"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>.config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a>rf_tune_metrics <span class="ot">&lt;-</span> rf_res_gsf <span class="sc">|&gt;</span></span>
+<span id="cb81-2"><a href=""></a>  <span class="fu">collect_metrics</span>()</span>
+<span id="cb81-3"><a href=""></a></span>
+<span id="cb81-4"><a href=""></a>rf_tune_metrics <span class="sc">|&gt;</span></span>
+<span id="cb81-5"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>.config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   .metric     .estimator .estimate
@@ -2204,7 +2208,7 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 <section id="confusion-matrices-with-ggplot2" class="slide level2">
 <h2>Confusion Matrices with <code>{ggplot2}</code></h2>
 
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-74-1.png" width="960" class="r-stretch"></section>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-75-1.png" width="960" class="r-stretch"></section>
 <section id="generating-a-confusion-matrix-tibble" class="slide level2">
 <h2>Generating a Confusion Matrix Tibble</h2>
 <div style="font-size:21pt;">
@@ -2212,17 +2216,17 @@ $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 0
 <div class="column add-space" style="width:49%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82" data-code-line-numbers="|2-4|1-7|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a>get_cm <span class="ot">&lt;-</span> <span class="cf">function</span>(final_model){</span>
-<span id="cb82-2"><a href=""></a>  cm <span class="ot">&lt;-</span> rf_res_gsf <span class="sc">|&gt;</span></span>
-<span id="cb82-3"><a href=""></a>    <span class="fu">collect_predictions</span>() <span class="sc">|&gt;</span></span>
-<span id="cb82-4"><a href=""></a>    <span class="fu">conf_mat</span>(is_delayed, .pred_class)</span>
-<span id="cb82-5"><a href=""></a>  </span>
-<span id="cb82-6"><a href=""></a>  <span class="fu">return</span>(cm)</span>
-<span id="cb82-7"><a href=""></a>}</span>
-<span id="cb82-8"><a href=""></a></span>
-<span id="cb82-9"><a href=""></a>cm_rf <span class="ot">&lt;-</span> <span class="fu">get_cm</span>(rf_res_gsf)</span>
-<span id="cb82-10"><a href=""></a></span>
-<span id="cb82-11"><a href=""></a>cm_rf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83" data-code-line-numbers="|2-4|1-7|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href=""></a>get_cm <span class="ot">&lt;-</span> <span class="cf">function</span>(final_model){</span>
+<span id="cb83-2"><a href=""></a>  cm <span class="ot">&lt;-</span> rf_res_gsf <span class="sc">|&gt;</span></span>
+<span id="cb83-3"><a href=""></a>    <span class="fu">collect_predictions</span>() <span class="sc">|&gt;</span></span>
+<span id="cb83-4"><a href=""></a>    <span class="fu">conf_mat</span>(is_delayed, .pred_class)</span>
+<span id="cb83-5"><a href=""></a>  </span>
+<span id="cb83-6"><a href=""></a>  <span class="fu">return</span>(cm)</span>
+<span id="cb83-7"><a href=""></a>}</span>
+<span id="cb83-8"><a href=""></a></span>
+<span id="cb83-9"><a href=""></a>cm_rf <span class="ot">&lt;-</span> <span class="fu">get_cm</span>(rf_res_gsf)</span>
+<span id="cb83-10"><a href=""></a></span>
+<span id="cb83-11"><a href=""></a>cm_rf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Truth
 Prediction   0   1
@@ -2234,28 +2238,28 @@ Prediction   0   1
 </div><div class="column" style="width:49%;">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84" data-code-line-numbers="|2|4-7|8-11|12-14|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a>transform_cm <span class="ot">&lt;-</span> <span class="cf">function</span>(cm){</span>
-<span id="cb84-2"><a href=""></a> cm_tib <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cm<span class="sc">$</span>table)<span class="sc">|&gt;</span></span>
-<span id="cb84-3"><a href=""></a>   <span class="fu">mutate</span>(</span>
-<span id="cb84-4"><a href=""></a>     <span class="at">Prediction =</span> <span class="fu">factor</span>(</span>
-<span id="cb84-5"><a href=""></a>       Prediction,</span>
-<span id="cb84-6"><a href=""></a>       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Negative"</span>, <span class="st">"Postive"</span>)</span>
-<span id="cb84-7"><a href=""></a>       ),</span>
-<span id="cb84-8"><a href=""></a>     <span class="at">Truth =</span> <span class="fu">factor</span>(</span>
-<span id="cb84-9"><a href=""></a>       Truth,</span>
-<span id="cb84-10"><a href=""></a>       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Negative"</span>, <span class="st">"Postive"</span>)</span>
-<span id="cb84-11"><a href=""></a>       ),</span>
-<span id="cb84-12"><a href=""></a>     <span class="at">Prediction =</span> <span class="fu">factor</span>(</span>
-<span id="cb84-13"><a href=""></a>       Prediction, </span>
-<span id="cb84-14"><a href=""></a>       <span class="at">levels =</span> <span class="fu">rev</span>(<span class="fu">levels</span>(Prediction)))</span>
-<span id="cb84-15"><a href=""></a>  )</span>
-<span id="cb84-16"><a href=""></a> </span>
-<span id="cb84-17"><a href=""></a> <span class="fu">return</span>(cm_tib)</span>
-<span id="cb84-18"><a href=""></a> </span>
-<span id="cb84-19"><a href=""></a>}</span>
-<span id="cb84-20"><a href=""></a></span>
-<span id="cb84-21"><a href=""></a>cm_rf_tib <span class="ot">&lt;-</span> <span class="fu">transform_cm</span>(cm_rf)</span>
-<span id="cb84-22"><a href=""></a>cm_rf_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85" data-code-line-numbers="|2|4-7|8-11|12-14|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href=""></a>transform_cm <span class="ot">&lt;-</span> <span class="cf">function</span>(cm){</span>
+<span id="cb85-2"><a href=""></a> cm_tib <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cm<span class="sc">$</span>table)<span class="sc">|&gt;</span></span>
+<span id="cb85-3"><a href=""></a>   <span class="fu">mutate</span>(</span>
+<span id="cb85-4"><a href=""></a>     <span class="at">Prediction =</span> <span class="fu">factor</span>(</span>
+<span id="cb85-5"><a href=""></a>       Prediction,</span>
+<span id="cb85-6"><a href=""></a>       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Negative"</span>, <span class="st">"Postive"</span>)</span>
+<span id="cb85-7"><a href=""></a>       ),</span>
+<span id="cb85-8"><a href=""></a>     <span class="at">Truth =</span> <span class="fu">factor</span>(</span>
+<span id="cb85-9"><a href=""></a>       Truth,</span>
+<span id="cb85-10"><a href=""></a>       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Negative"</span>, <span class="st">"Postive"</span>)</span>
+<span id="cb85-11"><a href=""></a>       ),</span>
+<span id="cb85-12"><a href=""></a>     <span class="at">Prediction =</span> <span class="fu">factor</span>(</span>
+<span id="cb85-13"><a href=""></a>       Prediction, </span>
+<span id="cb85-14"><a href=""></a>       <span class="at">levels =</span> <span class="fu">rev</span>(<span class="fu">levels</span>(Prediction)))</span>
+<span id="cb85-15"><a href=""></a>  )</span>
+<span id="cb85-16"><a href=""></a> </span>
+<span id="cb85-17"><a href=""></a> <span class="fu">return</span>(cm_tib)</span>
+<span id="cb85-18"><a href=""></a> </span>
+<span id="cb85-19"><a href=""></a>}</span>
+<span id="cb85-20"><a href=""></a></span>
+<span id="cb85-21"><a href=""></a>cm_rf_tib <span class="ot">&lt;-</span> <span class="fu">transform_cm</span>(cm_rf)</span>
+<span id="cb85-22"><a href=""></a>cm_rf_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   Prediction Truth        n
@@ -2277,46 +2281,46 @@ Prediction   0   1
 <div class="column add-space" style="width:39%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86" data-code-line-numbers="|2-9|10|11|12-15|16-17|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a>plot_cm_tibble <span class="ot">&lt;-</span> <span class="cf">function</span>(cm_tib, high){</span>
-<span id="cb86-2"><a href=""></a>  p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb86-3"><a href=""></a>    <span class="at">data =</span> cm_tib,</span>
-<span id="cb86-4"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb86-5"><a href=""></a>      <span class="at">x =</span> Prediction,</span>
-<span id="cb86-6"><a href=""></a>      <span class="at">y =</span> Truth,</span>
-<span id="cb86-7"><a href=""></a>      <span class="at">fill =</span> n</span>
-<span id="cb86-8"><a href=""></a>      )</span>
-<span id="cb86-9"><a href=""></a>    ) <span class="sc">+</span></span>
-<span id="cb86-10"><a href=""></a>    <span class="fu">geom_tile</span>( <span class="at">colour =</span> <span class="st">"gray50"</span>)<span class="sc">+</span></span>
-<span id="cb86-11"><a href=""></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n))<span class="sc">+</span></span>
-<span id="cb86-12"><a href=""></a>    <span class="fu">scale_fill_gradient</span>(</span>
-<span id="cb86-13"><a href=""></a>      <span class="at">low =</span> <span class="st">"#FFFFFF"</span>,</span>
-<span id="cb86-14"><a href=""></a>      <span class="at">high =</span> high</span>
-<span id="cb86-15"><a href=""></a>      )<span class="sc">+</span></span>
-<span id="cb86-16"><a href=""></a>    <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb86-17"><a href=""></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb86-18"><a href=""></a>  </span>
-<span id="cb86-19"><a href=""></a>  <span class="fu">return</span>(p1)</span>
-<span id="cb86-20"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87" data-code-line-numbers="|2-9|10|11|12-15|16-17|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href=""></a>plot_cm_tibble <span class="ot">&lt;-</span> <span class="cf">function</span>(cm_tib, high){</span>
+<span id="cb87-2"><a href=""></a>  p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb87-3"><a href=""></a>    <span class="at">data =</span> cm_tib,</span>
+<span id="cb87-4"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb87-5"><a href=""></a>      <span class="at">x =</span> Prediction,</span>
+<span id="cb87-6"><a href=""></a>      <span class="at">y =</span> Truth,</span>
+<span id="cb87-7"><a href=""></a>      <span class="at">fill =</span> n</span>
+<span id="cb87-8"><a href=""></a>      )</span>
+<span id="cb87-9"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb87-10"><a href=""></a>    <span class="fu">geom_tile</span>( <span class="at">colour =</span> <span class="st">"gray50"</span>)<span class="sc">+</span></span>
+<span id="cb87-11"><a href=""></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n))<span class="sc">+</span></span>
+<span id="cb87-12"><a href=""></a>    <span class="fu">scale_fill_gradient</span>(</span>
+<span id="cb87-13"><a href=""></a>      <span class="at">low =</span> <span class="st">"#FFFFFF"</span>,</span>
+<span id="cb87-14"><a href=""></a>      <span class="at">high =</span> high</span>
+<span id="cb87-15"><a href=""></a>      )<span class="sc">+</span></span>
+<span id="cb87-16"><a href=""></a>    <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb87-17"><a href=""></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb87-18"><a href=""></a>  </span>
+<span id="cb87-19"><a href=""></a>  <span class="fu">return</span>(p1)</span>
+<span id="cb87-20"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:59%;">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87" data-code-line-numbers="|2-5|10-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href=""></a>cm_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(last_fit_model,high){ </span>
-<span id="cb87-2"><a href=""></a>  p <span class="ot">&lt;-</span> last_fit_model <span class="sc">%&gt;%</span></span>
-<span id="cb87-3"><a href=""></a>    <span class="fu">get_cm</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb87-4"><a href=""></a>    <span class="fu">transform_cm</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb87-5"><a href=""></a>    <span class="fu">plot_cm_tibble</span>(.,<span class="at">high =</span> high)</span>
-<span id="cb87-6"><a href=""></a>  </span>
-<span id="cb87-7"><a href=""></a>  <span class="fu">return</span>(p)</span>
-<span id="cb87-8"><a href=""></a>}</span>
-<span id="cb87-9"><a href=""></a></span>
-<span id="cb87-10"><a href=""></a><span class="fu">cm_plot</span>(<span class="at">last_fit_model =</span> rf_res_gsf,</span>
-<span id="cb87-11"><a href=""></a>        <span class="at">high =</span> <span class="st">"#506432"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88" data-code-line-numbers="|2-5|10-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a>cm_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(last_fit_model,high){ </span>
+<span id="cb88-2"><a href=""></a>  p <span class="ot">&lt;-</span> last_fit_model <span class="sc">%&gt;%</span></span>
+<span id="cb88-3"><a href=""></a>    <span class="fu">get_cm</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb88-4"><a href=""></a>    <span class="fu">transform_cm</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb88-5"><a href=""></a>    <span class="fu">plot_cm_tibble</span>(.,<span class="at">high =</span> high)</span>
+<span id="cb88-6"><a href=""></a>  </span>
+<span id="cb88-7"><a href=""></a>  <span class="fu">return</span>(p)</span>
+<span id="cb88-8"><a href=""></a>}</span>
+<span id="cb88-9"><a href=""></a></span>
+<span id="cb88-10"><a href=""></a><span class="fu">cm_plot</span>(<span class="at">last_fit_model =</span> rf_res_gsf,</span>
+<span id="cb88-11"><a href=""></a>        <span class="at">high =</span> <span class="st">"#506432"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-78-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-79-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2332,44 +2336,44 @@ Prediction   0   1
 <div class="column add-space" style="width:38%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88" data-code-line-numbers="|1-3|5-7|9-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a>acc<span class="ot">&lt;-</span> rf_tune_metrics <span class="sc">|&gt;</span></span>
-<span id="cb88-2"><a href=""></a>  <span class="fu">filter</span>(.metric<span class="sc">==</span><span class="st">'accuracy'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb88-3"><a href=""></a>  <span class="fu">pluck</span>(<span class="dv">3</span>)</span>
-<span id="cb88-4"><a href=""></a></span>
-<span id="cb88-5"><a href=""></a>sensi <span class="ot">&lt;-</span> rf_tune_metrics <span class="sc">|&gt;</span></span>
-<span id="cb88-6"><a href=""></a>  <span class="fu">filter</span>(.metric<span class="sc">==</span><span class="st">'sensitivity'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb88-7"><a href=""></a>  <span class="fu">pluck</span>(<span class="dv">3</span>)</span>
-<span id="cb88-8"><a href=""></a></span>
-<span id="cb88-9"><a href=""></a>speci <span class="ot">&lt;-</span> rf_tune_metrics <span class="sc">|&gt;</span></span>
-<span id="cb88-10"><a href=""></a>  <span class="fu">filter</span>(.metric<span class="sc">==</span><span class="st">'specificity'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb88-11"><a href=""></a>  <span class="fu">pluck</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89" data-code-line-numbers="|1-3|5-7|9-11|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a>acc<span class="ot">&lt;-</span> rf_tune_metrics <span class="sc">|&gt;</span></span>
+<span id="cb89-2"><a href=""></a>  <span class="fu">filter</span>(.metric<span class="sc">==</span><span class="st">'accuracy'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb89-3"><a href=""></a>  <span class="fu">pluck</span>(<span class="dv">3</span>)</span>
+<span id="cb89-4"><a href=""></a></span>
+<span id="cb89-5"><a href=""></a>sensi <span class="ot">&lt;-</span> rf_tune_metrics <span class="sc">|&gt;</span></span>
+<span id="cb89-6"><a href=""></a>  <span class="fu">filter</span>(.metric<span class="sc">==</span><span class="st">'sensitivity'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb89-7"><a href=""></a>  <span class="fu">pluck</span>(<span class="dv">3</span>)</span>
+<span id="cb89-8"><a href=""></a></span>
+<span id="cb89-9"><a href=""></a>speci <span class="ot">&lt;-</span> rf_tune_metrics <span class="sc">|&gt;</span></span>
+<span id="cb89-10"><a href=""></a>  <span class="fu">filter</span>(.metric<span class="sc">==</span><span class="st">'specificity'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb89-11"><a href=""></a>  <span class="fu">pluck</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
 <div class="fragment" data-index="2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89" data-code-line-numbers="|1-3|5-6|8-10|11-21|13-16|17|18|19|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a><span class="fu">library</span>(ggtext)</span>
-<span id="cb89-2"><a href=""></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb89-3"><a href=""></a><span class="fu">library</span>(glue)</span>
-<span id="cb89-4"><a href=""></a></span>
-<span id="cb89-5"><a href=""></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#506432"</span>)</span>
-<span id="cb89-6"><a href=""></a><span class="fu">names</span>(cols) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"rf"</span>)</span>
-<span id="cb89-7"><a href=""></a></span>
-<span id="cb89-8"><a href=""></a>title_tib <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb89-9"><a href=""></a>  <span class="at">x=</span><span class="dv">0</span>,</span>
-<span id="cb89-10"><a href=""></a>  <span class="at">y=</span><span class="dv">1</span>,</span>
-<span id="cb89-11"><a href=""></a>  <span class="at">label =</span> <span class="fu">glue</span>(</span>
-<span id="cb89-12"><a href=""></a>    <span class="st">"</span></span>
-<span id="cb89-13"><a href=""></a><span class="st">    &lt;p&gt;&lt;b&gt;Confusion matrix for a</span></span>
-<span id="cb89-14"><a href=""></a><span class="st">      &lt;span style='color:{cols['rf']};'&gt;random forest&lt;/span&gt;</span></span>
-<span id="cb89-15"><a href=""></a><span class="st">      &lt;br/&gt;</span></span>
-<span id="cb89-16"><a href=""></a><span class="st">    &lt;/b&gt;&lt;/p&gt;</span></span>
-<span id="cb89-17"><a href=""></a><span class="st">    &lt;p&gt; - Accuracy =    {scales::percent(round(acc,3))} &lt;/p&gt;</span></span>
-<span id="cb89-18"><a href=""></a><span class="st">    &lt;p&gt; - Sensitivity = {scales::percent(round(sensi,3))} &lt;/p&gt; </span></span>
-<span id="cb89-19"><a href=""></a><span class="st">    &lt;p&gt; - Specificity = {scales::percent(round(speci,3))} &lt;/p&gt; </span></span>
-<span id="cb89-20"><a href=""></a><span class="st">    "</span></span>
-<span id="cb89-21"><a href=""></a>    )</span>
-<span id="cb89-22"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90" data-code-line-numbers="|1-3|5-6|8-10|11-21|13-16|17|18|19|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb90-2"><a href=""></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb90-3"><a href=""></a><span class="fu">library</span>(glue)</span>
+<span id="cb90-4"><a href=""></a></span>
+<span id="cb90-5"><a href=""></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#506432"</span>)</span>
+<span id="cb90-6"><a href=""></a><span class="fu">names</span>(cols) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"rf"</span>)</span>
+<span id="cb90-7"><a href=""></a></span>
+<span id="cb90-8"><a href=""></a>title_tib <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb90-9"><a href=""></a>  <span class="at">x=</span><span class="dv">0</span>,</span>
+<span id="cb90-10"><a href=""></a>  <span class="at">y=</span><span class="dv">1</span>,</span>
+<span id="cb90-11"><a href=""></a>  <span class="at">label =</span> <span class="fu">glue</span>(</span>
+<span id="cb90-12"><a href=""></a>    <span class="st">"</span></span>
+<span id="cb90-13"><a href=""></a><span class="st">    &lt;p&gt;&lt;b&gt;Confusion matrix for a</span></span>
+<span id="cb90-14"><a href=""></a><span class="st">      &lt;span style='color:{cols['rf']};'&gt;random forest&lt;/span&gt;</span></span>
+<span id="cb90-15"><a href=""></a><span class="st">      &lt;br/&gt;</span></span>
+<span id="cb90-16"><a href=""></a><span class="st">    &lt;/b&gt;&lt;/p&gt;</span></span>
+<span id="cb90-17"><a href=""></a><span class="st">    &lt;p&gt; - Accuracy =    {scales::percent(round(acc,3))} &lt;/p&gt;</span></span>
+<span id="cb90-18"><a href=""></a><span class="st">    &lt;p&gt; - Sensitivity = {scales::percent(round(sensi,3))} &lt;/p&gt; </span></span>
+<span id="cb90-19"><a href=""></a><span class="st">    &lt;p&gt; - Specificity = {scales::percent(round(speci,3))} &lt;/p&gt; </span></span>
+<span id="cb90-20"><a href=""></a><span class="st">    "</span></span>
+<span id="cb90-21"><a href=""></a>    )</span>
+<span id="cb90-22"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -2381,24 +2385,24 @@ Prediction   0   1
 <div class="column add-space" style="width:39%;">
 <div class="fragment" data-index="1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90" data-code-line-numbers="|2-7,14|8,14|9,14|11-13|15-18|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a>title_pane <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb90-2"><a href=""></a>  <span class="fu">geom_richtext</span>(</span>
-<span id="cb90-3"><a href=""></a>    <span class="at">data =</span> title_tib,</span>
-<span id="cb90-4"><a href=""></a>    <span class="fu">aes</span>(x, y, <span class="at">label =</span> label),</span>
-<span id="cb90-5"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">1</span>, </span>
-<span id="cb90-6"><a href=""></a>    <span class="at">label.color =</span> <span class="cn">NA</span></span>
-<span id="cb90-7"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb90-8"><a href=""></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb90-9"><a href=""></a>  <span class="fu">theme_void</span>()</span>
-<span id="cb90-10"><a href=""></a></span>
-<span id="cb90-11"><a href=""></a><span class="fu">cm_plot</span>(</span>
-<span id="cb90-12"><a href=""></a>  <span class="at">last_fit_model =</span> rf_res_gsf,</span>
-<span id="cb90-13"><a href=""></a>  <span class="at">high =</span> <span class="st">"#506432"</span>) <span class="sc">+</span></span>
-<span id="cb90-14"><a href=""></a>  title_pane<span class="sc">+</span></span>
-<span id="cb90-15"><a href=""></a>  <span class="fu">plot_layout</span>(</span>
-<span id="cb90-16"><a href=""></a>    <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb90-17"><a href=""></a>    <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.04</span>)</span>
-<span id="cb90-18"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91" data-code-line-numbers="|2-7,14|8,14|9,14|11-13|15-18|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href=""></a>title_pane <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb91-2"><a href=""></a>  <span class="fu">geom_richtext</span>(</span>
+<span id="cb91-3"><a href=""></a>    <span class="at">data =</span> title_tib,</span>
+<span id="cb91-4"><a href=""></a>    <span class="fu">aes</span>(x, y, <span class="at">label =</span> label),</span>
+<span id="cb91-5"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">1</span>, </span>
+<span id="cb91-6"><a href=""></a>    <span class="at">label.color =</span> <span class="cn">NA</span></span>
+<span id="cb91-7"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb91-8"><a href=""></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb91-9"><a href=""></a>  <span class="fu">theme_void</span>()</span>
+<span id="cb91-10"><a href=""></a></span>
+<span id="cb91-11"><a href=""></a><span class="fu">cm_plot</span>(</span>
+<span id="cb91-12"><a href=""></a>  <span class="at">last_fit_model =</span> rf_res_gsf,</span>
+<span id="cb91-13"><a href=""></a>  <span class="at">high =</span> <span class="st">"#506432"</span>) <span class="sc">+</span></span>
+<span id="cb91-14"><a href=""></a>  title_pane<span class="sc">+</span></span>
+<span id="cb91-15"><a href=""></a>  <span class="fu">plot_layout</span>(</span>
+<span id="cb91-16"><a href=""></a>    <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb91-17"><a href=""></a>    <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.04</span>)</span>
+<span id="cb91-18"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:59%;">
@@ -2407,7 +2411,7 @@ Prediction   0   1
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-82-1.png" width="960"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-83-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2435,10 +2439,10 @@ Prediction   0   1
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb91-2"><a href=""></a>  <span class="fu">filter</span>(body_mass_g<span class="sc">&gt;</span><span class="dv">3500</span>) <span class="sc">|&gt;</span></span>
-<span id="cb91-3"><a href=""></a>  <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span></span>
-<span id="cb91-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb92-2"><a href=""></a>  <span class="fu">filter</span>(body_mass_g<span class="sc">&gt;</span><span class="dv">3500</span>) <span class="sc">|&gt;</span></span>
+<span id="cb92-3"><a href=""></a>  <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span></span>
+<span id="cb92-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   island        n
@@ -2450,11 +2454,11 @@ Prediction   0   1
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb93-2"><a href=""></a>  <span class="fu">filter</span>(body_mass_g<span class="sc">&gt;</span><span class="dv">3500</span>) <span class="sc">|&gt;</span></span>
-<span id="cb93-3"><a href=""></a>  <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span></span>
-<span id="cb93-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())<span class="sc">|&gt;</span></span>
-<span id="cb93-5"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">rel_n =</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb94-2"><a href=""></a>  <span class="fu">filter</span>(body_mass_g<span class="sc">&gt;</span><span class="dv">3500</span>) <span class="sc">|&gt;</span></span>
+<span id="cb94-3"><a href=""></a>  <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span></span>
+<span id="cb94-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())<span class="sc">|&gt;</span></span>
+<span id="cb94-5"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">rel_n =</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   island        n rel_n
@@ -2474,42 +2478,42 @@ Prediction   0   1
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
-<span id="cb95-2"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb95-3"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb95-4"><a href=""></a>      <span class="at">x=</span>flipper_length_mm</span>
-<span id="cb95-5"><a href=""></a>      )</span>
-<span id="cb95-6"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb95-7"><a href=""></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-85-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
 <span id="cb96-2"><a href=""></a>  <span class="fu">ggplot</span>(</span>
 <span id="cb96-3"><a href=""></a>    <span class="fu">aes</span>(</span>
 <span id="cb96-4"><a href=""></a>      <span class="at">x=</span>flipper_length_mm</span>
 <span id="cb96-5"><a href=""></a>      )</span>
 <span id="cb96-6"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb96-7"><a href=""></a>  <span class="fu">geom_histogram</span>(</span>
-<span id="cb96-8"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb96-9"><a href=""></a>      <span class="at">y=</span><span class="fu">after_stat</span>(count <span class="sc">/</span> <span class="fu">sum</span>(count))</span>
-<span id="cb96-10"><a href=""></a>      )</span>
-<span id="cb96-11"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb96-12"><a href=""></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb96-13"><a href=""></a>    <span class="at">labels =</span> scales<span class="sc">::</span>percent</span>
-<span id="cb96-14"><a href=""></a>    )<span class="sc">+</span></span>
-<span id="cb96-15"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"relative frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb96-7"><a href=""></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
 <p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-86-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href=""></a>data_penguin <span class="sc">|&gt;</span></span>
+<span id="cb97-2"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb97-3"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb97-4"><a href=""></a>      <span class="at">x=</span>flipper_length_mm</span>
+<span id="cb97-5"><a href=""></a>      )</span>
+<span id="cb97-6"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb97-7"><a href=""></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb97-8"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb97-9"><a href=""></a>      <span class="at">y=</span><span class="fu">after_stat</span>(count <span class="sc">/</span> <span class="fu">sum</span>(count))</span>
+<span id="cb97-10"><a href=""></a>      )</span>
+<span id="cb97-11"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb97-12"><a href=""></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb97-13"><a href=""></a>    <span class="at">labels =</span> scales<span class="sc">::</span>percent</span>
+<span id="cb97-14"><a href=""></a>    )<span class="sc">+</span></span>
+<span id="cb97-15"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"relative frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-87-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2524,18 +2528,18 @@ Prediction   0   1
 <div class="{columns}">
 <div class="column add-space" style="width:49%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href=""></a>flight_time <span class="sc">|&gt;</span></span>
-<span id="cb97-2"><a href=""></a>  <span class="fu">na.omit</span>()<span class="sc">|&gt;</span></span>
-<span id="cb97-3"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb97-4"><a href=""></a>    <span class="at">weekday =</span> <span class="fu">wday</span>(</span>
-<span id="cb97-5"><a href=""></a>      dep_dt,</span>
-<span id="cb97-6"><a href=""></a>      <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb97-7"><a href=""></a>      <span class="at">abbr =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb97-8"><a href=""></a>      <span class="at">locale =</span> <span class="st">"en_US.UTF-8"</span></span>
-<span id="cb97-9"><a href=""></a>      )</span>
-<span id="cb97-10"><a href=""></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb97-11"><a href=""></a>  <span class="fu">group_by</span>(weekday) <span class="sc">|&gt;</span></span>
-<span id="cb97-12"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">mean_delay=</span><span class="fu">mean</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href=""></a>flight_time <span class="sc">|&gt;</span></span>
+<span id="cb98-2"><a href=""></a>  <span class="fu">na.omit</span>()<span class="sc">|&gt;</span></span>
+<span id="cb98-3"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb98-4"><a href=""></a>    <span class="at">weekday =</span> <span class="fu">wday</span>(</span>
+<span id="cb98-5"><a href=""></a>      dep_dt,</span>
+<span id="cb98-6"><a href=""></a>      <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb98-7"><a href=""></a>      <span class="at">abbr =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb98-8"><a href=""></a>      <span class="at">locale =</span> <span class="st">"en_US.UTF-8"</span></span>
+<span id="cb98-9"><a href=""></a>      )</span>
+<span id="cb98-10"><a href=""></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb98-11"><a href=""></a>  <span class="fu">group_by</span>(weekday) <span class="sc">|&gt;</span></span>
+<span id="cb98-12"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">mean_delay=</span><span class="fu">mean</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:49%;">
 <div class="cell">
@@ -2560,14 +2564,14 @@ Prediction   0   1
 <div id="sol-CountRelNA" class="proof solution">
 <p><span class="proof-title"><em>Solution 4</em> (<a href="#/quick-eda-exercise" class="quarto-xref">Exercise&nbsp;4</a>). </span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href=""></a>data_hitters <span class="sc">|&gt;</span></span>
-<span id="cb99-2"><a href=""></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(),</span>
-<span id="cb99-3"><a href=""></a>                   <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)))) <span class="sc">|&gt;</span></span>
-<span id="cb99-4"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb99-5"><a href=""></a>               <span class="at">names_to =</span> <span class="st">"column"</span>,</span>
-<span id="cb99-6"><a href=""></a>               <span class="at">values_to =</span> <span class="st">"na_count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb99-7"><a href=""></a>  <span class="fu">filter</span>(na_count<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb99-8"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">na_percent =</span> (na_count <span class="sc">/</span> <span class="fu">nrow</span>(data_hitters)) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href=""></a>data_hitters <span class="sc">|&gt;</span></span>
+<span id="cb100-2"><a href=""></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(),</span>
+<span id="cb100-3"><a href=""></a>                   <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)))) <span class="sc">|&gt;</span></span>
+<span id="cb100-4"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb100-5"><a href=""></a>               <span class="at">names_to =</span> <span class="st">"column"</span>,</span>
+<span id="cb100-6"><a href=""></a>               <span class="at">values_to =</span> <span class="st">"na_count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb100-7"><a href=""></a>  <span class="fu">filter</span>(na_count<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb100-8"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">na_percent =</span> (na_count <span class="sc">/</span> <span class="fu">nrow</span>(data_hitters)) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   column na_count na_percent
@@ -2582,19 +2586,19 @@ Prediction   0   1
 <div id="sol-rf_base" class="proof solution">
 <p><span class="proof-title"><em>Solution 5</em> (<a href="#/exercise-using-a-different-model" class="quarto-xref">Exercise&nbsp;5</a>). </span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href=""></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mode =</span> <span class="st">"regression"</span>)</span>
-<span id="cb101-2"><a href=""></a></span>
-<span id="cb101-3"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb101-4"><a href=""></a>  <span class="fu">update_model</span>(rf_spec)</span>
-<span id="cb101-5"><a href=""></a></span>
-<span id="cb101-6"><a href=""></a>rf_res <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb101-7"><a href=""></a>  <span class="fu">fit</span>(<span class="at">data=</span>data_train_hitters)</span>
-<span id="cb101-8"><a href=""></a></span>
-<span id="cb101-9"><a href=""></a>rf_metrics <span class="ot">&lt;-</span> rf_res <span class="sc">|&gt;</span></span>
-<span id="cb101-10"><a href=""></a>  <span class="fu">augment</span>(data_test_hitters) <span class="sc">|&gt;</span></span>
-<span id="cb101-11"><a href=""></a>  <span class="fu">hitter_metrics</span>(.pred,Hits)</span>
-<span id="cb101-12"><a href=""></a></span>
-<span id="cb101-13"><a href=""></a>rf_metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href=""></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mode =</span> <span class="st">"regression"</span>)</span>
+<span id="cb102-2"><a href=""></a></span>
+<span id="cb102-3"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb102-4"><a href=""></a>  <span class="fu">update_model</span>(rf_spec)</span>
+<span id="cb102-5"><a href=""></a></span>
+<span id="cb102-6"><a href=""></a>rf_res <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb102-7"><a href=""></a>  <span class="fu">fit</span>(<span class="at">data=</span>data_train_hitters)</span>
+<span id="cb102-8"><a href=""></a></span>
+<span id="cb102-9"><a href=""></a>rf_metrics <span class="ot">&lt;-</span> rf_res <span class="sc">|&gt;</span></span>
+<span id="cb102-10"><a href=""></a>  <span class="fu">augment</span>(data_test_hitters) <span class="sc">|&gt;</span></span>
+<span id="cb102-11"><a href=""></a>  <span class="fu">hitter_metrics</span>(.pred,Hits)</span>
+<span id="cb102-12"><a href=""></a></span>
+<span id="cb102-13"><a href=""></a>rf_metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   .metric .estimator .estimate
@@ -2614,53 +2618,53 @@ Prediction   0   1
 <div class="{columns}">
 <div class="column add-space" style="width:49%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href=""></a>xgb_spec <span class="ot">&lt;-</span> <span class="fu">boost_tree</span>(</span>
-<span id="cb103-2"><a href=""></a>  <span class="at">mode =</span> <span class="st">"regression"</span>,</span>
-<span id="cb103-3"><a href=""></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(),</span>
-<span id="cb103-4"><a href=""></a>  <span class="at">trees =</span> <span class="fu">tune</span>(),</span>
-<span id="cb103-5"><a href=""></a>  <span class="at">min_n =</span> <span class="fu">tune</span>(),</span>
-<span id="cb103-6"><a href=""></a>  <span class="at">tree_depth =</span> <span class="fu">tune</span>(),</span>
-<span id="cb103-7"><a href=""></a>  <span class="at">learn_rate =</span> <span class="fu">tune</span>()</span>
-<span id="cb103-8"><a href=""></a>  )</span>
-<span id="cb103-9"><a href=""></a></span>
-<span id="cb103-10"><a href=""></a>param_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(</span>
-<span id="cb103-11"><a href=""></a>  xgb_spec</span>
-<span id="cb103-12"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb103-13"><a href=""></a>  <span class="fu">finalize</span>(data_train_hitters <span class="sc">|&gt;</span></span>
-<span id="cb103-14"><a href=""></a>             <span class="fu">select</span>(<span class="sc">-</span>Hits)</span>
-<span id="cb103-15"><a href=""></a>           )</span>
-<span id="cb103-16"><a href=""></a></span>
-<span id="cb103-17"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">grid_space_filling</span>(</span>
-<span id="cb103-18"><a href=""></a>  param_set,</span>
-<span id="cb103-19"><a href=""></a>  <span class="at">size =</span> <span class="dv">15</span></span>
-<span id="cb103-20"><a href=""></a>  )</span>
-<span id="cb103-21"><a href=""></a></span>
-<span id="cb103-22"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb103-23"><a href=""></a>  <span class="fu">update_model</span>(xgb_spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a>xgb_spec <span class="ot">&lt;-</span> <span class="fu">boost_tree</span>(</span>
+<span id="cb104-2"><a href=""></a>  <span class="at">mode =</span> <span class="st">"regression"</span>,</span>
+<span id="cb104-3"><a href=""></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(),</span>
+<span id="cb104-4"><a href=""></a>  <span class="at">trees =</span> <span class="fu">tune</span>(),</span>
+<span id="cb104-5"><a href=""></a>  <span class="at">min_n =</span> <span class="fu">tune</span>(),</span>
+<span id="cb104-6"><a href=""></a>  <span class="at">tree_depth =</span> <span class="fu">tune</span>(),</span>
+<span id="cb104-7"><a href=""></a>  <span class="at">learn_rate =</span> <span class="fu">tune</span>()</span>
+<span id="cb104-8"><a href=""></a>  )</span>
+<span id="cb104-9"><a href=""></a></span>
+<span id="cb104-10"><a href=""></a>param_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(</span>
+<span id="cb104-11"><a href=""></a>  xgb_spec</span>
+<span id="cb104-12"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb104-13"><a href=""></a>  <span class="fu">finalize</span>(data_train_hitters <span class="sc">|&gt;</span></span>
+<span id="cb104-14"><a href=""></a>             <span class="fu">select</span>(<span class="sc">-</span>Hits)</span>
+<span id="cb104-15"><a href=""></a>           )</span>
+<span id="cb104-16"><a href=""></a></span>
+<span id="cb104-17"><a href=""></a>tune_spec <span class="ot">&lt;-</span> <span class="fu">grid_space_filling</span>(</span>
+<span id="cb104-18"><a href=""></a>  param_set,</span>
+<span id="cb104-19"><a href=""></a>  <span class="at">size =</span> <span class="dv">15</span></span>
+<span id="cb104-20"><a href=""></a>  )</span>
+<span id="cb104-21"><a href=""></a></span>
+<span id="cb104-22"><a href=""></a>wf_hitters <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb104-23"><a href=""></a>  <span class="fu">update_model</span>(xgb_spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:49%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a>xgb_res_tune <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
-<span id="cb104-2"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
-<span id="cb104-3"><a href=""></a>    <span class="at">resamples =</span> folds_hitters,</span>
-<span id="cb104-4"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
-<span id="cb104-5"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
-<span id="cb104-6"><a href=""></a>  )</span>
-<span id="cb104-7"><a href=""></a></span>
-<span id="cb104-8"><a href=""></a>parms_opt <span class="ot">&lt;-</span> xgb_res_tune <span class="sc">|&gt;</span></span>
-<span id="cb104-9"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
-<span id="cb104-10"><a href=""></a></span>
-<span id="cb104-11"><a href=""></a>xgb_res <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
-<span id="cb104-12"><a href=""></a>  wf_hitters,</span>
-<span id="cb104-13"><a href=""></a>  parms_opt</span>
-<span id="cb104-14"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb104-15"><a href=""></a>  <span class="fu">last_fit</span>(</span>
-<span id="cb104-16"><a href=""></a>    <span class="at">split =</span> split_hitters,</span>
-<span id="cb104-17"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics)</span>
-<span id="cb104-18"><a href=""></a></span>
-<span id="cb104-19"><a href=""></a>(xgb_tune_metrics <span class="ot">&lt;-</span> xgb_res <span class="sc">|&gt;</span></span>
-<span id="cb104-20"><a href=""></a>  <span class="fu">collect_metrics</span>() <span class="sc">|&gt;</span></span>
-<span id="cb104-21"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>.config))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href=""></a>xgb_res_tune <span class="ot">&lt;-</span> wf_hitters <span class="sc">|&gt;</span></span>
+<span id="cb105-2"><a href=""></a>  <span class="fu">tune_grid</span>(</span>
+<span id="cb105-3"><a href=""></a>    <span class="at">resamples =</span> folds_hitters,</span>
+<span id="cb105-4"><a href=""></a>    <span class="at">grid =</span> tune_spec,</span>
+<span id="cb105-5"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics</span>
+<span id="cb105-6"><a href=""></a>  )</span>
+<span id="cb105-7"><a href=""></a></span>
+<span id="cb105-8"><a href=""></a>parms_opt <span class="ot">&lt;-</span> xgb_res_tune <span class="sc">|&gt;</span></span>
+<span id="cb105-9"><a href=""></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
+<span id="cb105-10"><a href=""></a></span>
+<span id="cb105-11"><a href=""></a>xgb_res <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(</span>
+<span id="cb105-12"><a href=""></a>  wf_hitters,</span>
+<span id="cb105-13"><a href=""></a>  parms_opt</span>
+<span id="cb105-14"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb105-15"><a href=""></a>  <span class="fu">last_fit</span>(</span>
+<span id="cb105-16"><a href=""></a>    <span class="at">split =</span> split_hitters,</span>
+<span id="cb105-17"><a href=""></a>    <span class="at">metrics =</span> hitter_metrics)</span>
+<span id="cb105-18"><a href=""></a></span>
+<span id="cb105-19"><a href=""></a>(xgb_tune_metrics <span class="ot">&lt;-</span> xgb_res <span class="sc">|&gt;</span></span>
+<span id="cb105-20"><a href=""></a>  <span class="fu">collect_metrics</span>() <span class="sc">|&gt;</span></span>
+<span id="cb105-21"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>.config))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   .metric .estimator .estimate
